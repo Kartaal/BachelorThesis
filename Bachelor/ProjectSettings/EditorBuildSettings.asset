@@ -4,5 +4,59 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Home.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Learn Transition YDS.unity
+    guid: 8b5e1b7752bc7f946a49fb71e2ab9e57
+  - enabled: 1
+    path: Assets/Scenes/Learn YDS/Introduce Terms YDS.unity
+    guid: 4af988936accf83429c3bb9bfae28680
+  - enabled: 1
+    path: Assets/Scenes/Learn YDS/Multiple Choice YDS.unity
+    guid: 6979cb9535510934693f92901d006774
+  - enabled: 1
+    path: Assets/Scenes/Learn YDS/DIY YDS.unity
+    guid: c548e8e9a5a51174ca2e84f8887f1f0f
+  - enabled: 1
+    path: Assets/Scenes/Learn Transition OA.unity
+    guid: 377cb131e8eca194486a8db9b8b0fea0
+  - enabled: 1
+    path: Assets/Scenes/Learn OA/Introduce Terms OA.unity
+    guid: 4433fae0497892f46b24d46863a9bc4d
+  - enabled: 1
+    path: Assets/Scenes/Learn OA/Locked Walkthrough OA.unity
+    guid: d7dbe3086e95b18429750e7caba25e5c
+  - enabled: 1
+    path: Assets/Scenes/Learn OA/Multiple Choice OA.unity
+    guid: 1f2915efa571ced4c8941b3d2d08cc4c
+  - enabled: 1
+    path: Assets/Scenes/Learn OA/DIY OA.unity
+    guid: feb357c94bffb4543b43c18e7376f1fa
+  - enabled: 1
+    path: Assets/Scenes/Explore Transition YDS.unity
+    guid: 1cee13d2ea802d148b1dfa170cd46a37
+  - enabled: 1
+    path: Assets/Scenes/Explore YDS/Explore Setup YDS.unity
+    guid: fb82e389c4bd933449dd6393655b062e
+  - enabled: 1
+    path: Assets/Scenes/Explore YDS/Explore Run YDS.unity
+    guid: a75292c27154375439c6619fb9bb94a7
+  - enabled: 1
+    path: Assets/Scenes/Explore Transition OA.unity
+    guid: a64edcffe665f0741b7b956f6f5ad876
+  - enabled: 1
+    path: Assets/Scenes/Explore OA/Explore Setup OA.unity
+    guid: 4ca07c56018aa9f4e99c527017b71686
+  - enabled: 1
+    path: Assets/Scenes/Explore OA/Explore Run OA.unity
+    guid: 302ed5ca4aa02dd498c7eedaf9ff2d6b
+  - enabled: 1
+    path: Assets/Scenes/Compare Transition.unity
+    guid: cff01dfa1fc3ef64db45e32a714305d5
+  - enabled: 1
+    path: Assets/Scenes/Compare/Compare Main.unity
+    guid: 37ca970d170fb904b8262518c748091e
   m_configObjects: {}
