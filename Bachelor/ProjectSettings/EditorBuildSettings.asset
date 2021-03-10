@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Learn YDS/Introduce Terms YDS.unity
     guid: 4af988936accf83429c3bb9bfae28680
   - enabled: 1
+    path: Assets/Scenes/Learn YDS/Locked Walkthrough YDS.unity
+    guid: cb5322753be969b419a5c086109e2058
+  - enabled: 1
     path: Assets/Scenes/Learn YDS/Multiple Choice YDS.unity
     guid: 6979cb9535510934693f92901d006774
   - enabled: 1
@@ -59,4 +62,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Compare/Compare Main.unity
     guid: 37ca970d170fb904b8262518c748091e
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 50e3a22aea8609243b5a485fb974a2ab
+  - enabled: 1
+    path: Assets/Scenes/Resources.unity
+    guid: b39d013bd5d66d242b8425f86b4aa759
   m_configObjects: {}
