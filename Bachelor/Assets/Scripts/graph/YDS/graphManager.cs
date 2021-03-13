@@ -12,6 +12,10 @@ public class graphManager : MonoBehaviour
     private float taskHeight = 50f; // default value.
     private float taskWidth = 100f; // default value.
 
+    private static int taskNum = 0;
+
+    private Color32[] colr;
+
     // Reference to Task Prefab
     [SerializeField]
     private GameObject task;        // In-unity reference to Task prefab.
@@ -22,6 +26,9 @@ public class graphManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        colr = new Color32[] {new Color32(0,102,255,100), new Color32(0,204,153,100), new Color32(153,255,51,100), 
+                                new Color32(255,204,0,100), new Color32(255,51,0,100), new Color32(204,0,102,100), 
+                                 new Color32(0,153,153,100), new Color32(255,255,255,100)};
         taskHeight = ((RectTransform)task.transform).rect.height;
         taskWidth = ((RectTransform)task.transform).rect.width;
         DEBUG(); // Should be removed upon merge to Master.
@@ -36,7 +43,6 @@ public class graphManager : MonoBehaviour
     private void DEBUG(){
         //Test Method, can safely be ignored upon merge to Master.
         
-        
         // Creating instances of Monobehaviours is not allowed. Making dummy data struct for input testing.
         var l = new List<Task>();
         l.Add(new Task(1,1,2));
@@ -50,6 +56,8 @@ public class graphManager : MonoBehaviour
         GenerateGraph(l);
 
     }
+
+
     /*
         Main method for Generating the graph. Does not provide Cleanup if called again with already existing elements.
         Takes a list of Task Objects Currently. Should be rewritten with propper functionality in mind.
@@ -73,6 +81,11 @@ public class graphManager : MonoBehaviour
             TaskData.SetRelease(t.GetRelease());
             TaskData.SetDeadline(t.GetDeadline());
             TaskData.SetWork(t.GetWork());
+
+
+            //assigns a color to the Task, to help differentiate them.
+            AssignColourToTask(newBar);
+
 
             // Sets parent to canvas to ensure propper visibility.
             newBar.transform.SetParent(mc.transform);
@@ -100,9 +113,15 @@ public class graphManager : MonoBehaviour
     }
 
 
-    private void AssignColourToTask(){
+    private void AssignColourToTask(GameObject img){
     // Colour Changer(instance of Task) (changes colour based on number of tasks available. 5-10 should be a good start.)
+        //taskNum
+        var image = img.GetComponent<Image>();
 
+        image.color = colr[taskNum];
+
+        taskNum++;
+        
 
     }
 
