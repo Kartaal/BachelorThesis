@@ -6,28 +6,25 @@ using UnityEngine.UI;
 public class graphManager : MonoBehaviour
 {
     // Constants for the (0,0) of the graph
-    private const float xStart = -5f;
-    private const float yStart = -5f;
-    private const float scaleFactor = 1f;
+    private const float xStart = -550f;
+    private const float yStart = -350f;
 
-
-    private float taskHeight = 50f;
-    private float taskWidth = 100f; //hardttpyed placeholder.
+    private float taskHeight = 50f; // default value.
+    private float taskWidth = 100f; // default value.
 
     // Reference to Task Prefab
     [SerializeField]
-    private GameObject task;
+    private GameObject task;        // In-unity reference to Task prefab.
     [SerializeField]
-    private Canvas mc; // main Canvas
-
-
+    private Canvas mc;              // main Canvas
 
 
     // Start is called before the first frame update
     void Start()
     {
         taskHeight = ((RectTransform)task.transform).rect.height;
-        DEBUG();
+        taskWidth = ((RectTransform)task.transform).rect.width;
+        DEBUG(); // Should be removed upon merge to Master.
     }
 
     // Update is called once per frame
@@ -46,110 +43,62 @@ public class graphManager : MonoBehaviour
         l.Add(new Task(1,1,3));
         l.Add(new Task(1,2,3));
         l.Add(new Task(1,2,5));
+        l.Add(new Task(4,2,7));
+        l.Add(new Task(5,8,9));
+        l.Add(new Task(2,4,6));
 
         GenerateGraph(l);
 
     }
-
+    /*
+        Main method for Generating the graph. Does not provide Cleanup if called again with already existing elements.
+        Takes a list of Task Objects Currently. Should be rewritten with propper functionality in mind.
+        Also, it shouldn't take Monobehaviours.
+    */
+    
     private void GenerateGraph(List<Task> tl){
-        //Untestable method. Uses monobehaviour objects. Need to find a way around this.
+        //local variables are copied from const, as they may vary throughout the loop.
         float x = xStart;
         float y = yStart;
         float xReset = xStart;
 
+        // Main loop for generation. iterates over all given tasks and assigns elements propperly.
         foreach(Task t in tl){
+            // Creates a new task object, and sets the name. Name is purely for Debug purposes.
             var newBar = GameObject.Instantiate(task,new Vector3(0,0,0), Quaternion.identity);
             newBar.name = "(r=" + t.GetRelease()+"|d=" + t.GetDeadline() + ")";
 
+            // Aquires the Task.cs component of the instantiated task. Sets the variables based on input.
             var TaskData = newBar.GetComponent<Task>();
             TaskData.SetRelease(t.GetRelease());
             TaskData.SetDeadline(t.GetDeadline());
             TaskData.SetWork(t.GetWork());
 
+            // Sets parent to canvas to ensure propper visibility.
             newBar.transform.SetParent(mc.transform);
-            float len = taskHeight * (t.GetDeadline() - t.GetRelease());
-            Debug.Log("DEBUG - Task Length = " + len);
+
+            // Calculates the length of the task based on the release and deadlines, factored up to the taskWidth divided by 2.
+            float len = (taskWidth/2) * (t.GetDeadline() - t.GetRelease());
+
+            /* Sets the center of the instantiated task with an offset based on it's release, 
+               and the relative length of the task for consistency.
+                A new task is located, starting from x, with an offset of taskWidth times the release time
+                of the given task. Added with our length calculation to put the center in the right location.
+            */
 
             newBar.transform.localPosition = new Vector3((x + (t.GetRelease() * taskWidth)) + len, y, 1f);
 
-            y = y + taskHeight + 1f;
-            x = xReset;
-            /*
-            var len = (float)((t.GetDeadline() - t.GetRelease()));
+            // Updates Y with task height to ensure tasks stacking on top of eachother. With an offset of +2
+            // To make sure there is room in between eac htask. Dynamically scales with taskHeight.
+            y = y + taskHeight + 2f;
 
-            //newBar.transform.localScale = new Vector3((len/2),scaleFactor,1f);
-            //var rt = ((RectTransform)newBar.transform);
-            //rt.sizeDelta = new Vector2((len*taskWidth), taskHeight);
-            
-            newBar.transform.localPosition = new Vector3((x*(len/2)),y,1f);
-            
-            y = y + taskHeight + 1f;
+            // Resets the x value to provide base Offset.
             x = xReset;
-            */
 
         }
 
     }
 
-    private void GenerateGraphV1(List<Task> taskList){
-        float x = xStart;
-        float y = yStart;
-        float xReset = x;
-    // Graph Generator(List<Task>) ( Generates the graph with relative placements, 10x10 should be a good starting point.)
-        foreach(Task t in taskList){
-            x = x + (t.GetRelease() * taskWidth);
-            
-            var newBar = GameObject.Instantiate(task, new Vector3(0,0,0), Quaternion.identity);
-
-            newBar.name = "(r=" + t.GetRelease()+"|d=" + t.GetDeadline() + ")";
-            
-            var TaskData = newBar.GetComponent<Task>();
-            TaskData.SetRelease(t.GetRelease());
-            TaskData.SetDeadline(t.GetDeadline());
-            TaskData.SetWork(t.GetWork());
-            //TaskData.SetDimensionsOfTask(); //Causes issues with generations?
-            
-            //newBar.transform.parent = mc.transform; //attatch new Task to the Canvas for display.
-            newBar.transform.SetParent(mc.transform, false);
-
-            var len = (float)((t.GetDeadline() - t.GetRelease()));
-
-            //newBar.transform.localScale = new Vector3((len/2),scaleFactor,1f);
-            //var rt = ((RectTransform)newBar.transform);
-            //rt.sizeDelta = new Vector2((len*taskWidth), taskHeight);
-            
-            newBar.transform.localPosition = new Vector3((x*(len/2)),y,1f);
-            
-            y = y + taskHeight + 1f;
-            x = xReset;
-        }
-
-        /*
-            x = -3f;
-            y = -2f;
-            var resetX = x;
-
-            foreach(dat t in data){
-
-                x = x + t.r;
-                if (x > (x+limitX)){
-
-                    Debug.Log("X var out of Bounds!");
-                }
-                var len = t.d-t.r;
-                var newBar = GameObject.Instantiate(go,new Vector3(x + (len/2f),y,0), Quaternion.identity);
-                
-                
-                newBar.name = "(r=" +t.r+"|d="+t.d+")";
-                newBar.transform.localScale = new Vector3(len,0.8f,0.8f);
-                
-                y++;
-                x = resetX;
-            }
-        */
-
-
-    }
 
     private void AssignColourToTask(){
     // Colour Changer(instance of Task) (changes colour based on number of tasks available. 5-10 should be a good start.)
