@@ -12,7 +12,7 @@ public class graphManager : MonoBehaviour
 
 
     private float taskHeight = 50f;
-    private float taskWidth = 50f;
+    private float taskWidth = 100f; //hardttpyed placeholder.
 
     // Reference to Task Prefab
     [SerializeField]
@@ -38,6 +38,9 @@ public class graphManager : MonoBehaviour
 
     private void DEBUG(){
         //Test Method, can safely be ignored upon merge to Master.
+        
+        
+        // Creating instances of Monobehaviours is not allowed. Making dummy data struct for input testing.
         var l = new List<Task>();
         l.Add(new Task(1,1,2));
         l.Add(new Task(1,1,3));
@@ -48,13 +51,53 @@ public class graphManager : MonoBehaviour
 
     }
 
-    private void GenerateGraph(List<Task> taskList){
+    private void GenerateGraph(List<Task> tl){
+        //Untestable method. Uses monobehaviour objects. Need to find a way around this.
+        float x = xStart;
+        float y = yStart;
+        float xReset = xStart;
+
+        foreach(Task t in tl){
+            var newBar = GameObject.Instantiate(task,new Vector3(0,0,0), Quaternion.identity);
+            newBar.name = "(r=" + t.GetRelease()+"|d=" + t.GetDeadline() + ")";
+
+            var TaskData = newBar.GetComponent<Task>();
+            TaskData.SetRelease(t.GetRelease());
+            TaskData.SetDeadline(t.GetDeadline());
+            TaskData.SetWork(t.GetWork());
+
+            newBar.transform.SetParent(mc.transform);
+            float len = taskHeight * (t.GetDeadline() - t.GetRelease());
+            Debug.Log("DEBUG - Task Length = " + len);
+
+            newBar.transform.localPosition = new Vector3((x + (t.GetRelease() * taskWidth)) + len, y, 1f);
+
+            y = y + taskHeight + 1f;
+            x = xReset;
+            /*
+            var len = (float)((t.GetDeadline() - t.GetRelease()));
+
+            //newBar.transform.localScale = new Vector3((len/2),scaleFactor,1f);
+            //var rt = ((RectTransform)newBar.transform);
+            //rt.sizeDelta = new Vector2((len*taskWidth), taskHeight);
+            
+            newBar.transform.localPosition = new Vector3((x*(len/2)),y,1f);
+            
+            y = y + taskHeight + 1f;
+            x = xReset;
+            */
+
+        }
+
+    }
+
+    private void GenerateGraphV1(List<Task> taskList){
         float x = xStart;
         float y = yStart;
         float xReset = x;
     // Graph Generator(List<Task>) ( Generates the graph with relative placements, 10x10 should be a good starting point.)
         foreach(Task t in taskList){
-            x = x + t.GetRelease();
+            x = x + (t.GetRelease() * taskWidth);
             
             var newBar = GameObject.Instantiate(task, new Vector3(0,0,0), Quaternion.identity);
 
@@ -65,14 +108,17 @@ public class graphManager : MonoBehaviour
             TaskData.SetDeadline(t.GetDeadline());
             TaskData.SetWork(t.GetWork());
             //TaskData.SetDimensionsOfTask(); //Causes issues with generations?
-            newBar.transform.parent = mc.transform; //attatch new Task to the Canvas for display.
             
+            //newBar.transform.parent = mc.transform; //attatch new Task to the Canvas for display.
+            newBar.transform.SetParent(mc.transform, false);
+
             var len = (float)((t.GetDeadline() - t.GetRelease()));
+
             //newBar.transform.localScale = new Vector3((len/2),scaleFactor,1f);
             //var rt = ((RectTransform)newBar.transform);
             //rt.sizeDelta = new Vector2((len*taskWidth), taskHeight);
             
-            newBar.transform.localPosition = new Vector3(((t.GetRelease()*taskHeight)*(len/2)),y,1f);
+            newBar.transform.localPosition = new Vector3((x*(len/2)),y,1f);
             
             y = y + taskHeight + 1f;
             x = xReset;
