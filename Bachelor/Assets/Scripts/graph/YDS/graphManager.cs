@@ -86,7 +86,6 @@ public class graphManager : MonoBehaviour
             //assigns a color to the Task, to help differentiate them.
             AssignColourToTask(newBar);
 
-
             // Sets parent to canvas to ensure propper visibility.
             newBar.transform.SetParent(mc.transform);
 
@@ -115,7 +114,9 @@ public class graphManager : MonoBehaviour
 
     private void AssignColourToTask(GameObject img){
     // Colour Changer(instance of Task) (changes colour based on number of tasks available. 5-10 should be a good start.)
-        //taskNum
+        
+
+        //WARNING: Can cause Index Out of bounds errors
         var image = img.GetComponent<Image>();
 
         image.color = colr[taskNum];
