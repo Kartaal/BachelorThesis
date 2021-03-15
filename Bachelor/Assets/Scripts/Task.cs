@@ -38,9 +38,13 @@ public class Task : MonoBehaviour
     {
         rt = (RectTransform)gameObject.transform;
         SetDimensionsOfTask();
+        //DEBUG();
+    }
 
+    private void DEBUG(){
         Debug.Log("width = " + rt.rect.width);
         Debug.Log("height = " + rt.rect.height);
+
     }
 
     // Update is called once per frame
@@ -55,7 +59,7 @@ public class Task : MonoBehaviour
      * As of now the intervals it stretches over (dealineT - releaseT) is multipled with 100, to scale it up to a size that makes sense.
      * The scale which it should be upscaled with can be changed, if we find a better scale.
      */
-    private void SetDimensionsOfTask()
+    public void SetDimensionsOfTask()
     {
         width = (deadlineT - releaseT) * scaleForDimensions;
         rt.sizeDelta = new Vector2(width, taskHeight);
@@ -95,6 +99,7 @@ public class Task : MonoBehaviour
     /*Setters*/
     public void SetComplete(bool newComplete) { complete = newComplete; }
     public void SetDeadline(int newDeadline) { deadlineT = newDeadline; }
+    public void SetWork(double newWorkload) { workT = newWorkload; }
     public void SetRelease(int newRelease) { releaseT = newRelease; }
     public void SetIntensity(double newIntensity) { taskIntensity = newIntensity; }
 
