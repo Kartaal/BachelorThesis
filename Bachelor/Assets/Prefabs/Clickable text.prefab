@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3408922221340145604}
   - component: {fileID: 3408922221340145611}
   - component: {fileID: 3408922221340145610}
+  - component: {fileID: 1178724895}
   m_Layer: 5
   m_Name: Clickable text
   m_TagString: Untagged
@@ -67,10 +68,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 1
+    m_MinSize: 0
     m_MaxSize: 100
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -121,4 +122,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3408922221340145611}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1178724895}
+        m_MethodName: DisplayDescription
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1178724895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3408922221340145608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  descriptionText: {fileID: 0}
+  description: 'Some Text about SPEED Some Text about SPEED Some Text about SPEED
+    Some Text about SPEED Some Text about SPEED Some Text about SPEED Some Text about
+    SPEED Some Text about SPEED Some Text about SPEED Some Text about SPEED Some
+    Text about SPEED Some Text about SPEED Some Text about SPEED Some Text about
+    SPEED '
