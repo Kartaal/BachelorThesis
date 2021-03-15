@@ -29,6 +29,7 @@ public class SceneController : MonoBehaviour {
         }
         */
     }
+    
 
     private void CalculateNextSceneIndex()
     {
