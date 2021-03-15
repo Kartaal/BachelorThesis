@@ -17,21 +17,20 @@ public class Task : MonoBehaviour
     private const float taskHeight = 50f;
 
     [SerializeField]
+    private int id;
+    [SerializeField]
     private int releaseT, deadlineT;
-
-    private int id = idCount++;
-    private double taskIntensity = 0.0f;
+    [SerializeField]
     private double workT;
+    [SerializeField]
+    private double taskIntensity = 0.0f;
     private bool complete;
 
     //fields needed to make the task visual
     private float width;
     private RectTransform rt;
     [SerializeField]
-    private float scaleForDimensions = 100f; 
-
-    //Static variable to denote ID numbers across Tasks. DO NOT TOUCH
-    private static int idCount = 0;
+    private float scaleForDimensions = 100f;
 
     // Start is called before the first frame update
     void Start()
@@ -95,6 +94,8 @@ public class Task : MonoBehaviour
     public int GetDeadline() { return deadlineT; }
     public double GetIntensity() { return taskIntensity; }
     public bool GetComplete() { return complete; }
+
+    public float GetWidth() { return width; }
 
     /*Setters*/
     public void SetComplete(bool newComplete) { complete = newComplete; }
