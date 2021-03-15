@@ -48,19 +48,7 @@ public class graphManager : MonoBehaviour
 
         Worker worker = algoManager.GetComponent<Worker>();
 
-        foreach (Task t in algoManager.tasks)
-        {
-            Debug.Log(t.ToString());
-        }
-
-        Debug.Log("=============================================================");
-
         Schedule schedule = worker.YDS(algoManager.tasks, 1);
-
-        foreach (Task t in schedule.GetTaskList())
-        {
-            Debug.Log(t.ToString());
-        }
 
         GenerateGraph(schedule.GetTaskList());
     }
