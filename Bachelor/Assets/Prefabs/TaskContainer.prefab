@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7059378616412708299}
+  - component: {fileID: 37722614}
+  - component: {fileID: 37722613}
   m_Layer: 0
   m_Name: TaskContainer
   m_TagString: Untagged
@@ -23,7 +25,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7059378616412708298}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -238.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -43,6 +45,43 @@ RectTransform:
   m_AnchoredPosition: {x: -814.5, y: -228.2}
   m_SizeDelta: {x: 1631.2754, y: 533.82275}
   m_Pivot: {x: 0, y: 0}
+--- !u!222 &37722614
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059378616412708298}
+  m_CullTransparentMesh: 0
+--- !u!114 &37722613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7059378616412708298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 0.70980394}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1001 &7059378616199560968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -309,6 +348,11 @@ PrefabInstance:
         type: 3}
       propertyPath: workT
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 327284384205016785, guid: 261bf29b5acc345a8949cce113fb5d57,
+        type: 3}
+      propertyPath: releaseT
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 327284384205016785, guid: 261bf29b5acc345a8949cce113fb5d57,
         type: 3}
