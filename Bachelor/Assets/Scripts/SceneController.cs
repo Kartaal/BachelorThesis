@@ -7,7 +7,6 @@ public class SceneController : MonoBehaviour {
 
     /*
     [SerializeField] int timeToWait = 4;
-    
     */
     int currentSceneIndex;
 

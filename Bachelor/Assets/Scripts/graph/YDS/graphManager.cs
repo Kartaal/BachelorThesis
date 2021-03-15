@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class graphManager : MonoBehaviour
 {
     // Constants for the (0,0) of the graph
-    private const float xStart = -550f;
-    private const float yStart = -350f;
+    private const float xStart = 0f;//-550f;
+    private const float yStart = 0f;//-350f;
 
     private float taskHeight = 50f; // default value.
     private float taskWidth = 100f; // default value.
+    private float xScale = 100f;
 
     private static int taskNum = 0;
 
@@ -21,17 +22,35 @@ public class graphManager : MonoBehaviour
     private GameObject task;        // In-unity reference to Task prefab.
     [SerializeField]
     private Canvas mc;              // main Canvas
+    
+    [SerializeField]
+    private AlgoManager algoManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        colr = new Color32[] {new Color32(0,102,255,100), new Color32(0,204,153,100), new Color32(153,255,51,100), 
-                                new Color32(255,204,0,100), new Color32(255,51,0,100), new Color32(204,0,102,100), 
-                                 new Color32(0,153,153,100), new Color32(255,255,255,100)};
+        colr = new Color32[] 
+            {
+                new Color32(0,102,255,100), 
+                new Color32(0,204,153,100), 
+                new Color32(153,255,51,100), 
+                new Color32(255,204,0,100), 
+                new Color32(255,51,0,100), 
+                new Color32(204,0,102,100), 
+                new Color32(0,153,153,100), 
+                new Color32(255,255,255,100)
+            };
+
         taskHeight = ((RectTransform)task.transform).rect.height;
         taskWidth = ((RectTransform)task.transform).rect.width;
-        DEBUG(); // Should be removed upon merge to Master.
+        //DEBUG(); // Should be removed upon merge to Master.
+
+        Worker worker = algoManager.GetComponent<Worker>();
+
+        Schedule schedule = worker.YDS(algoManager.tasks, 1);
+
+        GenerateGraph(schedule.GetTaskList());
     }
 
     // Update is called once per frame
@@ -68,46 +87,29 @@ public class graphManager : MonoBehaviour
         //local variables are copied from const, as they may vary throughout the loop.
         float x = xStart;
         float y = yStart;
-        float xReset = xStart;
-
-        // Main loop for generation. iterates over all given tasks and assigns elements propperly.
-        foreach(Task t in tl){
-            // Creates a new task object, and sets the name. Name is purely for Debug purposes.
-            var newBar = GameObject.Instantiate(task,new Vector3(0,0,0), Quaternion.identity);
-            newBar.name = "(r=" + t.GetRelease()+"|d=" + t.GetDeadline() + ")";
-
-            // Aquires the Task.cs component of the instantiated task. Sets the variables based on input.
-            var TaskData = newBar.GetComponent<Task>();
-            TaskData.SetRelease(t.GetRelease());
-            TaskData.SetDeadline(t.GetDeadline());
-            TaskData.SetWork(t.GetWork());
+        RectTransform rt = null;
 
 
-            //assigns a color to the Task, to help differentiate them.
-            AssignColourToTask(newBar);
+        foreach (Task t in tl)
+        {
+            rt = (RectTransform) t.transform;
 
-            // Sets parent to canvas to ensure propper visibility.
-            newBar.transform.SetParent(mc.transform);
+            var startX = (x + t.GetRelease()) * xScale;
 
-            // Calculates the length of the task based on the release and deadlines, factored up to the taskWidth divided by 2.
-            float len = (taskWidth/2) * (t.GetDeadline() - t.GetRelease());
+            var startY = y + (t.GetId() * taskHeight);
 
-            /* Sets the center of the instantiated task with an offset based on it's release, 
-               and the relative length of the task for consistency.
-                A new task is located, starting from x, with an offset of taskWidth times the release time
-                of the given task. Added with our length calculation to put the center in the right location.
+            rt.localPosition = new Vector2(startX, startY);
+            AssignColourToTask(t.gameObject);
+
+
+            /* RectTransform min and max x and y values (actual coordinates)
+                float left   =  rt.offsetMin.x;
+                float right  =  rt.offsetMax.x;
+                float top    =  rt.offsetMax.y;
+                float bottom =  rt.offsetMin.y;
             */
-
-            newBar.transform.localPosition = new Vector3((x + (t.GetRelease() * taskWidth)) + len, y, 1f);
-
-            // Updates Y with task height to ensure tasks stacking on top of eachother. With an offset of +2
-            // To make sure there is room in between eac htask. Dynamically scales with taskHeight.
-            y = y + taskHeight + 2f;
-
-            // Resets the x value to provide base Offset.
-            x = xReset;
-
         }
+
 
     }
 
@@ -115,7 +117,6 @@ public class graphManager : MonoBehaviour
     private void AssignColourToTask(GameObject img){
     // Colour Changer(instance of Task) (changes colour based on number of tasks available. 5-10 should be a good start.)
         
-
         //WARNING: Can cause Index Out of bounds errors
         var image = img.GetComponent<Image>();
 
