@@ -1702,6 +1702,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6243207742139494345, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
+      propertyPath: description
+      value: ' A task is a job which a computer needs to execute. A task has different
+        elements;     - Release time     - Deadline     - Workload      - Intensity'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6243207742139494345, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
