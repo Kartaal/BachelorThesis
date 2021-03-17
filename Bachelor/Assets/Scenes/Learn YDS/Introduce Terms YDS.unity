@@ -166,6 +166,28 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: description
+      value: The workload of a task represents the amount of work that needs to be
+        completed during release and deadline. Work is denoted as w(t1, t2), which
+        means that it has release time at least t1, and deadline at most t2.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: descriptionText
+      value: 
+      objectReference: {fileID: 514142363}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 229704601}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayDescription
+      objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315421, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Text
@@ -283,6 +305,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90cd0cf8ba2cf41e899e7d6c909983c3, type: 3}
+--- !u!114 &229704601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 229704600}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &260644123 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8785037362504315423, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
@@ -380,6 +414,30 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: description
+      value: 'The intensity of an interval is the speed at which the tasks within
+        the interval need to be run. The intensity of a given interval is the sum
+        of the work of all the tasks which has release and deadline within the interval,
+        divided by the length of the interval. In other words: w(t1, t2)/(t2-t1).    
+        The intensity is denoted I(t1, t2).'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: descriptionText
+      value: 
+      objectReference: {fileID: 514142363}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 457869042}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayDescription
+      objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315421, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Text
@@ -497,6 +555,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90cd0cf8ba2cf41e899e7d6c909983c3, type: 3}
+--- !u!114 &457869042 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 457869041}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &514142361
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,6 +685,27 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: description
+      value: 'The deadline of a task represents at which time the work of a task
+        needs to be finished. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: descriptionText
+      value: 
+      objectReference: {fileID: 514142363}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 569347121}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayDescription
+      objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315421, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Text
@@ -732,6 +823,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90cd0cf8ba2cf41e899e7d6c909983c3, type: 3}
+--- !u!114 &569347121 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 569347120}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &598029279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -773,6 +876,27 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: description
+      value: 'An interval is the time between a release time, t1 and a deadline t2.
+        Intervals are denoted like so: [t1, t2]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: descriptionText
+      value: 
+      objectReference: {fileID: 514142363}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 598029280}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayDescription
+      objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315421, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Text
@@ -890,6 +1014,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90cd0cf8ba2cf41e899e7d6c909983c3, type: 3}
+--- !u!114 &598029280 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 598029279}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &633537439 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8785037362504315423, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
@@ -1307,6 +1443,30 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: description
+      value: Competitiveness is used to compare offline and online algorithms.     
+        An online algorithm ALG is compared to an optimal offline algorithm OPT that
+        knows the entire future and can compute an optimal solution. Online algorithm
+        ALG is called c-competitive if, for every input, the total energy consumption
+        of ALG is at most c times that of OPT.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: descriptionText
+      value: 
+      objectReference: {fileID: 514142363}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1535997739}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayDescription
+      objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315421, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Text
@@ -1430,6 +1590,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1535997737}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1535997739 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1535997737}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1621335227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1474,6 +1646,32 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: description
+      value: The maximum intensity interval is the time interval which has the highest
+        intensity. The maximum intensity interval is found by first calculating each
+        valid interval, this is done by taking all release times and deadlines from
+        each task, and creating every possible interval combination, where release
+        is before deadline. After all the valid intervals are found, the intensity
+        for each interval is calculated, and the one which has the highest is the
+        maximum intensity interval.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: descriptionText
+      value: 
+      objectReference: {fileID: 514142363}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1621335228}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayDescription
+      objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315421, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Text
@@ -1591,6 +1789,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90cd0cf8ba2cf41e899e7d6c909983c3, type: 3}
+--- !u!114 &1621335228 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1621335227}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1678364499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1632,6 +1842,21 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: descriptionText
+      value: 
+      objectReference: {fileID: 514142363}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1678364501}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayDescription
+      objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315421, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Text
@@ -1755,6 +1980,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1678364499}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1678364501 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1678364499}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1685356506
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1798,6 +2035,27 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: description
+      value: An offline scheduler, is an algorithm which about all the tasks it need
+        to schedule ahead of time. Offline algorithms can make the most optimal schedule.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: descriptionText
+      value: 
+      objectReference: {fileID: 514142363}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1685356507}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayDescription
+      objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315421, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Text
@@ -1915,6 +2173,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90cd0cf8ba2cf41e899e7d6c909983c3, type: 3}
+--- !u!114 &1685356507 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1685356506}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1707259873
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1959,6 +2229,29 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: description
+      value: 'An online scheduler, is an algorithm which learns about a task at its
+        release time. This means that the algorithm will not know how many tasks
+        it will need to schedule.     Online algorithms cannot make the most optimal
+        schedule, but it can be c-competitive with an offline algorithm. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: descriptionText
+      value: 
+      objectReference: {fileID: 514142363}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1707259875}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayDescription
+      objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315421, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Text
@@ -2082,6 +2375,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1707259873}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1707259875 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1707259873}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1753801186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2124,6 +2429,27 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: description
+      value: ' Preemption in computing is an action where the execution of a task
+        is temporarily stopped, in order to start it again at a later time. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: descriptionText
+      value: 
+      objectReference: {fileID: 514142363}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1753801188}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayDescription
+      objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315421, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Text
@@ -2247,6 +2573,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1753801186}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1753801188 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1753801186}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1863144663
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,6 +2764,27 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: description
+      value: ' A task is a job which a computer needs to execute. A task has different
+        elements; Release time, deadline and work.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: descriptionText
+      value: 
+      objectReference: {fileID: 514142363}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2026072005}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayDescription
+      objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315421, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Text
@@ -2543,6 +2902,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90cd0cf8ba2cf41e899e7d6c909983c3, type: 3}
+--- !u!114 &2026072005 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2026072004}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2111597503
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2582,6 +2953,28 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: description
+      value: Release time is the time at which a task is free to be worked on. So
+        if a task has release time 1, it means that from time 1 and until task deadline,
+        the task can be worked on.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: descriptionText
+      value: 
+      objectReference: {fileID: 514142363}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2111597504}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayDescription
+      objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315421, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Text
@@ -2699,6 +3092,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90cd0cf8ba2cf41e899e7d6c909983c3, type: 3}
+--- !u!114 &2111597504 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2111597503}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2115847744 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8785037362504315423, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
@@ -2879,46 +3284,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 293763435}
     m_Modifications:
-    - target: {fileID: 1178724895, guid: 90cd0cf8ba2cf41e899e7d6c909983c3, type: 3}
-      propertyPath: description
-      value: 'Some text about COMPETITIVENESS Some text about COMPETITIVENESS Some
-        text about COMPETITIVENESS Some text about COMPETITIVENESS Some text about
-        COMPETITIVENESS Some text about COMPETITIVENESS Some text about COMPETITIVENESS
-        Some text about COMPETITIVENESS Some text about COMPETITIVENESS Some text
-        about COMPETITIVENESS Some text about COMPETITIVENESS Some text about COMPETITIVENESS
-        Some text about COMPETITIVENESS Some text about COMPETITIVENESS Some text
-        about COMPETITIVENESS Some text about COMPETITIVENESS Some text about COMPETITIVENESS
-        Some text about COMPETITIVENESS Some text about COMPETITIVENESS Some text
-        about COMPETITIVENESS '
-      objectReference: {fileID: 0}
-    - target: {fileID: 1178724895, guid: 90cd0cf8ba2cf41e899e7d6c909983c3, type: 3}
-      propertyPath: descriptionText
-      value: 
-      objectReference: {fileID: 514142363}
-    - target: {fileID: 1907345139, guid: 90cd0cf8ba2cf41e899e7d6c909983c3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 830
-      objectReference: {fileID: 0}
-    - target: {fileID: 1907345139, guid: 90cd0cf8ba2cf41e899e7d6c909983c3, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -128
-      objectReference: {fileID: 0}
-    - target: {fileID: 6243207742139494345, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: description
       value: 'A speed scaling algorithm consist of scheduling jobs or tasks in the
         order they need to be processed, and a speed scaler which defines the speed
         at which the jobs needs to run. '
       objectReference: {fileID: 0}
-    - target: {fileID: 6243207742139494345, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
-    - target: {fileID: 8785037362504315421, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
-      propertyPath: m_Text
-      value: Speed Scaling
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2130899162}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayDescription
       objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315422, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
@@ -3038,6 +3424,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2130899160}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2130899162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2130899160}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6243207743960596059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3059,6 +3457,26 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: description
+      value: Speed is equal to the intensity of a given interval.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: descriptionText
+      value: 
+      objectReference: {fileID: 514142363}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6243207743960596060}
+    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayDescription
+      objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315422, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Name
@@ -3171,3 +3589,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90cd0cf8ba2cf41e899e7d6c909983c3, type: 3}
+--- !u!114 &6243207743960596060 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 6243207743960596059}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
