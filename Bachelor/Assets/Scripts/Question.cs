@@ -27,10 +27,14 @@ public class Question : MonoBehaviour, IDeselectHandler
     private Toggle theActiveToggle;
 
 
+    void Awake()
+    {
+        answerOptionToggles = answers.GetComponentsInChildren<Toggle>();
+    }
     // Start is called before the first frame update
     void Start()
     {
-        answerOptionToggles = answers.GetComponentsInChildren<Toggle>();
+        
     }
 
     // Update is called once per frame

@@ -16,7 +16,7 @@ public class MultipleChoiceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        questions[0].DisplayAllQuestionText();
     }
 
     // Update is called once per frame
