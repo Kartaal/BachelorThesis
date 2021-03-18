@@ -16,14 +16,10 @@ public class MultipleChoiceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentQuestion = questions[0];
         questions[0].DisplayAllQuestionText();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
 
     /* When chosing an answer this method is called, in order to let the current 
      * questiong check wether the option is the correct answer.

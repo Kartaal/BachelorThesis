@@ -31,17 +31,6 @@ public class Question : MonoBehaviour, IDeselectHandler
     {
         answerOptionToggles = answers.GetComponentsInChildren<Toggle>();
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void DisplayAllQuestionText()
     {
@@ -110,11 +99,4 @@ public class Question : MonoBehaviour, IDeselectHandler
         Debug.Log("Deselected");
     }
 
-    //public string GetQuestion() { return question; }
-
-    //public int GetAnswer() { return answerIndex; }
-
-    //public string[] GetAnswerOptions() { return answerOptions; }
-
-    //public bool IsActive() { return isActive; }
 }
