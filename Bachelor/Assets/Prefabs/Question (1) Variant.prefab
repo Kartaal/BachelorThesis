@@ -18,8 +18,9 @@ MonoBehaviour:
   - 42
   - Everything
   question: What is the meaning of life?
-  answer: 2
+  answerIndex: -1
   descriptionText: {fileID: 0}
+  answers: {fileID: 0}
 --- !u!1001 &2911970231033851795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30,7 +31,7 @@ PrefabInstance:
     - target: {fileID: 3408922221340145608, guid: 87ee9728facc64405a4034d8ce526e41,
         type: 3}
       propertyPath: m_Name
-      value: Question (1)
+      value: Question (1) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3408922221340145609, guid: 87ee9728facc64405a4034d8ce526e41,
         type: 3}
@@ -139,6 +140,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
         type: 3}
+      propertyPath: m_Colors.m_NormalColor.b
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.g
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
+        type: 3}
+      propertyPath: m_Colors.m_NormalColor.r
+      value: 0.5176471
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -150,7 +166,7 @@ PrefabInstance:
     - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
         type: 3}
@@ -170,13 +186,18 @@ PrefabInstance:
     - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DisplayDescription
+      value: DisplayAllQuestionText
       objectReference: {fileID: 0}
     - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: DisplayAnswers
+      value: SetCurrentQuestion
       objectReference: {fileID: 0}
+    - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 310366696}
     - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -185,7 +206,7 @@ PrefabInstance:
     - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: Question, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3408922221340145611, guid: 87ee9728facc64405a4034d8ce526e41,
         type: 3}

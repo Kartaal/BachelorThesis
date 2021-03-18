@@ -206,7 +206,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 227993234}
-        m_MethodName: CheckAnswer
+        m_MethodName: CheckingAnswer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -354,12 +354,6 @@ MonoBehaviour:
   - {fileID: 936325610}
   - {fileID: 258080548}
   - {fileID: 1514841295}
-  answerOptions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  answers: {fileID: 1145728632}
 --- !u!1 &239528862
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,7 +541,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 227993234}
-        m_MethodName: CheckAnswer
+        m_MethodName: CheckingAnswer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1286,13 +1280,25 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: answers
+      value: 
+      objectReference: {fileID: 1145728632}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: question
       value: Which is not a shape can a  cat not be?
+      objectReference: {fileID: 0}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: answerIndex
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 114999119}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: corretAnswerIndex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: answerOptions.Array.data[0]
       value: Curve
@@ -1316,9 +1322,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 227993234}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetCurrentQuestion
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 789977662}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Question, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 515532199217518682, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1676,9 +1712,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 633440486}
     m_Modifications:
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: answers
+      value: 
+      objectReference: {fileID: 1145728632}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 114999119}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: corretAnswerIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 515532199217518680, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
       propertyPath: m_Text
@@ -1892,7 +1936,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 227993234}
-        m_MethodName: CheckAnswer
+        m_MethodName: CheckingAnswer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2001,9 +2045,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 633440486}
     m_Modifications:
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: answers
+      value: 
+      objectReference: {fileID: 1145728632}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 114999119}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: corretAnswerIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 515532199217518680, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
       propertyPath: m_Text
@@ -2011,9 +2063,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 227993234}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetCurrentQuestion
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 936325610}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Question, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 515532199217518682, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2581,9 +2663,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 633440486}
     m_Modifications:
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: answers
+      value: 
+      objectReference: {fileID: 1145728632}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 114999119}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: corretAnswerIndex
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 515532199217518680, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
       propertyPath: m_Text
@@ -2591,9 +2681,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 227993234}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetCurrentQuestion
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 258080548}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: Question, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 515532199217518682, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2797,7 +2917,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 227993234}
-        m_MethodName: CheckAnswer
+        m_MethodName: CheckingAnswer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2816,23 +2936,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 633440486}
     m_Modifications:
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: answers
+      value: 
+      objectReference: {fileID: 1145728632}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: answerIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 114999119}
-    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
-        type: 3}
-      propertyPath: m_Colors.m_NormalColor.b
-      value: 0.5176471
-      objectReference: {fileID: 0}
-    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
-        type: 3}
-      propertyPath: m_Colors.m_NormalColor.g
-      value: 0.5176471
-      objectReference: {fileID: 0}
-    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
-        type: 3}
-      propertyPath: m_Colors.m_NormalColor.r
-      value: 0.5176471
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: corretAnswerIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}

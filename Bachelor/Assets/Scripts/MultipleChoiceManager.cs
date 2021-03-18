@@ -2,19 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
-using System;
 
 public class MultipleChoiceManager : MonoBehaviour
 {
     [SerializeField]
     private Question[] questions = new Question[5];
-
-    [SerializeField]
-    private Toggle[] answerOptions;
-
-    [SerializeField]
-    private ToggleGroup answers;
 
     private Question currentQuestion;
 
@@ -24,7 +16,7 @@ public class MultipleChoiceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        answerOptions = answers.GetComponentsInChildren<Toggle>();
+       
     }
 
     // Update is called once per frame
@@ -33,51 +25,25 @@ public class MultipleChoiceManager : MonoBehaviour
        
     }
 
-    public void DisplayAnswers()
+    /* When chosing an answer this method is called, in order to let the current 
+     * questiong check wether the option is the correct answer.
+     * 
+     * The reason for having it here instead of Question, is that the toggles 
+     * need a permant object to call a method on, so if we just have one of the Questions, 
+     * (A)cas its object, it will always only check whether the the chosen anser correspondes to A's correct answer.
+     */
+    public void CheckingAnswer()
     {
         foreach (Question q in questions)
         {
-            Toggle theActiveToggle = answers.ActiveToggles().FirstOrDefault();
-            if(theActiveToggle != null) { theActiveToggle.isOn = false; }
-            
-            foreach (Toggle t in answerOptions)
+            if (q == currentQuestion)
             {
-                t.GetComponentInChildren<Image>().color = new Color32(255, 255, 255, 255);
-            }
-            if (q.IsActive())
-            {
-                currentQuestion = q;
-                var temp = q.GetAnswerOptions();
-                for (int i = 0; i < temp.Length; i++)
-                {
-                    answerOptions[i].GetComponentInChildren<Text>().text = temp[i];
-                }
+                q.CheckAnswer();
             }
         }
     }
 
-    public void CheckAnswer()
-    {
-        Toggle theActiveToggle = answers.ActiveToggles().FirstOrDefault();
-        if (theActiveToggle != null)
-        {
-            string answer = theActiveToggle.GetComponentInChildren<Text>().text;
-
-            foreach (Question q in questions)
-            {
-                if (q == currentQuestion)
-                {
-                    if (Array.IndexOf(q.GetAnswerOptions(), answer) == q.GetAnswer())
-                    {
-                        theActiveToggle.GetComponentInChildren<Image>().color = new Color32(92, 197, 101, 255);
-                    }
-                    else
-                    {
-                        theActiveToggle.GetComponentInChildren<Image>().color = new Color32(198, 92, 92, 255);
-                    }
-                }
-            }
-        }
-    }
+    //Setter which is used when a Question is click to make that the current question.
+    public void SetCurrentQuestion(Question newQuestion) { currentQuestion = newQuestion; }
 
 }
