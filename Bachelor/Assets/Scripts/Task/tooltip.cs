@@ -19,21 +19,23 @@ public class tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         tt = gameObject.transform.Find("TextBlock").gameObject;
         taskData = gameObject.GetComponent<Task>();
         
-        //initializes Text Fields so they can be edited.
-        wrkTXT = tt.transform.Find("WrkValue").GetComponent<Text>();
-        relTXT = tt.transform.Find("RelValue").GetComponent<Text>();
-        dedTXT = tt.transform.Find("DedValue").GetComponent<Text>();
-        IDTXT = tt.transform.Find("idText").GetComponent<Text>();
         initializeToolTipInformation();
     }
 
     //Called once to update ID and all fields to initial task values.
     private void initializeToolTipInformation(){
+        // Creates references for the Text fields. So values can be edited. Should only be called when initializing.
+        wrkTXT = tt.transform.Find("WrkValue").GetComponent<Text>();
+        relTXT = tt.transform.Find("RelValue").GetComponent<Text>();
+        dedTXT = tt.transform.Find("DedValue").GetComponent<Text>();
+        IDTXT = tt.transform.Find("idText").GetComponent<Text>();
         IDTXT.text = "ID-" + taskData.GetId();
+        // Calls the Update method to overwrite default values
         UpdateToolTipInformation();
     }
 
-    //can be called from anywhere to update all fields of text.
+    // Can be called from anywhere to update all fields of text.
+    // All data is obtained from the associated task object (monobehaviour)
     public void UpdateToolTipInformation(){
         wrkTXT.text = "" + taskData.GetWork();
         relTXT.text = "" + taskData.GetRelease();
