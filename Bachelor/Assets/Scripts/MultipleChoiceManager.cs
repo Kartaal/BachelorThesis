@@ -9,6 +9,12 @@ public class MultipleChoiceManager : MonoBehaviour
     [SerializeField]
     private Question[] questions = new Question[5];
 
+    [SerializeField]
+    private GameObject resultOverlay; 
+
+    [SerializeField]
+    private Text resultText;
+
     private Question currentQuestion;
 
     private string[] answersForQuestions;
@@ -20,6 +26,7 @@ public class MultipleChoiceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        resultOverlay.SetActive(false);
         currentQuestion = questions[0];
         questions[0].DisplayAllQuestionText();
 
@@ -36,7 +43,6 @@ public class MultipleChoiceManager : MonoBehaviour
      */
     public void CheckingAnswer()
     {
-        Debug.Log("CHECKING ANSWERS IN MANAGER");
         /*foreach (Question q in questions)
         {
             if (q == currentQuestion)
@@ -65,11 +71,16 @@ public class MultipleChoiceManager : MonoBehaviour
     {
         foreach (string s in answersForQuestions)
         {
-            finalResult += s + " ";
+            finalResult += s + "\n ";
         }
+
+        resultText.text = finalResult;
+        resultOverlay.SetActive(true);
 
         Debug.Log(finalResult);
     }
+
+    public void GoBackToQuestions() { resultOverlay.SetActive(false); }
 
     //Setter which is used when a Question is click to make that the current question.
     public void SetCurrentQuestion(Question newQuestion) { currentQuestion = newQuestion; }

@@ -42,7 +42,6 @@ public class Question : MonoBehaviour, IDeselectHandler
     //Checks whether the currently select toggle (answer) is correct
     public string CheckAnswer()
     {
-        Debug.Log("CHECKING ANSWERS IN Question");
         theActiveToggle = answers.ActiveToggles().FirstOrDefault();
 
         if (theActiveToggle != null)
