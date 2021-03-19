@@ -26,7 +26,6 @@ public class Question : MonoBehaviour, IDeselectHandler
     private Toggle theActiveToggle;
 
     private string currentAnswer = "";
-    private bool hasBeenAnswered = false;
 
 
     void Awake()
@@ -40,7 +39,6 @@ public class Question : MonoBehaviour, IDeselectHandler
         DisplayDescription();
         DisplayAnswers();
 
-        if (hasBeenAnswered) { SetAnsweredQuestion(); }
         
     }
 
@@ -54,8 +52,6 @@ public class Question : MonoBehaviour, IDeselectHandler
         if (theActiveToggle != null)
         {
             currentAnswer = theActiveToggle.GetComponentInChildren<Text>().text;
-
-            hasBeenAnswered = true;
 
             return GenerateResult(theActiveToggle);
         }
@@ -89,18 +85,6 @@ public class Question : MonoBehaviour, IDeselectHandler
         foreach (Toggle t in answerOptionToggles)
         {
             t.GetComponentInChildren<Image>().color = new Color32(255, 255, 255, 255);
-        }
-    }
-
-    private void SetAnsweredQuestion()
-    {
-        foreach (Toggle t in answerOptionToggles)
-        {
-            if (t.GetComponentInChildren<Text>().text == currentAnswer)
-            {
-
-                t.isOn = true;
-            }
         }
     }
 

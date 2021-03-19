@@ -80,7 +80,11 @@ public class MultipleChoiceManager : MonoBehaviour
         Debug.Log(finalResult);
     }
 
-    public void GoBackToQuestions() { resultOverlay.SetActive(false); }
+    public void GoBackToQuestions()
+    {
+        finalResult = "";
+        resultOverlay.SetActive(false);
+    }
 
     //Setter which is used when a Question is click to make that the current question.
     public void SetCurrentQuestion(Question newQuestion) { currentQuestion = newQuestion; }

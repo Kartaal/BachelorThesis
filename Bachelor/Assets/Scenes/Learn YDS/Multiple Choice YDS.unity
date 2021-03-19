@@ -1619,6 +1619,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 789977662}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 227993234}
@@ -1626,6 +1631,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayAllQuestionText
       objectReference: {fileID: 0}
     - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
@@ -2175,9 +2185,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1514841295}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 227993234}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayAllQuestionText
+      objectReference: {fileID: 0}
     - target: {fileID: 515532199217518682, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2518,6 +2538,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 936325610}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 227993234}
@@ -2525,6 +2550,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayAllQuestionText
       objectReference: {fileID: 0}
     - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
@@ -3214,6 +3244,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 258080548}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 227993234}
@@ -3221,6 +3256,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DisplayAllQuestionText
       objectReference: {fileID: 0}
     - target: {fileID: 515532199217518681, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
