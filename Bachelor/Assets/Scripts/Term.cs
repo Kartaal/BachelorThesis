@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Term : MonoBehaviour, IDeselectHandler
+public class Term : MonoBehaviour
 {
     [SerializeField]
     Text descriptionText;
@@ -13,7 +13,6 @@ public class Term : MonoBehaviour, IDeselectHandler
     // Start is called before the first frame update
     void Start()
     {
-        descriptionText.text = description;
         descriptionText.enabled = false;
     }
 
@@ -25,13 +24,16 @@ public class Term : MonoBehaviour, IDeselectHandler
 
     public void DisplayDescription()
     {
+        descriptionText.text = description;
         Debug.Log("Display description for term");
         descriptionText.enabled = true;
     }
 
-    public void OnDeselect(BaseEventData data)
+    /*This is not needed since each term just updates its own description text
+     If we need it for some reason the class needs to implement this interface: IDeselectHandler*/
+    /*public void OnDeselect(BaseEventData data)
     {
         Debug.Log("Deselected");
-        descriptionText.enabled = false;
-    }
+        //descriptionText.enabled = false;
+    }*/
 }
