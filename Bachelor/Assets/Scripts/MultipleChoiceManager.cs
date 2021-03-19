@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.ExceptionServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,9 @@ public class MultipleChoiceManager : MonoBehaviour
 
     private Question currentQuestion;
 
+    private string[] answersForQuestions;
+
+    private string finalResult;
 
 
 
@@ -18,6 +22,8 @@ public class MultipleChoiceManager : MonoBehaviour
     {
         currentQuestion = questions[0];
         questions[0].DisplayAllQuestionText();
+
+        answersForQuestions = new string[questions.Length];
     }
 
 
@@ -30,16 +36,41 @@ public class MultipleChoiceManager : MonoBehaviour
      */
     public void CheckingAnswer()
     {
-        foreach (Question q in questions)
+        Debug.Log("CHECKING ANSWERS IN MANAGER");
+        /*foreach (Question q in questions)
         {
             if (q == currentQuestion)
             {
-                q.CheckAnswer();
+                Debug.Log(q.CheckAnswer());
+            }
+        }*/
+
+        for (int i = 0; i < questions.Length; i++)
+        {
+            if (questions[i] == currentQuestion)
+            {
+                var res = questions[i].CheckAnswer();
+                if (res != null)
+                {
+                    answersForQuestions[i] = res;
+                    //finalResult += res + "\n";
+                    //Debug.Log(finalResult);
+                }
+
             }
         }
     }
 
+    public void PrintAnswers()
+    {
+        foreach (string s in answersForQuestions)
+        {
+            finalResult += s + " ";
+        }
+
+        Debug.Log(finalResult);
+    }
+
     //Setter which is used when a Question is click to make that the current question.
     public void SetCurrentQuestion(Question newQuestion) { currentQuestion = newQuestion; }
-
 }

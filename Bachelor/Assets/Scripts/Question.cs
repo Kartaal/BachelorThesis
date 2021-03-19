@@ -40,16 +40,19 @@ public class Question : MonoBehaviour, IDeselectHandler
     }
 
     //Checks whether the currently select toggle (answer) is correct
-    public void CheckAnswer()
+    public string CheckAnswer()
     {
+        Debug.Log("CHECKING ANSWERS IN Question");
         theActiveToggle = answers.ActiveToggles().FirstOrDefault();
 
         if (theActiveToggle != null)
         {
             string answer = theActiveToggle.GetComponentInChildren<Text>().text;
 
-            SetColourOfToggle(theActiveToggle, answer);
+            return GenerateResult(theActiveToggle, answer);
         }
+
+        return null;
     }
 
     //Displays the actual question text in the text area
@@ -82,15 +85,22 @@ public class Question : MonoBehaviour, IDeselectHandler
 
     //Setting the colour of the toggle depending on whether it is correct or not
     //Green when correct, red when wrong.
-    private void SetColourOfToggle(Toggle theActiveToggle, string answer)
+    private string GenerateResult(Toggle theActiveToggle, string answer)
     {
         if (Array.IndexOf(answerOptions, answer) == corretAnswerIndex)
         {
-            theActiveToggle.GetComponentInChildren<Image>().color = new Color32(92, 197, 101, 255);
+            //theActiveToggle.GetComponentInChildren<Image>().color = new Color32(92, 197, 101, 255);
+            string res = this.gameObject.GetComponent<Text>().text + "'s answer is: " + answer + " This is correct";
+
+            return res;
         }
         else
         {
-            theActiveToggle.GetComponentInChildren<Image>().color = new Color32(198, 92, 92, 255);
+            //theActiveToggle.GetComponentInChildren<Image>().color = new Color32(198, 92, 92, 255);
+
+            string res = this.gameObject.GetComponent<Text>().text + "'s answer is: " + answer + " This is wrong";
+
+            return res;
         }
     }
 
