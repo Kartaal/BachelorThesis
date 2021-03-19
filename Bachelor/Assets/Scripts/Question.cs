@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 using System.Linq;
 using System;
 
-
 public class Question : MonoBehaviour, IDeselectHandler
 {
     [SerializeField]
@@ -26,6 +25,9 @@ public class Question : MonoBehaviour, IDeselectHandler
     private Toggle[] answerOptionToggles;
     private Toggle theActiveToggle;
 
+    private string currentAnswer = "";
+    private bool hasBeenAnswered = false;
+
 
     void Awake()
     {
@@ -37,7 +39,12 @@ public class Question : MonoBehaviour, IDeselectHandler
         ResetToggles();
         DisplayDescription();
         DisplayAnswers();
+
+        if (hasBeenAnswered) { SetAnsweredQuestion(); }
+        
     }
+
+   
 
     //Checks whether the currently select toggle (answer) is correct
     public string CheckAnswer()
@@ -46,9 +53,11 @@ public class Question : MonoBehaviour, IDeselectHandler
 
         if (theActiveToggle != null)
         {
-            string answer = theActiveToggle.GetComponentInChildren<Text>().text;
+            currentAnswer = theActiveToggle.GetComponentInChildren<Text>().text;
 
-            return GenerateResult(theActiveToggle, answer);
+            hasBeenAnswered = true;
+
+            return GenerateResult(theActiveToggle);
         }
 
         return null;
@@ -74,6 +83,7 @@ public class Question : MonoBehaviour, IDeselectHandler
     private void ResetToggles()
     {
         theActiveToggle = answers.ActiveToggles().FirstOrDefault();
+
         if (theActiveToggle != null) { theActiveToggle.isOn = false; }
 
         foreach (Toggle t in answerOptionToggles)
@@ -82,14 +92,26 @@ public class Question : MonoBehaviour, IDeselectHandler
         }
     }
 
+    private void SetAnsweredQuestion()
+    {
+        foreach (Toggle t in answerOptionToggles)
+        {
+            if (t.GetComponentInChildren<Text>().text == currentAnswer)
+            {
+
+                t.isOn = true;
+            }
+        }
+    }
+
     //Setting the colour of the toggle depending on whether it is correct or not
     //Green when correct, red when wrong.
-    private string GenerateResult(Toggle theActiveToggle, string answer)
+    private string GenerateResult(Toggle theActiveToggle)
     {
-        if (Array.IndexOf(answerOptions, answer) == corretAnswerIndex)
+        if (Array.IndexOf(answerOptions, currentAnswer) == corretAnswerIndex)
         {
             //theActiveToggle.GetComponentInChildren<Image>().color = new Color32(92, 197, 101, 255);
-            string res = this.gameObject.GetComponent<Text>().text + "'s answer is: " + answer + " This is correct";
+            string res = this.gameObject.GetComponent<Text>().text + "'s answer is: " + currentAnswer + " This is correct";
 
             return res;
         }
@@ -97,11 +119,12 @@ public class Question : MonoBehaviour, IDeselectHandler
         {
             //theActiveToggle.GetComponentInChildren<Image>().color = new Color32(198, 92, 92, 255);
 
-            string res = this.gameObject.GetComponent<Text>().text + "'s answer is: " + answer + " This is wrong";
+            string res = this.gameObject.GetComponent<Text>().text + "'s answer is: " + currentAnswer + " This is wrong";
 
             return res;
         }
     }
+
 
     public void OnDeselect(BaseEventData data)
     {
