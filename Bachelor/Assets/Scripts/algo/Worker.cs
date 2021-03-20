@@ -8,8 +8,10 @@ using UnityEngine;
 
 public class Worker : MonoBehaviour
 {
+    private graphStateHandler gsh; // unit that stores data for every step of an iteration
+
     void Start() {
-        
+        gsh = gameObject.transform.GetComponent<graphStateHandler>();
     }
 
     /* 
@@ -164,6 +166,12 @@ public class Worker : MonoBehaviour
             }
         }
 
+        //------------------------
+        // the new Schedule should be empty, as it is handled by the saveState implicitly. 
+        // see graphStateHandler.cs (ln. 44 [as of 20-3-21])
+        graphStateHandler.saveState(tasks, new Schedule() , maxIntensityInterval);
+        //------------------------
+
         return maxIntensityInterval;
     }
 
@@ -194,6 +202,12 @@ public class Worker : MonoBehaviour
         {
             t.SetIntensity(maxIntensityInterval.GetIntensity());
         }
+
+        //------------------------
+        graphStateHandler.saveState(tasks, schedule, maxIntensityInterval);
+        //PERSONAL NOTE: Might need to implement the schedule as it is made here.
+        //------------------------
+        
     }
 
     private static void Step3(List<Task> tasks, IntervalData maxIntensityInterval)
@@ -221,6 +235,14 @@ public class Worker : MonoBehaviour
                 t.SetRelease(maxIntensityInterval.GetEndInt());
             }
         }
+
+        
+        //------------------------
+        // the new Schedule should be empty, as it is handled by the saveState implicitly. 
+        // see graphStateHandler.cs (ln. 44 [as of 20-3-21])
+        graphStateHandler.saveState(tasks, new Schedule() , maxIntensityInterval);
+        // MaxIntensityInterval is saved, but has no real reason to be used for this step!
+        //------------------------
     }
 
     public List<(Schedule, int)> OA(List<Task> tasks)

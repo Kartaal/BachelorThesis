@@ -85,4 +85,13 @@ public class Schedule
         return output;
     }
 
+    // merges another schedule into this one.
+    // Meant as a support method for retracability using the graphStateHandler
+    public void MergeSchedules(Schedule s){
+        foreach(IntervalData idat in s.GetIntervals()){
+            Intervals.Add(idat);
+            // Ensure consistency / make sure there are no duplicates.
+        }
+    }
+
 }
