@@ -25,4 +25,5 @@ public class graphState
     public void SetMaxIntensity(IntervalData intdat){ maxIntensity = intdat; }
 
     public Schedule GetSchedule(){ return schedule; }
+    public List<taskData> GetTaskDatas(){ return taskData;}
 }

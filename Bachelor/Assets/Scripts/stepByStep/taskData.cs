@@ -11,14 +11,16 @@ public class taskData
     */
     private int r,d,id;
     private double w;
+    private double intensity;
 
-    public taskData(int rel, int ded, double wrk, int i){
+    public taskData(int rel, int ded, double wrk, int identity, double intens){
         // creates a non-monobehviour object from the most important information found within
         // a task
         r = rel;
         d = ded;
         w = wrk;
-        id = i;
+        id = identity;
+        intensity = intens; //default debug falue
     }
 
     public int getRel(){ return r; }
@@ -28,6 +30,8 @@ public class taskData
 
     public int getId(){return id;}
 
+    public double getIntensity(){return intensity;}
+
     // Potentially useless thingies.
     public void setId(int i ){ id = i; }
     
@@ -36,4 +40,5 @@ public class taskData
 
     public void setWrk(double i){ w = i; }
 
+    public void setIntensity(double i){ intensity = i; }
 }

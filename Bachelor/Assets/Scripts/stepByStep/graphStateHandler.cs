@@ -5,8 +5,9 @@ using UnityEngine;
 public class graphStateHandler : MonoBehaviour
 {
     // Start is called before the first frame update
+    
     private static List<graphState> histogram;
-
+    
     private static Schedule lastKnownSchedule;
 
     void Start()
@@ -35,7 +36,7 @@ public class graphStateHandler : MonoBehaviour
 
         var res = new List<taskData>(); // Prepares a list of TaskData, This is used for retracing to a previous stage.
         foreach(Task t in tl){
-            res.Add(new taskData(t.GetRelease(), t.GetDeadline(), t.GetWork(), t.GetId()));
+            res.Add(new taskData(t.GetRelease(), t.GetDeadline(), t.GetWork(), t.GetId(), t.GetIntensity()));
         }
 
         result.SetTaskData(res); // Saves the TaskData List.
@@ -50,5 +51,22 @@ public class graphStateHandler : MonoBehaviour
         result.SetSchedule(lastKnownSchedule); // adds the last known schedule to the graphState.
 
         histogram.Add(result); // Add the data to the Histogram. Appended at the end of the list.
+    }
+
+    public void DEBUG(){
+
+        for(int i = 0; i < 7; i++){
+                
+            var td = new List<taskData>();
+            td = histogram[i].GetTaskDatas();
+            Debug.Log("histogram Number: " + i);
+            Debug.Log("Length of histogram - GetTaskDatas() " + td.Count);
+
+            foreach (taskData t in td){
+                Debug.Log( "ID: " + t.getId() + " |REL: " + t.getRel() + " |DED: " + t.getDed() + " |WRK: " + t.getWrk() + " |INT: " + t.getIntensity() );
+            }
+
+        }
+
     }
 }
