@@ -59,7 +59,7 @@ public class graphStateHandler : MonoBehaviour
                 
             var td = new List<taskData>();
             td = histogram[i].GetTaskDatas();
-            Debug.Log("histogram Number: " + i);
+            Debug.Log("histogram Index: " + (i) + " Step(" + ((i % 3)+1) + ")");
             Debug.Log("Length of histogram - GetTaskDatas() " + td.Count);
 
             foreach (taskData t in td){
