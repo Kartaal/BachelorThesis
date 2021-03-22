@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,8 +15,7 @@ public class graphManager : MonoBehaviour
     private float taskWidth = 100f; // default value.
     private float xScale = 100f;
 
-    private static int taskNum = 0;
-
+    //[SerializeField]
     private Color32[] colr;
 
     // Reference to Task Prefab
@@ -99,7 +100,7 @@ public class graphManager : MonoBehaviour
             var startY = y + (t.GetId() * taskHeight);
 
             rt.localPosition = new Vector2(startX, startY);
-            AssignColourToTask(t.gameObject);
+            AssignColourToTask(t);
 
 
             /* RectTransform min and max x and y values (actual coordinates)
@@ -113,17 +114,22 @@ public class graphManager : MonoBehaviour
 
     }
 
-
-    private void AssignColourToTask(GameObject img){
-    // Colour Changer(instance of Task) (changes colour based on number of tasks available. 5-10 should be a good start.)
+    /*
+     * Assigns color to a task GameObject by its associated Task object based on its id
+     * NB! Currently have a limit of 8 colors, more than 8 tasks breaks this system.
+     *      Breaks by throwing an error and misdrawing the 8th task(?), 
+     *      all tasks after the 8th are never updated for position or color
+    */
+    private void AssignColourToTask(Task task)
+    {
+    // Colour Changer(instance of Task) 
         
         //WARNING: Can cause Index Out of bounds errors
-        var image = img.GetComponent<Image>();
+        var image = task.gameObject.GetComponent<Image>();
 
-        image.color = colr[taskNum];
+        int id = task.GetId();
 
-        taskNum++;
-        
+        image.color = colr[id];
 
     }
 
