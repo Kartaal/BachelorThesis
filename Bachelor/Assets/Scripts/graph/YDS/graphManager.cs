@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class graphManager : MonoBehaviour
 {
@@ -90,8 +91,9 @@ public class graphManager : MonoBehaviour
         float y = yStart;
         RectTransform rt = null;
 
+        List<Task> sortedTasks = tl.OrderByDescending(t => t.GetRelease()).ToList();
 
-        foreach (Task t in tl)
+        foreach (Task t in sortedTasks)
         {
             rt = (RectTransform) t.transform;
 
@@ -102,7 +104,7 @@ public class graphManager : MonoBehaviour
             rt.localPosition = new Vector2(startX, startY);
             AssignColourToTask(t);
 
-
+            t.GetComponent<tooltip>().UpdateToolTipInformation();
             /* RectTransform min and max x and y values (actual coordinates)
                 float left   =  rt.offsetMin.x;
                 float right  =  rt.offsetMax.x;
