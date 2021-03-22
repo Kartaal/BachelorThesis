@@ -32,7 +32,6 @@ public class tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         IDTXT.text = "ID-" + taskData.GetId();
         intesityTXT = tt.transform.Find("IntensityValue").GetComponent<Text>();
         // Calls the Update method to overwrite default values
-        UpdateToolTipInformation();
     }
 
     // Can be called from anywhere to update all fields of text.
