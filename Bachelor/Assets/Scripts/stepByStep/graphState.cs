@@ -15,15 +15,23 @@ public class graphState
 
     private Schedule schedule;          // A Reference to the already calculated schedule.
 
-    public graphState(){
+    public graphState()
+    {
         taskData = new List<taskData>(); // safety, not sure if there is dependencies on this.
         schedule = new Schedule(); // NESSECARY, avoids null pointer exceptions
     }
 
-    public void SetTaskData(List<taskData> tl){ taskData = tl;}
-    public void SetSchedule(Schedule s){schedule = s; }
-    public void SetMaxIntensity(IntervalData intdat){ maxIntensity = intdat; }
+    private void Awake() 
+    {
+        taskData = new List<taskData>(); // safety, not sure if there is dependencies on this.
+        schedule = new Schedule(); // NESSECARY, avoids null pointer exceptions
+    }
 
-    public Schedule GetSchedule(){ return schedule; }
-    public List<taskData> GetTaskDatas(){ return taskData;}
+    public void SetTaskData(List<taskData> tl) { taskData = tl; }
+    public void SetSchedule(Schedule s) {schedule = s; }
+    public void SetMaxIntensity(IntervalData intdat) { maxIntensity = intdat; }
+
+    public Schedule GetSchedule() { return schedule; }
+    public List<taskData> GetTaskDatas() { return taskData; }
+    public IntervalData GetInterval() { return maxIntensity; }
 }

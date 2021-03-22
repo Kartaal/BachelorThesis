@@ -55,7 +55,7 @@ public class Task : MonoBehaviour
     /* Method for setting the dimensions of the visual task. Right now it only sets them when it starts, 
      * but could be useful to use it in update, to change size dynamically.
      *
-     * As of now the intervals it stretches over (dealineT - releaseT) is multipled with 100, to scale it up to a size that makes sense.
+     * As of now the intervals it stretches over (deadlineT - releaseT) is multipled with 100, to scale it up to a size that makes sense.
      * The scale which it should be upscaled with can be changed, if we find a better scale.
      */
     public void SetDimensionsOfTask()

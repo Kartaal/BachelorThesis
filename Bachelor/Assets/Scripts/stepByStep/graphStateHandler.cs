@@ -6,14 +6,13 @@ public class graphStateHandler : MonoBehaviour
 {
     // Start is called before the first frame update
     
-    private static List<graphState> histogram;
+    private static List<graphState> histogram = new List<graphState>();
     
-    private static Schedule lastKnownSchedule;
+    private static Schedule lastKnownSchedule = new Schedule();
 
     void Start()
     {
-        lastKnownSchedule = new Schedule();
-        histogram = new List<graphState>();
+        
     }
 
     public static void saveState(List<Task> tl, Schedule s, IntervalData intDat){
@@ -26,7 +25,7 @@ public class graphStateHandler : MonoBehaviour
             -(2) The altered graph state. Meaning Intensities have been calculated for affected tasks.
             This graph state wil be very simillar to the phase 1.
             -(2) Max Interval is still prevalent here. For highlighting purposes. (maybe)
-            -(3) The Schdeule is updated from the last known variant of the schedule 
+            -(3) The Schedule is updated from the last known variant of the schedule 
             in graphStatHandler (this one). And written down.
         */
 
@@ -68,5 +67,25 @@ public class graphStateHandler : MonoBehaviour
 
         }
 
+    }
+
+    // Gets a graph state from the histogram list based on iteration and step
+    public graphState GetGraphState(int iteration, int step)
+    {
+        // Subtract 1 at the end because list is 0 indexed
+        int stateIndex = (((iteration-1)*3) + step)-1;
+
+        graphState result;
+
+        if(stateIndex < histogram.Count)
+        {
+            result = histogram[stateIndex];
+        }
+        else // Return null if next step doesn't exist
+        {
+            result = null;
+        }
+
+        return result;
     }
 }
