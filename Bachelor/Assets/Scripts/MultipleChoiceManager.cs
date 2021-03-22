@@ -69,7 +69,13 @@ public class MultipleChoiceManager : MonoBehaviour
             }
             else
             {
-                finalResult += "The answer for question " + (i+1) + " is : " + answersForQuestions[i].Item1 + "\n      The answer is WRONG \n\n";
+                if (answersForQuestions[i].Item1 != null)
+                {
+                    Debug.Log(answersForQuestions[i].Item1 );
+                    finalResult += "The answer for question " + (i + 1) + " is : " + answersForQuestions[i].Item1 + "\n      The answer is WRONG \n\n";
+                }
+                else { finalResult += "No answer given for question " + (i + 1) + "\n\n"; }
+                
             }
         }
 
