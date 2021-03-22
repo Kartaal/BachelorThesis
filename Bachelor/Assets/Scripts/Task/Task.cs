@@ -60,8 +60,20 @@ public class Task : MonoBehaviour
      */
     public void SetDimensionsOfTask()
     {
+        rt = (RectTransform)gameObject.transform;
         width = (deadlineT - releaseT) * scaleForDimensions;
         rt.sizeDelta = new Vector2(width, taskHeight);
+    }
+
+    public void SetPosition()
+    {
+        rt = (RectTransform)gameObject.transform;
+    
+        var startX = releaseT * scaleForDimensions;
+
+        var startY = id * taskHeight;
+
+        rt.localPosition = new Vector2(startX, startY);
     }
 
 

@@ -99,24 +99,15 @@ public class graphManager : MonoBehaviour
         Also, it shouldn't take Monobehaviours.
     */
     
-    private void GenerateGraph(List<Task> tl){
-        //local variables are copied from const, as they may vary throughout the loop.
-        float x = xStart;
-        float y = yStart;
-        RectTransform rt = null;
-
-
+    private void GenerateGraph(List<Task> tl)
+    {
         foreach (Task t in tl)
         {
-            rt = (RectTransform) t.transform;
 
-            var startX = (x + t.GetRelease()) * xScale;
-
-            var startY = y + (t.GetId() * taskHeight);
-
-            rt.localPosition = new Vector2(startX, startY);
+            t.SetDimensionsOfTask();
             AssignColourToTask(t);
 
+            t.SetPosition();
 
             /* RectTransform min and max x and y values (actual coordinates)
                 float left   =  rt.offsetMin.x;
@@ -125,7 +116,6 @@ public class graphManager : MonoBehaviour
                 float bottom =  rt.offsetMin.y;
             */
         }
-
 
     }
 
@@ -184,6 +174,7 @@ public class graphManager : MonoBehaviour
 
                 // Remember to update the dimensions...
                 t.SetDimensionsOfTask();
+                t.SetPosition();
             }
 
             IntervalData stepMII = state.GetInterval();
