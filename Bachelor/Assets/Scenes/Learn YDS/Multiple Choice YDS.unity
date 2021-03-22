@@ -247,7 +247,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 532091775}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -1029,8 +1029,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 114999118}
   - {fileID: 1322978650}
+  - {fileID: 114999118}
   m_Father: {fileID: 1019314904}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1579,6 +1579,10 @@ PrefabInstance:
       propertyPath: answerIndex
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: questionTitle
+      value: 
+      objectReference: {fileID: 1322978651}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: descriptionText
       value: 
@@ -2172,7 +2176,7 @@ GameObject:
   - component: {fileID: 1322978652}
   - component: {fileID: 1322978651}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Question Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2190,7 +2194,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 532091775}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2249,6 +2253,10 @@ PrefabInstance:
       propertyPath: answers
       value: 
       objectReference: {fileID: 1145728632}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: questionTitle
+      value: 
+      objectReference: {fileID: 1322978651}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: descriptionText
       value: 
@@ -2592,6 +2600,10 @@ PrefabInstance:
       propertyPath: answers
       value: 
       objectReference: {fileID: 1145728632}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: questionTitle
+      value: 
+      objectReference: {fileID: 1322978651}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: descriptionText
       value: 
@@ -3299,6 +3311,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1145728632}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: questionTitle
+      value: 
+      objectReference: {fileID: 1322978651}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 114999119}
@@ -3715,6 +3731,10 @@ PrefabInstance:
       propertyPath: answerIndex
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
+      propertyPath: questionTitle
+      value: 
+      objectReference: {fileID: 1322978651}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: descriptionText
       value: 
