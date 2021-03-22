@@ -17,6 +17,8 @@ public class Question : MonoBehaviour, IDeselectHandler
     private string question = ""; //The actual question
     [SerializeField]
     Text descriptionText;
+    [SerializeField]
+    Text questionTitle;
 
 
     [SerializeField]
@@ -26,26 +28,25 @@ public class Question : MonoBehaviour, IDeselectHandler
     private Toggle theActiveToggle;
 
     private string currentAnswer = "";
-
+    private int currentAnswerIndex = -1;
+    private bool hasBeenAnsweredOnce = false;
 
     void Awake()
     {
         answerOptionToggles = answers.GetComponentsInChildren<Toggle>();
     }
 
+    // PUBLIC METHODS
+
     public void DisplayAllQuestionText()
     {
         ResetToggles();
         DisplayDescription();
         DisplayAnswers();
-
-        
     }
 
-   
-
     //Checks whether the currently select toggle (answer) is correct
-    public string CheckAnswer()
+    public (string,bool) CheckAnswer()
     {
         theActiveToggle = answers.ActiveToggles().FirstOrDefault();
 
@@ -56,13 +57,34 @@ public class Question : MonoBehaviour, IDeselectHandler
             return GenerateResult(theActiveToggle);
         }
 
-        return null;
+        return (null,false);
     }
+
+
+    //Needed to save the user answer, so when they go back and forth they can see what they previously put in. 
+    public void SetAnswerToggle(string answer)
+    {
+        foreach (Toggle t in answerOptionToggles)
+        {
+            if (t.GetComponentInChildren<Text>().text == answer)
+            {
+                t.isOn = true;
+            }
+        }
+    }
+
+    public void OnDeselect(BaseEventData data)
+    {
+        // Debug.Log("Deselected");
+    }
+
+    // PRIVATE METHODS
 
     //Displays the actual question text in the text area
     private void DisplayDescription()
     {
         descriptionText.text = question;
+        questionTitle.text = this.name;
         descriptionText.enabled = true;
     }
 
@@ -88,31 +110,26 @@ public class Question : MonoBehaviour, IDeselectHandler
         }
     }
 
-    //Setting the colour of the toggle depending on whether it is correct or not
-    //Green when correct, red when wrong.
-    private string GenerateResult(Toggle theActiveToggle)
+    /*Generating the result which check answer should return to the multipleChoiceManager in order
+    *To save the answer.
+    *The bool is given so that multiplechoice manager can print the correct statement in result.
+    *Maybe this could be kept in CheckAnswers.
+    */
+    private (string,bool) GenerateResult(Toggle theActiveToggle)
     {
         if (Array.IndexOf(answerOptions, currentAnswer) == corretAnswerIndex)
         {
-            //theActiveToggle.GetComponentInChildren<Image>().color = new Color32(92, 197, 101, 255);
-            string res = this.gameObject.GetComponent<Text>().text + "'s answer is: " + currentAnswer + " This is correct";
+            string res =  currentAnswer;
 
-            return res;
+            return (res,true);
         }
         else
         {
-            //theActiveToggle.GetComponentInChildren<Image>().color = new Color32(198, 92, 92, 255);
+            string res = currentAnswer;
 
-            string res = this.gameObject.GetComponent<Text>().text + "'s answer is: " + currentAnswer + " This is wrong";
-
-            return res;
+            return (res,false);
         }
     }
 
-
-    public void OnDeselect(BaseEventData data)
-    {
-        Debug.Log("Deselected");
-    }
 
 }

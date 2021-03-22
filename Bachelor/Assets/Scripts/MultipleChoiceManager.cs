@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.ExceptionServices;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class MultipleChoiceManager : MonoBehaviour
 
     private Question currentQuestion;
 
-    private string[] answersForQuestions;
+    private (string,bool)[] answersForQuestions;
 
     private string finalResult;
 
@@ -30,7 +31,7 @@ public class MultipleChoiceManager : MonoBehaviour
         currentQuestion = questions[0];
         questions[0].DisplayAllQuestionText();
 
-        answersForQuestions = new string[questions.Length];
+        answersForQuestions = new (string,bool)[questions.Length];
     }
 
 
@@ -43,35 +44,33 @@ public class MultipleChoiceManager : MonoBehaviour
      */
     public void CheckingAnswer()
     {
-        /*foreach (Question q in questions)
-        {
-            if (q == currentQuestion)
-            {
-                Debug.Log(q.CheckAnswer());
-            }
-        }*/
-
         for (int i = 0; i < questions.Length; i++)
         {
             if (questions[i] == currentQuestion)
             {
                 var res = questions[i].CheckAnswer();
-                if (res != null)
+                if (res.Item1 != null)
                 {
                     answersForQuestions[i] = res;
-                    //finalResult += res + "\n";
-                    //Debug.Log(finalResult);
                 }
 
             }
         }
     }
 
+    //Method use to print result overview on the overlay
     public void PrintAnswers()
     {
-        foreach (string s in answersForQuestions)
+        for (int i = 0; i < answersForQuestions.Length; i++)
         {
-            finalResult += s + "\n ";
+            if (answersForQuestions[i].Item2)
+            {
+                finalResult += "The answer for question " + (i+1) +  " is :" + answersForQuestions[i].Item1 + " this is CORRECT \n ";
+            }
+            else
+            {
+                finalResult += "The answer for question " + (i+1) + " is :" + answersForQuestions[i].Item1 + " this is WRONG \n ";
+            }
         }
 
         resultText.text = finalResult;
@@ -80,6 +79,7 @@ public class MultipleChoiceManager : MonoBehaviour
         Debug.Log(finalResult);
     }
 
+    //OnClick method for green button on the result overlay
     public void GoBackToQuestions()
     {
         finalResult = "";
@@ -87,5 +87,12 @@ public class MultipleChoiceManager : MonoBehaviour
     }
 
     //Setter which is used when a Question is click to make that the current question.
-    public void SetCurrentQuestion(Question newQuestion) { currentQuestion = newQuestion; }
+    public void SetCurrentQuestion(Question newQuestion)
+    {
+        currentQuestion = newQuestion;
+        var answerForToggle = answersForQuestions[Array.IndexOf(questions, currentQuestion)].Item1;
+
+        //Needed for keeping user input
+        currentQuestion.SetAnswerToggle(answerForToggle);
+    }
 }
