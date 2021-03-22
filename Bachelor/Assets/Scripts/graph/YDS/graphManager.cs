@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class graphManager : MonoBehaviour
 {
@@ -90,8 +91,9 @@ public class graphManager : MonoBehaviour
         float y = yStart;
         RectTransform rt = null;
 
+        List<Task> sortedTasks = tl.OrderByDescending(t => t.GetRelease()).ToList();
 
-        foreach (Task t in tl)
+        foreach (Task t in sortedTasks)
         {
             rt = (RectTransform) t.transform;
 
