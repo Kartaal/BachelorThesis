@@ -28,8 +28,6 @@ public class Question : MonoBehaviour, IDeselectHandler
     private Toggle theActiveToggle;
 
     private string currentAnswer = "";
-    private int currentAnswerIndex = -1;
-    private bool hasBeenAnsweredOnce = false;
 
     void Awake()
     {
