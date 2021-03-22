@@ -11,7 +11,7 @@ public class tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     
     private Task taskData; // reference to Task.cs script attatched to this object for data.
     
-    private Text wrkTXT, relTXT, dedTXT, IDTXT;
+    private Text wrkTXT, relTXT, dedTXT, IDTXT, intesityTXT;
 
 
     void Start()
@@ -30,6 +30,7 @@ public class tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         dedTXT = tt.transform.Find("DedValue").GetComponent<Text>();
         IDTXT = tt.transform.Find("idText").GetComponent<Text>();
         IDTXT.text = "ID-" + taskData.GetId();
+        intesityTXT = tt.transform.Find("IntensityValue").GetComponent<Text>();
         // Calls the Update method to overwrite default values
         UpdateToolTipInformation();
     }
@@ -40,6 +41,7 @@ public class tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         wrkTXT.text = "" + taskData.GetWork();
         relTXT.text = "" + taskData.GetRelease();
         dedTXT.text = "" + taskData.GetDeadline();
+        intesityTXT.text = "" + taskData.GetIntensity();
     }
 
 /*

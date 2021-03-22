@@ -102,7 +102,7 @@ public class graphManager : MonoBehaviour
             rt.localPosition = new Vector2(startX, startY);
             AssignColourToTask(t);
 
-
+            t.GetComponent<tooltip>().UpdateToolTipInformation();
             /* RectTransform min and max x and y values (actual coordinates)
                 float left   =  rt.offsetMin.x;
                 float right  =  rt.offsetMax.x;
