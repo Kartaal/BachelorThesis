@@ -65,11 +65,11 @@ public class MultipleChoiceManager : MonoBehaviour
         {
             if (answersForQuestions[i].Item2)
             {
-                finalResult += "The answer for question " + (i+1) +  " is :" + answersForQuestions[i].Item1 + " this is CORRECT \n ";
+                finalResult += "The answer for question " + (i+1) +  " is : " + answersForQuestions[i].Item1 + "\n      The answer is CORRECT \n\n";
             }
             else
             {
-                finalResult += "The answer for question " + (i+1) + " is :" + answersForQuestions[i].Item1 + " this is WRONG \n ";
+                finalResult += "The answer for question " + (i+1) + " is : " + answersForQuestions[i].Item1 + "\n      The answer is WRONG \n\n";
             }
         }
 
