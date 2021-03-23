@@ -185,12 +185,8 @@ public class graphManager : MonoBehaviour
             // Update iteration and step correctly... looping at step = 3
             if(step == 3)
             {
-                iteration = iteration+1;
-            }
-
-            if(step == 3)
-            {
                 step = 1;
+                iteration = iteration+1;
             }
             else
             {
