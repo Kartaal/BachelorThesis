@@ -29,7 +29,7 @@ public class graphState
 
     public void SetTaskData(List<taskData> tl) { taskData = tl; }
     public void SetSchedule(Schedule s) {schedule = s; }
-    public void SetMaxIntensity(IntervalData intdat) { maxIntensity = intdat; }
+    public void SetInterval(IntervalData intdat) { maxIntensity = intdat; }
 
     public Schedule GetSchedule() { return schedule; }
     public List<taskData> GetTaskDatas() { return taskData; }

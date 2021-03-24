@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class graphManager : MonoBehaviour
 {
@@ -33,9 +34,18 @@ public class graphManager : MonoBehaviour
 
     private graphStateHandler gsh;
 
+    private Worker worker;
+
+    private void Awake() 
+    {
+        worker = algoManager.GetComponent<Worker>();
+        algoManager.GenerateLockedYDSTasks();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+
         gsh = algoManager.GetComponent<graphStateHandler>();
 
         colr = new Color32[] 
@@ -50,11 +60,16 @@ public class graphManager : MonoBehaviour
                 new Color32(255,255,255,100)
             };
 
-        taskHeight = ((RectTransform)task.transform).rect.height;
-        taskWidth = ((RectTransform)task.transform).rect.width;
+        taskHeight = ((RectTransform) task.transform).rect.height;
+        taskWidth = ((RectTransform) task.transform).rect.width;
         //DEBUG(); // Should be removed upon merge to Master.
 
-        Worker worker = algoManager.GetComponent<Worker>();
+        OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("Scene loaded... run YDS");
 
         Schedule schedule = worker.YDS(algoManager.tasks, 1);
 
@@ -68,6 +83,7 @@ public class graphManager : MonoBehaviour
         }
 
         GenerateGraph(schedule.GetTaskList());
+
     }
 
     // Update is called once per frame

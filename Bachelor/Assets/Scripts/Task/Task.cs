@@ -13,6 +13,10 @@ public class Task : MonoBehaviour
     private const int relMax = 10;
     private const int dedMax = 11;
 
+    [SerializeField]
+    private const float scaleForDimensions = 100f;
+    [SerializeField]
+    private const float scaleHeight = 12f;
     /*
     //needed to make task visual
     private const float taskHeight = 50f;
@@ -31,10 +35,6 @@ public class Task : MonoBehaviour
     //fields needed to make the task visual
     private float width;
     private RectTransform rt;
-    [SerializeField]
-    private float scaleForDimensions = 100f;
-    [SerializeField]
-    private float scaleHeight = 10f;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +42,12 @@ public class Task : MonoBehaviour
         rt = (RectTransform) gameObject.transform;
         SetDimensionsOfTask();
         CalcIntensity();
+        Debug.Log($"Task {id} has run Start()");
         //DEBUG();
+    }
+
+    private void Awake() 
+    {
     }
 
     private void DEBUG(){
@@ -54,7 +59,7 @@ public class Task : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        this.gameObject.GetComponent<tooltip>().UpdateToolTipInformation();
     }
 
     /* Method for setting the dimensions of the visual task. Right now it only sets them when it starts, 
@@ -67,8 +72,10 @@ public class Task : MonoBehaviour
     {
         rt = (RectTransform) gameObject.transform;
         width = (deadlineT - releaseT) * scaleForDimensions;
-        float height = taskIntensity * scaleHeight;
+        float height = (float) taskIntensity * scaleHeight;
         rt.sizeDelta = new Vector2(width, height);
+
+        Debug.Log($"Task {id} has width {width} and height {height}. Intensity: {taskIntensity}");
     }
 
     public void SetPosition()
@@ -77,9 +84,9 @@ public class Task : MonoBehaviour
     
         var startX = releaseT * scaleForDimensions;
 
-        float height = taskIntensity * scaleHeight;
+        float height = (float) taskIntensity * scaleHeight;
 
-        var startY = id * taskHeight * height;
+        var startY = id * height;
 
         rt.localPosition = new Vector2(startX, startY);
     }
@@ -125,11 +132,12 @@ public class Task : MonoBehaviour
     public float GetWidth() { return width; }
 
     /*Setters*/
+    public void SetId(int newId) { id = newId; }
     public void SetComplete(bool newComplete) { complete = newComplete; }
     public void SetDeadline(int newDeadline) { deadlineT = newDeadline; }
     public void SetWork(double newWorkload) { workT = newWorkload; }
     public void SetRelease(int newRelease) { releaseT = newRelease; }
-    public void SetIntensity(double newIntensity) { taskIntensity = newIntensity; }
+    public void SetIntensity(double newIntensity) { /*Debug.Log($"SetIntensity run with... {newIntensity} on task: {this.name}");*/ taskIntensity = newIntensity; }
 
     /* 
      * Takes the remaining amount of time that can be used to work (between 0 and 1)

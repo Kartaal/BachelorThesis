@@ -13,7 +13,8 @@ public class taskData
     private double w;
     private double intensity;
 
-    public taskData(int rel, int ded, double wrk, int identity, double intens){
+    public taskData(int rel, int ded, double wrk, int identity, double intens)
+    {
         // creates a non-monobehviour object from the most important information found within
         // a task
         r = rel;
@@ -23,22 +24,22 @@ public class taskData
         intensity = intens; //default debug falue
     }
 
-    public int getRel(){ return r; }
-    public int getDed(){ return d; }
+    public int getRel() { return r; }
+    public int getDed() { return d; }
 
-    public double getWrk(){ return w; } 
+    public double getWrk() { return w; } 
 
-    public int getId(){return id;}
+    public int getId() { return id; }
 
-    public double getIntensity(){return intensity;}
+    public double getIntensity() { return intensity; }
 
     // Potentially useless thingies.
-    public void setId(int i ){ id = i; }
+    public void setId(int i ) { id = i; }
     
-    public void setRel(int i){ r = i; }
-    public void setDed(int i ){ d = i;}
+    public void setRel(int i) { r = i; }
+    public void setDed(int i ) { d = i;}
 
-    public void setWrk(double i){ w = i; }
+    public void setWrk(double i) { w = i; }
 
-    public void setIntensity(double i){ intensity = i; }
+    public void setIntensity(double i) { intensity = i; }
 }

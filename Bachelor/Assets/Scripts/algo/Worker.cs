@@ -10,7 +10,8 @@ public class Worker : MonoBehaviour
 {
     private graphStateHandler gsh; // unit that stores data for every step of an iteration
 
-    void Start() {
+    void Start() 
+    {
         gsh = gameObject.transform.GetComponent<graphStateHandler>();
     }
 

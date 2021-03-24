@@ -12,7 +12,7 @@ public class graphStateHandler : MonoBehaviour
 
     void Start()
     {
-        
+        //DEBUG();
     }
 
     public static void saveState(List<Task> tl, Schedule s, IntervalData intDat){
@@ -31,17 +31,19 @@ public class graphStateHandler : MonoBehaviour
 
         var result = new graphState(); // graphState Object to save
 
-        result.SetMaxIntensity(intDat); // Sets the Max Intensity INterval for the graphState
+        result.SetInterval(intDat); // Sets the Max Intensity INterval for the graphState
 
         var res = new List<taskData>(); // Prepares a list of TaskData, This is used for retracing to a previous stage.
-        foreach(Task t in tl){
+        foreach(Task t in tl)
+        {
             res.Add(new taskData(t.GetRelease(), t.GetDeadline(), t.GetWork(), t.GetId(), t.GetIntensity()));
         }
 
         result.SetTaskData(res); // Saves the TaskData List.
 
         // If the provided schedule is empty, then don't update. Otherwise, do UPDATE!
-        if ( !(s == new Schedule()) ){
+        if ( !(s == new Schedule()) )
+        {
             // might be faulty !?
     	        lastKnownSchedule = s;
         }
@@ -52,13 +54,16 @@ public class graphStateHandler : MonoBehaviour
         histogram.Add(result); // Add the data to the Histogram. Appended at the end of the list.
     }
 
-    public void DEBUG(){
+    // Logs the first 2 iterations
+    public void DEBUG()
+    {
 
-        for(int i = 0; i < 7; i++){
+        for(int i = 0; i < 7; i++)
+        {
                 
             var td = new List<taskData>();
             td = histogram[i].GetTaskDatas();
-            Debug.Log("histogram Index: " + (i) + " Step(" + ((i % 3)+1) + ")");
+            Debug.Log("histogram Index: " + (i) + " Step(" + ((i % 3) + 1) + ")");
             Debug.Log("Length of histogram - GetTaskDatas() " + td.Count);
 
             foreach (taskData t in td){
@@ -73,7 +78,7 @@ public class graphStateHandler : MonoBehaviour
     public graphState GetGraphState(int iteration, int step)
     {
         // Subtract 1 at the end because list is 0 indexed
-        int stateIndex = (((iteration-1)*3) + step)-1;
+        int stateIndex = (((iteration - 1) * 3) + step) - 1;
 
         graphState result;
 
