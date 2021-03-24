@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class graphManager : MonoBehaviour
 {
@@ -98,10 +99,10 @@ public class graphManager : MonoBehaviour
         Takes a list of Task Objects Currently. Should be rewritten with propper functionality in mind.
         Also, it shouldn't take Monobehaviours.
     */
-    
-    private void GenerateGraph(List<Task> tl)
-    {
-        foreach (Task t in tl)
+    private void GenerateGraph(List<Task> tl){
+        List<Task> sortedTasks = tl.OrderByDescending(t => t.GetRelease()).ToList();
+
+        foreach (Task t in sortedTasks)
         {
 
             t.SetDimensionsOfTask();
@@ -109,6 +110,7 @@ public class graphManager : MonoBehaviour
 
             t.SetPosition();
 
+            t.GetComponent<tooltip>().UpdateToolTipInformation();
             /* RectTransform min and max x and y values (actual coordinates)
                 float left   =  rt.offsetMin.x;
                 float right  =  rt.offsetMax.x;
