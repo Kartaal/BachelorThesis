@@ -13,8 +13,10 @@ public class Task : MonoBehaviour
     private const int relMax = 10;
     private const int dedMax = 11;
 
+    /*
     //needed to make task visual
     private const float taskHeight = 50f;
+    */
 
     [SerializeField]
     private int id;
@@ -31,12 +33,15 @@ public class Task : MonoBehaviour
     private RectTransform rt;
     [SerializeField]
     private float scaleForDimensions = 100f;
+    [SerializeField]
+    private float scaleHeight = 10f;
 
     // Start is called before the first frame update
     void Start()
     {
-        rt = (RectTransform)gameObject.transform;
+        rt = (RectTransform) gameObject.transform;
         SetDimensionsOfTask();
+        CalcIntensity();
         //DEBUG();
     }
 
@@ -60,18 +65,21 @@ public class Task : MonoBehaviour
      */
     public void SetDimensionsOfTask()
     {
-        rt = (RectTransform)gameObject.transform;
+        rt = (RectTransform) gameObject.transform;
         width = (deadlineT - releaseT) * scaleForDimensions;
-        rt.sizeDelta = new Vector2(width, taskHeight);
+        float height = taskIntensity * scaleHeight;
+        rt.sizeDelta = new Vector2(width, height);
     }
 
     public void SetPosition()
     {
-        rt = (RectTransform)gameObject.transform;
+        rt = (RectTransform) gameObject.transform;
     
         var startX = releaseT * scaleForDimensions;
 
-        var startY = id * taskHeight;
+        float height = taskIntensity * scaleHeight;
+
+        var startY = id * taskHeight * height;
 
         rt.localPosition = new Vector2(startX, startY);
     }
@@ -95,6 +103,13 @@ public class Task : MonoBehaviour
         workT = w;
         releaseT = r;
         deadlineT = d;
+        CalcIntensity();
+    }
+
+    private void CalcIntensity()
+    {
+        double duration = deadlineT - releaseT;
+        taskIntensity = workT / duration;
     }
 
 
