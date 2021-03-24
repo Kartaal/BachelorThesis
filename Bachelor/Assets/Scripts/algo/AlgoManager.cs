@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AlgoManager : MonoBehaviour
 {
-    [SerializeField]
     public List<Task> tasks = new List<Task>();
 
     [SerializeField]
@@ -84,6 +83,8 @@ public class AlgoManager : MonoBehaviour
             task.SetRelease(taskReleases[i]);
             task.SetDeadline(taskDeadlines[i]);
             task.SetWork(taskWork[i]);
+
+            tasks.Add(task);
 
             taskGO.name = $"Task ({i})";
 

@@ -1997,7 +1997,7 @@ PrefabInstance:
     - target: {fileID: 974756691705675331, guid: 81a3fd23d0f1b1443b6ad08a42b313db,
         type: 3}
       propertyPath: tasks.Array.size
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 974756691705675331, guid: 81a3fd23d0f1b1443b6ad08a42b313db,
         type: 3}

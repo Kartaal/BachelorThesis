@@ -43,7 +43,7 @@ public class graphManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
 
         gsh = algoManager.GetComponent<graphStateHandler>();
@@ -63,13 +63,16 @@ public class graphManager : MonoBehaviour
         taskHeight = ((RectTransform) task.transform).rect.height;
         taskWidth = ((RectTransform) task.transform).rect.width;
         //DEBUG(); // Should be removed upon merge to Master.
-
+        
+        yield return new WaitForSeconds(5);
         OnSceneLoaded(SceneManager.GetActiveScene(), LoadSceneMode.Single);
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("Scene loaded... run YDS");
+
+        Debug.Log($"Length of algoManager.tasks: {algoManager.tasks.Count}");
 
         Schedule schedule = worker.YDS(algoManager.tasks, 1);
 
