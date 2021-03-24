@@ -7,15 +7,28 @@ public class AlgoManager : MonoBehaviour
     [SerializeField]
     public List<Task> tasks = new List<Task>();
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    private int iterationYDS = 1;
+    private int stepYDS = 1;
 
+    /* Getters */
+    public int GetIterationYDS() { return iterationYDS; }
+    public int GetStepYDS() { return stepYDS; }
+    
+    /* Setters */
+    public void SetIterationYDS(int newIter)
+    {
+        iterationYDS = newIter;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetStepYDS(int newStep)
     {
-        
+        stepYDS = newStep;
+    }
+
+    // Ensure that when becoming active, iteration and step are both 1
+    private void Awake() 
+    {
+        iterationYDS = 1;
+        stepYDS = 1;
     }
 }

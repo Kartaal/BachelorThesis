@@ -28,10 +28,16 @@ public class graphManager : MonoBehaviour
     [SerializeField]
     private AlgoManager algoManager;
 
+    [SerializeField]
+    private maxIntensityVis miiTool;
+
+    private graphStateHandler gsh;
 
     // Start is called before the first frame update
     void Start()
     {
+        gsh = algoManager.GetComponent<graphStateHandler>();
+
         colr = new Color32[] 
             {
                 new Color32(0,102,255,100), 
@@ -51,6 +57,15 @@ public class graphManager : MonoBehaviour
         Worker worker = algoManager.GetComponent<Worker>();
 
         Schedule schedule = worker.YDS(algoManager.tasks, 1);
+
+        // Run this snippet after YDS... sets the algoManager's task list to contain the Tasks visualised in the graph
+        var taskContainerTransform = gameObject.transform.parent.Find("TaskContainer");
+
+        foreach (Transform taskTransform in taskContainerTransform)
+        {
+            Task task = taskTransform.gameObject.GetComponent<Task>();
+            algoManager.tasks.Add(task);
+        }
 
         GenerateGraph(schedule.GetTaskList());
     }
@@ -84,25 +99,16 @@ public class graphManager : MonoBehaviour
         Takes a list of Task Objects Currently. Should be rewritten with propper functionality in mind.
         Also, it shouldn't take Monobehaviours.
     */
-    
     private void GenerateGraph(List<Task> tl){
-        //local variables are copied from const, as they may vary throughout the loop.
-        float x = xStart;
-        float y = yStart;
-        RectTransform rt = null;
-
         List<Task> sortedTasks = tl.OrderByDescending(t => t.GetRelease()).ToList();
 
         foreach (Task t in sortedTasks)
         {
-            rt = (RectTransform) t.transform;
 
-            var startX = (x + t.GetRelease()) * xScale;
-
-            var startY = y + (t.GetId() * taskHeight);
-
-            rt.localPosition = new Vector2(startX, startY);
+            t.SetDimensionsOfTask();
             AssignColourToTask(t);
+
+            t.SetPosition();
 
             t.GetComponent<tooltip>().UpdateToolTipInformation();
             /* RectTransform min and max x and y values (actual coordinates)
@@ -112,7 +118,6 @@ public class graphManager : MonoBehaviour
                 float bottom =  rt.offsetMin.y;
             */
         }
-
 
     }
 
@@ -133,6 +138,77 @@ public class graphManager : MonoBehaviour
 
         image.color = colr[id];
 
+    }
+
+
+    // Steps through the states made by YDS
+    public void Step()
+    {
+        int iteration = algoManager.GetIterationYDS();
+        int step = algoManager.GetStepYDS();
+
+        Debug.Log($"Iteration: {iteration} - Step: {step}");
+
+        graphState state = gsh.GetGraphState(iteration, step);
+
+        // Do nothing if retrieved state is null...
+        if(state != null)
+        {
+            List<Task> tasks = algoManager.tasks;
+
+            List<taskData> taskDataList = state.GetTaskDatas();
+
+            // Update information in individual tasks...
+            foreach (Task t in tasks)
+            {
+                // This can probably be done better with LINQ
+                foreach (taskData td in taskDataList)
+                {
+                    // If IDs match, update the task's fields
+                    if(td.getId() == t.GetId())
+                    {
+                        t.SetRelease(td.getRel());
+                        t.SetDeadline(td.getDed());
+                        t.SetWork(td.getWrk());
+                        t.SetIntensity(td.getIntensity());
+                    }
+                }
+
+                // Remember to update the dimensions...
+                t.SetDimensionsOfTask();
+                t.SetPosition();
+            }
+
+            IntervalData stepMII = state.GetInterval();
+
+            miiTool.IntervalDataToVisual(stepMII);
+
+
+            // Update iteration and step correctly... looping at step = 3
+            if(step == 3)
+            {
+                step = 1;
+                iteration = iteration+1;
+            }
+            else
+            {
+                step++;
+            }
+
+            // Update the iteration and step numbers in algoManager
+            algoManager.SetIterationYDS(iteration);
+            algoManager.SetStepYDS(step);
+        }
+    }
+
+    // A reset for stepping through the algorithm
+    public void ResetSteps()
+    {
+        algoManager.SetStepYDS(1);
+        algoManager.SetIterationYDS(1);
+
+        // Run Step() to reflect the reset on graph
+        Step();
     }
 
 }

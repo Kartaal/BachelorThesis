@@ -9,9 +9,9 @@ public class maxIntensityVis : MonoBehaviour
     private Slider leftInterval, rightInterval;
 
     
-    void Start(){
+    void Start()
+    {
         DEBUG();
-
     }
 
     private void DEBUG(){
@@ -21,14 +21,18 @@ public class maxIntensityVis : MonoBehaviour
 
     // Call this method to visually define the maximum intensity interval from an IntervalData object.
     // This object may be found within the Worker.cs.
-    public void IntervalDataToVisual(IntervalData intd){
+    public void IntervalDataToVisual(IntervalData intd)
+    {
+        Debug.Log($"MII start: {intd.GetStartInt()}");
+        Debug.Log($"MII end: {intd.GetEndInt()}");
         leftInterval.value = intd.GetStartInt();
         rightInterval.value = intd.GetEndInt();
     }
 
     // Call this method to visually define the maximum intensity interval from two numbers.
     
-    public void IntegersToVisual(int startInt, int endInt){
+    public void IntegersToVisual(int startInt, int endInt)
+    {
         leftInterval.value = startInt;
         rightInterval.value = endInt;
         ConsistincyCheck();
@@ -36,8 +40,10 @@ public class maxIntensityVis : MonoBehaviour
 
     // Internal method to ensure consistincy of the visual elements. If the left is larger than right
     // Defaults both values to the value of  the left.
-    private void ConsistincyCheck(){
-        if(rightInterval.value < leftInterval.value ){
+    private void ConsistincyCheck()
+    {
+        if (rightInterval.value < leftInterval.value )
+        {
             rightInterval.value = leftInterval.value;
         }
 
