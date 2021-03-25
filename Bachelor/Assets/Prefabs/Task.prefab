@@ -257,6 +257,7 @@ MonoBehaviour:
   workT: 0
   taskIntensity: 0
   scaleForDimensions: 100
+  scaleHeight: 10
 --- !u!114 &7140001568142342454
 MonoBehaviour:
   m_ObjectHideFlags: 0

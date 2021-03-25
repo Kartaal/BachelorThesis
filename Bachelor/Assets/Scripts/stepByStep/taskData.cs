@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-public class taskData
+public class TaskData
 {
 
     /*
@@ -12,33 +12,40 @@ public class taskData
     private int r,d,id;
     private double w;
     private double intensity;
+    private bool scheduled;
 
-    public taskData(int rel, int ded, double wrk, int identity, double intens){
+    public TaskData(int rel, int ded, double wrk, int identity, double intens, bool sche)
+    {
         // creates a non-monobehviour object from the most important information found within
         // a task
         r = rel;
         d = ded;
         w = wrk;
         id = identity;
+        scheduled = sche;
         intensity = intens; //default debug falue
     }
 
-    public int getRel(){ return r; }
-    public int getDed(){ return d; }
+    /* Getters */
+    public int GetRel() { return r; }
+    public int GetDed() { return d; }
 
-    public double getWrk(){ return w; } 
+    public double GetWrk() { return w; } 
 
-    public int getId(){return id;}
+    public int GetId() { return id; }
 
-    public double getIntensity(){return intensity;}
+    public double GetIntensity() { return intensity; }
+    public bool GetScheduled() { return scheduled; }
 
-    // Potentially useless thingies.
-    public void setId(int i ){ id = i; }
     
-    public void setRel(int i){ r = i; }
-    public void setDed(int i ){ d = i;}
+    /* Setters */
+    public void SetId(int i ) { id = i; }
+    
+    public void SetRel(int i) { r = i; }
+    public void SetDed(int i ) { d = i;}
 
-    public void setWrk(double i){ w = i; }
+    public void SetWrk(double i) { w = i; }
 
-    public void setIntensity(double i){ intensity = i; }
+    public void SetIntensity(double i) { intensity = i; }
+    public void SetScheduled(bool s) { scheduled = s; }
 }

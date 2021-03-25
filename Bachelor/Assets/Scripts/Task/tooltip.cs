@@ -16,9 +16,9 @@ public class tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     void Start()
     {
-        tt = gameObject.transform.Find("TextBlock").gameObject;
+        tt = gameObject.transform.parent.parent.Find("ToolTip").gameObject;
         taskData = gameObject.GetComponent<Task>();
-        
+
         initializeToolTipInformation();
     }
 
@@ -47,11 +47,27 @@ public class tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     Using unity's event system to record mouse interactions for tooltips popup
 */
     public void OnPointerEnter(PointerEventData ped){
+        UpdateToolTipInformation();
+        RepositionToolTip();
         tt.SetActive(true);
     }
     
     public void OnPointerExit(PointerEventData ped){
         tt.SetActive(false);
+    }
+
+    // Function for repositioning the singular tooltip element relative to the hovered task
+    private void RepositionToolTip()
+    {
+        Task task = this.GetComponent<Task>();
+
+        float x = (this.transform.position.x) + (0.5f * task.GetWidth());
+        float y = (this.transform.position.y) + ((float) task.GetHeight());
+
+        // Attempt at correctly positioning tooltip when resolution != 1920x1080
+        //tt.transform.SetParent(task.gameObject.transform.parent);
+
+        tt.transform.position = new Vector2(x, y);
     }
 
 }

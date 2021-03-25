@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
-public class graphManager : MonoBehaviour
+public class GraphManager : MonoBehaviour
 {
     // Constants for the (0,0) of the graph
     private const float xStart = 0f;//-550f;
@@ -14,9 +15,7 @@ public class graphManager : MonoBehaviour
 
     private float taskHeight = 50f; // default value.
     private float taskWidth = 100f; // default value.
-    private float xScale = 100f;
 
-    //[SerializeField]
     private Color32[] colr;
 
     // Reference to Task Prefab
@@ -31,12 +30,21 @@ public class graphManager : MonoBehaviour
     [SerializeField]
     private maxIntensityVis miiTool;
 
-    private graphStateHandler gsh;
+    private GraphStateHandler gsh;
+
+    private Worker worker;
+
+    private void Awake() 
+    {
+        worker = algoManager.GetComponent<Worker>();
+        algoManager.GenerateLockedYDSTasks();
+    }
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
-        gsh = algoManager.GetComponent<graphStateHandler>();
+
+        gsh = algoManager.GetComponent<GraphStateHandler>();
 
         colr = new Color32[] 
             {
@@ -50,12 +58,34 @@ public class graphManager : MonoBehaviour
                 new Color32(255,255,255,100)
             };
 
-        taskHeight = ((RectTransform)task.transform).rect.height;
-        taskWidth = ((RectTransform)task.transform).rect.width;
+        taskHeight = ((RectTransform) task.transform).rect.height;
+        taskWidth = ((RectTransform) task.transform).rect.width;
         //DEBUG(); // Should be removed upon merge to Master.
+        
+        yield return new WaitForSeconds(1);
+    //---------------
+        var inputTaskContainerTransform = gameObject.transform.parent.Find("InputTaskContainer");
+        var taskContainerTransform = gameObject.transform.parent.Find("TaskContainer");
+        
+        List<Task> inputTasks = new List<Task>();
 
-        Worker worker = algoManager.GetComponent<Worker>();
+        foreach( Transform taskTransform in taskContainerTransform ){
+            GameObject taskGO = Instantiate(taskTransform.gameObject, new Vector3(0,0,0), Quaternion.identity) as GameObject;
+            taskGO.transform.SetParent(inputTaskContainerTransform);
+            taskGO.transform.localScale = Vector3.one;
+            inputTasks.Add(taskGO.GetComponent<Task>());
+        }
 
+        GenerateGraph(inputTasks);
+    //----------------
+
+        RunYDS();
+
+        ResetSteps();
+    }
+
+    void RunYDS()
+    {
         Schedule schedule = worker.YDS(algoManager.tasks, 1);
 
         // Run this snippet after YDS... sets the algoManager's task list to contain the Tasks visualised in the graph
@@ -68,18 +98,12 @@ public class graphManager : MonoBehaviour
         }
 
         GenerateGraph(schedule.GetTaskList());
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void DEBUG(){
         //Test Method, can safely be ignored upon merge to Master.
         
-        // Creating instances of Monobehaviours is not allowed. Making dummy data struct for input testing.
         var l = new List<Task>();
         l.Add(new Task(1,1,2));
         l.Add(new Task(1,1,3));
@@ -100,9 +124,9 @@ public class graphManager : MonoBehaviour
         Also, it shouldn't take Monobehaviours.
     */
     private void GenerateGraph(List<Task> tl){
-        List<Task> sortedTasks = tl.OrderByDescending(t => t.GetRelease()).ToList();
+        //List<Task> sortedTasks = tl.OrderByDescending(t => t.GetRelease()).ToList();
 
-        foreach (Task t in sortedTasks)
+        foreach (Task t in tl)
         {
 
             t.SetDimensionsOfTask();
@@ -110,7 +134,7 @@ public class graphManager : MonoBehaviour
 
             t.SetPosition();
 
-            t.GetComponent<tooltip>().UpdateToolTipInformation();
+            //t.GetComponent<tooltip>().UpdateToolTipInformation();
             /* RectTransform min and max x and y values (actual coordinates)
                 float left   =  rt.offsetMin.x;
                 float right  =  rt.offsetMax.x;
@@ -149,32 +173,33 @@ public class graphManager : MonoBehaviour
 
         Debug.Log($"Iteration: {iteration} - Step: {step}");
 
-        graphState state = gsh.GetGraphState(iteration, step);
+        GraphState state = gsh.GetGraphState(iteration, step);
 
         // Do nothing if retrieved state is null...
         if(state != null)
         {
             List<Task> tasks = algoManager.tasks;
 
-            List<taskData> taskDataList = state.GetTaskDatas();
+            List<TaskData> taskDataList = state.GetTaskDatas();
 
             // Update information in individual tasks...
             foreach (Task t in tasks)
             {
                 // This can probably be done better with LINQ
-                foreach (taskData td in taskDataList)
+                foreach (TaskData td in taskDataList)
                 {
                     // If IDs match, update the task's fields
-                    if(td.getId() == t.GetId())
+                    if(td.GetId() == t.GetId())
                     {
-                        t.SetRelease(td.getRel());
-                        t.SetDeadline(td.getDed());
-                        t.SetWork(td.getWrk());
-                        t.SetIntensity(td.getIntensity());
+                        t.SetRelease(td.GetRel());
+                        t.SetDeadline(td.GetDed());
+                        t.SetWork(td.GetWrk());
+                        t.SetIntensity(td.GetIntensity());
+                        t.SetScheduled(td.GetScheduled());
                     }
                 }
 
-                // Remember to update the dimensions...
+                // Updates the Dimensions of the Task.
                 t.SetDimensionsOfTask();
                 t.SetPosition();
             }
@@ -184,7 +209,10 @@ public class graphManager : MonoBehaviour
             miiTool.IntervalDataToVisual(stepMII);
 
 
-            // Update iteration and step correctly... looping at step = 3
+            /*
+                Update current iteration, as each iteration is counted in sets of three
+                GraphStates.
+            */
             if(step == 3)
             {
                 step = 1;
