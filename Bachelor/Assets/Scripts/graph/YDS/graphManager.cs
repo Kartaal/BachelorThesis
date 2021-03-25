@@ -63,6 +63,21 @@ public class GraphManager : MonoBehaviour
         //DEBUG(); // Should be removed upon merge to Master.
         
         yield return new WaitForSeconds(1);
+    //---------------
+        var inputTaskContainerTransform = gameObject.transform.parent.Find("InputTaskContainer");
+        var taskContainerTransform = gameObject.transform.parent.Find("TaskContainer");
+        
+        List<Task> inputTasks = new List<Task>();
+
+        foreach( Transform taskTransform in taskContainerTransform ){
+            GameObject taskGO = Instantiate(taskTransform.gameObject, new Vector3(0,0,0), Quaternion.identity) as GameObject;
+            taskGO.transform.SetParent(inputTaskContainerTransform);
+            inputTasks.Add(taskGO.GetComponent<Task>());
+        }
+
+        GenerateGraph(inputTasks);
+    //----------------
+
         RunYDS();
     }
 
@@ -116,7 +131,7 @@ public class GraphManager : MonoBehaviour
 
             t.SetPosition();
 
-            t.GetComponent<tooltip>().UpdateToolTipInformation();
+            //t.GetComponent<tooltip>().UpdateToolTipInformation();
             /* RectTransform min and max x and y values (actual coordinates)
                 float left   =  rt.offsetMin.x;
                 float right  =  rt.offsetMax.x;

@@ -18,7 +18,7 @@ public class tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         tt = gameObject.transform.Find("TextBlock").gameObject;
         taskData = gameObject.GetComponent<Task>();
-        
+
         initializeToolTipInformation();
     }
 
@@ -47,6 +47,7 @@ public class tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     Using unity's event system to record mouse interactions for tooltips popup
 */
     public void OnPointerEnter(PointerEventData ped){
+        UpdateToolTipInformation();
         tt.SetActive(true);
     }
     

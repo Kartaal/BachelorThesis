@@ -60,7 +60,7 @@ public class Task : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.GetComponent<tooltip>().UpdateToolTipInformation();
+        //this.gameObject.GetComponent<tooltip>().UpdateToolTipInformation();
     }
 
     /* Method for setting the dimensions of the visual task. Right now it only sets them when it starts, 
