@@ -72,6 +72,7 @@ public class GraphManager : MonoBehaviour
         foreach( Transform taskTransform in taskContainerTransform ){
             GameObject taskGO = Instantiate(taskTransform.gameObject, new Vector3(0,0,0), Quaternion.identity) as GameObject;
             taskGO.transform.SetParent(inputTaskContainerTransform);
+            taskGO.transform.localScale = Vector3.one;
             inputTasks.Add(taskGO.GetComponent<Task>());
         }
 

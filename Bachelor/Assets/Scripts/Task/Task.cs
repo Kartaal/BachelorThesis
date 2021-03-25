@@ -16,9 +16,9 @@ public class Task : MonoBehaviour
     [SerializeField]
     private const float scaleForDimensions = 100f;
     [SerializeField]
-    private const float scaleHeight = 50f;
+    private const float scaleHeight = 25f;
 
-    private const float positionHeight = 20f;
+    private const float positionHeight = 15f;
     private const float positionHeightFactor = 3f;
     /*
     //needed to make task visual
