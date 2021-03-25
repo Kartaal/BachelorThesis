@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class graphStateHandler : MonoBehaviour
+public class GraphStateHandler : MonoBehaviour
 {
     // Start is called before the first frame update
     
-    private static List<graphState> histogram = new List<graphState>();
+    private static List<GraphState> histogram = new List<GraphState>();
     
     private static Schedule lastKnownSchedule = new Schedule();
 
@@ -15,7 +15,7 @@ public class graphStateHandler : MonoBehaviour
         //DEBUG();
     }
 
-    public static void saveState(List<Task> tl, Schedule s, IntervalData intDat){
+    public static void SaveState(List<Task> tl, Schedule s, IntervalData intDat){
         // saves the result of the graphState asfter step 1 -OR- 2 -OR- 3
         /*
             SAVELIST
@@ -29,14 +29,14 @@ public class graphStateHandler : MonoBehaviour
             in graphStatHandler (this one). And written down.
         */
 
-        var result = new graphState(); // graphState Object to save
+        var result = new GraphState(); // graphState Object to save
 
         result.SetInterval(intDat); // Sets the Max Intensity INterval for the graphState
 
-        var res = new List<taskData>(); // Prepares a list of TaskData, This is used for retracing to a previous stage.
+        var res = new List<TaskData>(); // Prepares a list of TaskData, This is used for retracing to a previous stage.
         foreach(Task t in tl)
         {
-            res.Add(new taskData(t.GetRelease(), t.GetDeadline(), t.GetWork(), t.GetId(), t.GetIntensity()));
+            res.Add(new TaskData(t.GetRelease(), t.GetDeadline(), t.GetWork(), t.GetId(), t.GetIntensity(), t.GetScheduled()));
         }
 
         result.SetTaskData(res); // Saves the TaskData List.
@@ -61,13 +61,13 @@ public class graphStateHandler : MonoBehaviour
         for(int i = 0; i < 7; i++)
         {
                 
-            var td = new List<taskData>();
+            var td = new List<TaskData>();
             td = histogram[i].GetTaskDatas();
             Debug.Log("histogram Index: " + (i) + " Step(" + ((i % 3) + 1) + ")");
             Debug.Log("Length of histogram - GetTaskDatas() " + td.Count);
 
-            foreach (taskData t in td){
-                Debug.Log( "ID: " + t.getId() + " |REL: " + t.getRel() + " |DED: " + t.getDed() + " |WRK: " + t.getWrk() + " |INT: " + t.getIntensity() );
+            foreach (TaskData t in td){
+                Debug.Log( "ID: " + t.GetId() + " |REL: " + t.GetRel() + " |DED: " + t.GetDed() + " |WRK: " + t.GetWrk() + " |INT: " + t.GetIntensity() );
             }
 
         }
@@ -75,12 +75,12 @@ public class graphStateHandler : MonoBehaviour
     }
 
     // Gets a graph state from the histogram list based on iteration and step
-    public graphState GetGraphState(int iteration, int step)
+    public GraphState GetGraphState(int iteration, int step)
     {
         // Subtract 1 at the end because list is 0 indexed
         int stateIndex = (((iteration - 1) * 3) + step) - 1;
 
-        graphState result;
+        GraphState result;
 
         if(stateIndex < histogram.Count)
         {

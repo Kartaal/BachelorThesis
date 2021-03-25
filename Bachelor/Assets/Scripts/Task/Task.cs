@@ -16,7 +16,10 @@ public class Task : MonoBehaviour
     [SerializeField]
     private const float scaleForDimensions = 100f;
     [SerializeField]
-    private const float scaleHeight = 12f;
+    private const float scaleHeight = 50f;
+
+    private const float positionHeight = 20f;
+    private const float positionHeightFactor = 3f;
     /*
     //needed to make task visual
     private const float taskHeight = 50f;
@@ -36,21 +39,19 @@ public class Task : MonoBehaviour
     private float width;
     private RectTransform rt;
 
+    private bool scheduled = false;
+
     // Start is called before the first frame update
     void Start()
     {
         rt = (RectTransform) gameObject.transform;
         SetDimensionsOfTask();
         CalcIntensity();
-        Debug.Log($"Task {id} has run Start()");
         //DEBUG();
     }
 
-    private void Awake() 
-    {
-    }
-
     private void DEBUG(){
+        Debug.Log($"Task {id} has run Start()");
         Debug.Log("width = " + rt.rect.width);
         Debug.Log("height = " + rt.rect.height);
 
@@ -75,7 +76,7 @@ public class Task : MonoBehaviour
         float height = (float) taskIntensity * scaleHeight;
         rt.sizeDelta = new Vector2(width, height);
 
-        Debug.Log($"Task {id} has width {width} and height {height}. Intensity: {taskIntensity}");
+        //Debug.Log($"Task {id} has width {width} and height {height}. Intensity: {taskIntensity}");
     }
 
     public void SetPosition()
@@ -84,9 +85,13 @@ public class Task : MonoBehaviour
     
         var startX = releaseT * scaleForDimensions;
 
-        float height = (float) taskIntensity * scaleHeight;
+        float startY = 0f;
 
-        var startY = id * height;
+        // If not scheduled, make partial overlap thing
+        if(!scheduled)
+        {
+            startY = (id  * positionHeight) * positionHeightFactor;
+        }
 
         rt.localPosition = new Vector2(startX, startY);
     }
@@ -128,8 +133,8 @@ public class Task : MonoBehaviour
     public int GetDeadline() { return deadlineT; }
     public double GetIntensity() { return taskIntensity; }
     public bool GetComplete() { return complete; }
-
     public float GetWidth() { return width; }
+    public bool GetScheduled() { return scheduled; }
 
     /*Setters*/
     public void SetId(int newId) { id = newId; }
@@ -137,7 +142,8 @@ public class Task : MonoBehaviour
     public void SetDeadline(int newDeadline) { deadlineT = newDeadline; }
     public void SetWork(double newWorkload) { workT = newWorkload; }
     public void SetRelease(int newRelease) { releaseT = newRelease; }
-    public void SetIntensity(double newIntensity) { /*Debug.Log($"SetIntensity run with... {newIntensity} on task: {this.name}");*/ taskIntensity = newIntensity; }
+    public void SetIntensity(double newIntensity) { taskIntensity = newIntensity; }
+    public void SetScheduled(bool newSche) { scheduled = newSche; }
 
     /* 
      * Takes the remaining amount of time that can be used to work (between 0 and 1)

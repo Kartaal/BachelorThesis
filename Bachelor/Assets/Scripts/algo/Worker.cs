@@ -8,11 +8,11 @@ using UnityEngine;
 
 public class Worker : MonoBehaviour
 {
-    private graphStateHandler gsh; // unit that stores data for every step of an iteration
+    private GraphStateHandler gsh; // unit that stores data for every step of an iteration
 
     void Start() 
     {
-        gsh = gameObject.transform.GetComponent<graphStateHandler>();
+        gsh = gameObject.transform.GetComponent<GraphStateHandler>();
     }
 
     /* 
@@ -168,9 +168,9 @@ public class Worker : MonoBehaviour
         }
 
         //------------------------
-        // the new Schedule should be empty, as it is handled by the saveState implicitly. 
+        // the new Schedule should be empty, as it is handled by the SaveState implicitly. 
         // see graphStateHandler.cs (ln. 44 [as of 20-3-21])
-        graphStateHandler.saveState(tasks, new Schedule() , maxIntensityInterval);
+        GraphStateHandler.SaveState(tasks, new Schedule() , maxIntensityInterval);
         //------------------------
 
         return maxIntensityInterval;
@@ -202,10 +202,11 @@ public class Worker : MonoBehaviour
         foreach (Task t in maxIntensityInterval.GetTasks())
         {
             t.SetIntensity(maxIntensityInterval.GetIntensity());
+            t.SetScheduled(true);
         }
 
         //------------------------
-        graphStateHandler.saveState(tasks, schedule, maxIntensityInterval);
+        GraphStateHandler.SaveState(tasks, schedule, maxIntensityInterval);
         //PERSONAL NOTE: Might need to implement the schedule as it is made here.
         //------------------------
         
@@ -239,9 +240,9 @@ public class Worker : MonoBehaviour
 
         
         //------------------------
-        // the new Schedule should be empty, as it is handled by the saveState implicitly. 
+        // the new Schedule should be empty, as it is handled by the SaveState implicitly. 
         // see graphStateHandler.cs (ln. 44 [as of 20-3-21])
-        graphStateHandler.saveState(tasks, new Schedule() , maxIntensityInterval);
+        GraphStateHandler.SaveState(tasks, new Schedule() , maxIntensityInterval);
         // MaxIntensityInterval is saved, but has no real reason to be used for this step!
         //------------------------
     }

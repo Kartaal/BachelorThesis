@@ -23,8 +23,6 @@ public class maxIntensityVis : MonoBehaviour
     // This object may be found within the Worker.cs.
     public void IntervalDataToVisual(IntervalData intd)
     {
-        Debug.Log($"MII start: {intd.GetStartInt()}");
-        Debug.Log($"MII end: {intd.GetEndInt()}");
         leftInterval.value = intd.GetStartInt();
         rightInterval.value = intd.GetEndInt();
     }
