@@ -16,7 +16,7 @@ public class tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     void Start()
     {
-        tt = gameObject.transform.Find("TextBlock").gameObject;
+        tt = gameObject.transform.parent.parent.Find("ToolTip").gameObject;
         taskData = gameObject.GetComponent<Task>();
 
         initializeToolTipInformation();
@@ -48,11 +48,26 @@ public class tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 */
     public void OnPointerEnter(PointerEventData ped){
         UpdateToolTipInformation();
+        RepositionToolTip();
         tt.SetActive(true);
     }
     
     public void OnPointerExit(PointerEventData ped){
         tt.SetActive(false);
+    }
+
+    // Function for repositioning the singular tooltip element relative to the hovered task
+    private void RepositionToolTip()
+    {
+        Task task = this.GetComponent<Task>();
+
+        // Need to half the width and height because of hierarchy (tooltip in canvas, task in container in canvas)
+        float x = (this.transform.position.x) + (0.25f * task.GetWidth());
+        float y = (this.transform.position.y) + (0.5f * (float) task.GetHeight());
+
+
+
+        tt.transform.position = new Vector2(x, y);
     }
 
 }

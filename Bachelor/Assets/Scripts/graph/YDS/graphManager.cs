@@ -122,9 +122,9 @@ public class GraphManager : MonoBehaviour
         Also, it shouldn't take Monobehaviours.
     */
     private void GenerateGraph(List<Task> tl){
-        List<Task> sortedTasks = tl.OrderByDescending(t => t.GetRelease()).ToList();
+        //List<Task> sortedTasks = tl.OrderByDescending(t => t.GetRelease()).ToList();
 
-        foreach (Task t in sortedTasks)
+        foreach (Task t in tl)
         {
 
             t.SetDimensionsOfTask();

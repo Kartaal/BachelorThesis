@@ -37,6 +37,7 @@ public class Task : MonoBehaviour
 
     //fields needed to make the task visual
     private float width;
+    private float height;
     private RectTransform rt;
 
     private bool scheduled = false;
@@ -73,7 +74,7 @@ public class Task : MonoBehaviour
     {
         rt = (RectTransform) gameObject.transform;
         width = (deadlineT - releaseT) * scaleForDimensions;
-        float height = (float) taskIntensity * scaleHeight;
+        height = (float) taskIntensity * scaleHeight;
         rt.sizeDelta = new Vector2(width, height);
 
         //Debug.Log($"Task {id} has width {width} and height {height}. Intensity: {taskIntensity}");
@@ -134,6 +135,7 @@ public class Task : MonoBehaviour
     public double GetIntensity() { return taskIntensity; }
     public bool GetComplete() { return complete; }
     public float GetWidth() { return width; }
+    public float GetHeight() { return height; }
     public bool GetScheduled() { return scheduled; }
 
     /*Setters*/
