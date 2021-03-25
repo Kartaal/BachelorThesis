@@ -61,11 +61,11 @@ public class tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         Task task = this.GetComponent<Task>();
 
-        // Need to half the width and height because of hierarchy (tooltip in canvas, task in container in canvas)
-        float x = (this.transform.position.x) + (0.25f * task.GetWidth());
-        float y = (this.transform.position.y) + (0.5f * (float) task.GetHeight());
+        float x = (this.transform.position.x) + (0.5f * task.GetWidth());
+        float y = (this.transform.position.y) + ((float) task.GetHeight());
 
-
+        // Attempt at correctly positioning tooltip when resolution != 1920x1080
+        //tt.transform.SetParent(task.gameObject.transform.parent);
 
         tt.transform.position = new Vector2(x, y);
     }

@@ -80,6 +80,8 @@ public class GraphManager : MonoBehaviour
     //----------------
 
         RunYDS();
+
+        ResetSteps();
     }
 
     void RunYDS()
