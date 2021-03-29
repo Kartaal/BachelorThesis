@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class tooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ToolTip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     
     private GameObject tt; //shorthand for tooltip
