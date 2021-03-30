@@ -16,7 +16,7 @@ public class ToolTip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     void Start()
     {
-        tt = gameObject.transform.parent.parent.Find("ToolTip").gameObject;
+        tt = gameObject.transform.parent.parent.parent.Find("ToolTip").gameObject;
         taskData = gameObject.GetComponent<Task>();
 
         initializeToolTipInformation();

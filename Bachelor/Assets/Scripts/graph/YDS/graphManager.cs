@@ -64,8 +64,17 @@ public class GraphManager : MonoBehaviour
         
         yield return new WaitForSeconds(1);
     //---------------
-        var inputTaskContainerTransform = gameObject.transform.parent.Find("InputTaskContainer");
-        var taskContainerTransform = gameObject.transform.parent.Find("TaskContainer");
+        var inputParent = gameObject.transform.parent.Find("InputContainer");
+        var outputParent = gameObject.transform.parent.Find("OutputContainer");
+
+        var inputTaskContainerTransform = inputParent.transform.Find("InputTaskContainer");
+        var taskContainerTransform = outputParent.transform.Find("TaskContainer");
+
+        Debug.Log(inputTaskContainerTransform);
+        Debug.Log(taskContainerTransform);
+
+        //var inputTaskContainerTransform = gameObject.transform.parent.Find("InputTaskContainer");
+        //var taskContainerTransform = gameObject.transform.parent.Find("TaskContainer");
         
         List<Task> inputTasks = new List<Task>();
 
@@ -89,7 +98,9 @@ public class GraphManager : MonoBehaviour
         Schedule schedule = worker.YDS(algoManager.tasks, 1);
 
         // Run this snippet after YDS... sets the algoManager's task list to contain the Tasks visualised in the graph
-        var taskContainerTransform = gameObject.transform.parent.Find("TaskContainer");
+        
+        var outputParent = gameObject.transform.parent.Find("OutputContainer");
+        var taskContainerTransform = outputParent.transform.Find("TaskContainer");
 
         foreach (Transform taskTransform in taskContainerTransform)
         {
