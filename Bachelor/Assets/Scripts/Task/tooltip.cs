@@ -41,6 +41,7 @@ public class ToolTip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         relTXT.text = "" + taskData.GetRelease();
         dedTXT.text = "" + taskData.GetDeadline();
         intesityTXT.text = "" + taskData.GetIntensity();
+        IDTXT.text = "ID-" + taskData.GetId();
     }
 
 /*
