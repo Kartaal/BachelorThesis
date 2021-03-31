@@ -118,8 +118,8 @@ public class GraphManager : MonoBehaviour
         //var taskContainerTransform = outputParent.transform.Find("TaskContainer");
 
         // LONGBOI SOLUTION
+        var taskContainerTransform = gameObject.transform.parent.Find("OutputContainer").transform.Find("TaskContainer");
 
-        var taskContainerTransform = gameObject.transform.Find("OutputContainer").transform.Find("TaskContainer");
         //___________________________________________________________________________
 
 
