@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DIYManager : MonoBehaviour
 {
@@ -14,70 +15,43 @@ public class DIYManager : MonoBehaviour
     private int currentIteration = 1;
 
     private List<Task> allTaskFromUserInput;
-    private IntervalData maxIntervalUserInput;
+    private int maxIntervalUserInputSTART;
+    private int maxIntervalUserInputEND;
+
 
     private GraphState graphStateToCompareTo;
     private List<TaskData> allTaskDataFromGraphState;
-    private List<Task> allTasksFromScheduleInGraphState;
+    //private List<Task> allTasksFromScheduleInGraphState;
     private IntervalData maxIntervalFromGraphState;
 
 
-    // Start is called before the first frame update
+   
     void Start()
     {
         gsh = algoManager.GetComponent<GraphStateHandler>();
+        allTaskFromUserInput = transform.parent.Find("GraphContainer").Find("TaskContainer").GetComponentsInChildren<Task>().ToList<Task>();
     }
 
     public void CheckUserAnswer()
     {
-        /*setting up data from the graph state we need to compare to*/
-        graphStateToCompareTo = gsh.GetGraphState(currentIteration, currentStep);
-
-        allTaskDataFromGraphState = graphStateToCompareTo.GetTaskDatas();
-
-
-        /*gonna start of by comparing task and taskdata since we can't edit max intensity yet, this is needed to check max
-        maxIntervalFromGraphState = graphStateToCompareTo.GetInterval();*/
-
-        /*Setting up the tasks presumably edited by the user*/
-        allTaskFromUserInput = transform.parent.Find("GraphContainer").Find("TaskContainer").GetComponentsInChildren<Task>().ToList<Task>();
+        SetupDataToCompare();
 
         var countOfCorrectTasks = 0;
 
         if (CompareTasks(ref countOfCorrectTasks))
         {
-            Debug.Log("You did everythign correct! Nice job, time for next step, what do you do now?");
-            if (currentStep == 3)
-            {
-                currentStep = 1;
-                currentIteration = currentIteration + 1;
-            }
-            else
-            {
-                currentStep++;
-            }
-        }
-        else
-        {
-            Debug.Log("Not all tasks are correct, try again");
-        }
-
-
-        //This is for the future for when comparemax intensity is implemented
-        /*if (CompareTasks())
-        {
-            if (CompareMax())
+            if (CompareMaxIntensityInterval())
             {
                 Debug.Log("You did everythign correct! Nice job, time for next step, what do you do now?");
-                /* if (currentStep == 3)
-                    {
-                        currentStep = 1;
-                        currentIteration = currentIteration + 1;
-                    }
-                    else
-                    {
-                        currentStep++;
-                    }
+                if (currentStep == 3)
+                {
+                    currentStep = 1;
+                    currentIteration = currentIteration + 1;
+                }
+                else
+                {
+                    currentStep++;
+                }
             }
             else
             {
@@ -87,7 +61,7 @@ public class DIYManager : MonoBehaviour
         }
         else
         {
-            if (CompareMax())
+            if (CompareMaxIntensityInterval())
             {
                 Debug.Log("did the max interval correctly, but you should check the tasks, not all are correct");
             }
@@ -95,9 +69,35 @@ public class DIYManager : MonoBehaviour
             {
                 Debug.Log("You should check both the tasks and the max interval, non is correct");
             }
-        }*/
+        }
 
 
+    }
+
+    private void SetupDataToCompare()
+    {
+        /*setting up data from the graph state we need to compare to*/
+        graphStateToCompareTo = gsh.GetGraphState(currentIteration, currentStep);
+
+        allTaskDataFromGraphState = graphStateToCompareTo.GetTaskDatas();
+
+        maxIntervalFromGraphState = graphStateToCompareTo.GetInterval();
+
+        /*Setting up the max intensity interval presumably edited by the user*/
+        maxIntervalUserInputSTART = (int)transform.parent.Find("LeftBar").GetComponent<Slider>().value;
+        maxIntervalUserInputEND = (int)transform.parent.Find("RightBar").GetComponent<Slider>().value;
+    }
+
+    private bool CompareMaxIntensityInterval()
+    {
+        if (maxIntervalUserInputSTART == maxIntervalFromGraphState.GetStartInt() && maxIntervalUserInputEND == maxIntervalFromGraphState.GetEndInt())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     /*
@@ -124,13 +124,10 @@ public class DIYManager : MonoBehaviour
 
                 if (correctTask.GetId() == user.GetId())
                 {
-                    Debug.Log("USER TASK: " + user.GetId() + " CORRECT TASK: " + correctTask.GetId());
-                    Debug.Log("USER TASK REL: " + user.GetRelease() + " CORRECT TASK REL: " + correctTask.GetRel());
-                    Debug.Log("USER TASK DEAD: " + user.GetDeadline() + " CORRECT TASK DEAD: " + correctTask.GetDed());
-                    Debug.Log("USER TASK WORK: " + user.GetWork() + " CORRECT TASK WORK: " + correctTask.GetWrk());
-                    Debug.Log("USER TASK INTENSITY: " + user.GetIntensity() + " CORRECT TASK INTENSITY: " + correctTask.GetIntensity());
+                    var defIntensity = correctTask.GetIntensity() - user.GetIntensity();
+                    var defAcceptance = 0.0000001;
 
-                    if (correctTask.GetRel() == user.GetRelease() && correctTask.GetDed() == user.GetDeadline() && correctTask.GetWrk() == user.GetWork() && correctTask.GetIntensity().Equals(user.GetIntensity()))
+                    if (correctTask.GetRel() == user.GetRelease() && correctTask.GetDed() == user.GetDeadline() && correctTask.GetWrk() == user.GetWork() && defIntensity < defAcceptance)
                     {
                         Debug.Log("Task: " + user.name + " is correct well done!");
                         countOfCorrectTasks++;
@@ -140,23 +137,6 @@ public class DIYManager : MonoBehaviour
                 }
             }
         }
-        /*for (int i = 0; i < allTaskDataFromGraphState.Count; i++)
-        {
-            var correctTask = allTaskDataFromGraphState[i];
-            var user = allTaskFromUserInput[i];
-
-            if (correctTask.GetId() == user.GetId())
-            {
-
-                if (correctTask.GetRel() == user.GetRelease() && correctTask.GetDed() == user.GetDeadline() && correctTask.GetWrk() == user.GetWork())
-                {
-                    Debug.Log("Task: " + user.name + " is correct well done!");
-                    countOfCorrectTasks++;
-                    Debug.Log("Current correct Tasks: " + countOfCorrectTasks);
-                }
-                else { Debug.Log("Task: " + user.name + " is wrong"); }
-            }
-        }*/
 
         if (countOfCorrectTasks == allTaskDataFromGraphState.Count)
         {
@@ -165,5 +145,14 @@ public class DIYManager : MonoBehaviour
         }
         countOfCorrectTasks = 0;
         return false;
+    }
+
+    private static void DEBUG(TaskData correctTask, Task user)
+    {
+        Debug.Log("USER TASK: " + user.GetId() + " CORRECT TASK: " + correctTask.GetId());
+        Debug.Log("USER TASK REL: " + user.GetRelease() + " CORRECT TASK REL: " + correctTask.GetRel());
+        Debug.Log("USER TASK DEAD: " + user.GetDeadline() + " CORRECT TASK DEAD: " + correctTask.GetDed());
+        Debug.Log("USER TASK WORK: " + user.GetWork() + " CORRECT TASK WORK: " + correctTask.GetWrk());
+        Debug.Log("USER TASK INTENSITY: " + user.GetIntensity() + " CORRECT TASK INTENSITY: " + correctTask.GetIntensity());
     }
 }
