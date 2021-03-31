@@ -22,6 +22,11 @@ public class MultipleChoiceManager : MonoBehaviour
 
     private string finalResult;
 
+    // Fields used for displaying and calculating the fraction of correct answers
+    [SerializeField]
+    Text fraction;
+    int correctCount = 0;
+
 
 
     // Start is called before the first frame update
@@ -32,6 +37,9 @@ public class MultipleChoiceManager : MonoBehaviour
         questions[0].DisplayAllQuestionText();
 
         answersForQuestions = new (string,bool)[questions.Length];
+
+
+
     }
 
 
@@ -61,11 +69,14 @@ public class MultipleChoiceManager : MonoBehaviour
     //Method use to print result overview on the overlay
     public void PrintAnswers()
     {
+        correctCount = 0;
+
         for (int i = 0; i < answersForQuestions.Length; i++)
         {
             if (answersForQuestions[i].Item2)
             {
                 finalResult += "The answer for question " + (i+1) +  " is : " + answersForQuestions[i].Item1 + "\n      The answer is CORRECT \n\n";
+                correctCount++;
             }
             else
             {
@@ -80,6 +91,7 @@ public class MultipleChoiceManager : MonoBehaviour
         }
 
         resultText.text = finalResult;
+        fraction.text = $"{correctCount}/{questions.Length} correct answers";
         resultOverlay.SetActive(true);
 
         Debug.Log(finalResult);
