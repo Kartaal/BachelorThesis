@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Globalization;
 
 public class TaskInput : MonoBehaviour
 {
@@ -137,7 +138,7 @@ public class TaskInput : MonoBehaviour
 
         try
         {
-            int result = Int32.Parse(inputText);
+            double result = Convert.ToDouble(inputText);
 
             task.SetIntensity(result);
             UpdateTask();
