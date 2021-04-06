@@ -64,8 +64,29 @@ public class GraphManager : MonoBehaviour
         
         yield return new WaitForSeconds(1);
     //---------------
-        var inputTaskContainerTransform = gameObject.transform.parent.Find("InputTaskContainer");
-        var taskContainerTransform = gameObject.transform.parent.Find("TaskContainer");
+
+
+        //  AUTHORS NOTE: WE EITHER DO THESE FOUR LINES TO KEEP THEM SEPERATED. OR WE DO THE LAST 2.
+        
+        // THICKBOI METHOD
+
+        //var inputParent = gameObject.transform.parent.Find("InputContainer");
+        //var outputParent = gameObject.transform.parent.Find("OutputContainer");
+
+        //var inputTaskContainerTransform = inputParent.transform.Find("InputTaskContainer");
+        //var taskContainerTransform = outputParent.transform.Find("TaskContainer");
+        
+        // lONGBOI METHOD
+        var inputTaskContainerTransform = gameObject.transform.parent.Find("InputContainer").transform.Find("InputTaskContainer");
+        var taskContainerTransform = gameObject.transform.parent.Find("OutputContainer").transform.Find("TaskContainer");
+
+        //__________________________________________________________________________________________
+
+        Debug.Log(inputTaskContainerTransform);
+        Debug.Log(taskContainerTransform);
+
+        //var inputTaskContainerTransform = gameObject.transform.parent.Find("InputTaskContainer");
+        //var taskContainerTransform = gameObject.transform.parent.Find("TaskContainer");
         
         List<Task> inputTasks = new List<Task>();
 
@@ -89,7 +110,18 @@ public class GraphManager : MonoBehaviour
         Schedule schedule = worker.YDS(algoManager.tasks, 1);
 
         // Run this snippet after YDS... sets the algoManager's task list to contain the Tasks visualised in the graph
-        var taskContainerTransform = gameObject.transform.parent.Find("TaskContainer");
+        
+        //___________________________________________________________________________
+        // THICKBOI SOLUTION
+
+        //var outputParent = gameObject.transform.parent.Find("OutputContainer");
+        //var taskContainerTransform = outputParent.transform.Find("TaskContainer");
+
+        // LONGBOI SOLUTION
+        var taskContainerTransform = gameObject.transform.parent.Find("OutputContainer").transform.Find("TaskContainer");
+
+        //___________________________________________________________________________
+
 
         foreach (Transform taskTransform in taskContainerTransform)
         {

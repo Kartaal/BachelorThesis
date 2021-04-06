@@ -68,7 +68,10 @@ public class AlgoManager : MonoBehaviour
         //taskWork.Add(2.0);
 
         Transform canvasTransform = gameObject.transform.parent.gameObject.transform;
-        Transform taskContainerTransform = canvasTransform.Find("TaskContainer").transform;
+        //Transform taskContainerTransform = canvasTransform.Find("TaskContainer").transform;
+        var tmp = canvasTransform.Find("OutputContainer").transform;
+        Transform taskContainerTransform = tmp.Find("TaskContainer").transform;
+
         foreach (Transform trans in taskContainerTransform)
         {
             trans.gameObject.SetActive(false);
