@@ -160,33 +160,13 @@ public class GraphManager : MonoBehaviour
     //Finds the max step and iteration to give the use an indication of where the simulation ends.
     private string MaxStepAndIteration()
     {
-        /*  Underlying logic is borrowed from step forward.
-            Loops through all of the states till a null is reached, effectively counting the
-            Max Step and Iterations.
-        */
-        int iteration = algoManager.GetIterationYDS(); 
-        int step = algoManager.GetStepYDS();
-        bool isNotMax = true;
+        int statesCount = gsh.GetStatesCount();
 
-        while(isNotMax)
-        {
-            if(step == 3)
-            {
-                step = 1;
-                iteration = iteration+1;
-            }
-            else
-            {
-                step++;
-            }
+        // Every 3 steps is 1 iteration, so number of iterations is number of steps/states divided by 3
+        int iteration = statesCount / 3;
+        // Step is always 3, otherwise the algorithm didn't run to completion
+        int step = 3;
 
-            GraphState state = gsh.GetGraphState(iteration, step);
-
-            if(state == null)
-            {
-                isNotMax = false;
-            }
-        } 
         // returns a string of the max elements.
         return "Iteration: " + iteration + " | Step: " + step;
     }
