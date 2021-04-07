@@ -16,6 +16,8 @@ public class GraphManager : MonoBehaviour
     private float taskHeight = 50f; // default value.
     private float taskWidth = 100f; // default value.
 
+    private string maxStepAndIteration;
+
     private Color32[] colr;
 
     // Reference to Task Prefab
@@ -33,12 +35,13 @@ public class GraphManager : MonoBehaviour
     private GraphStateHandler gsh;
 
     private Worker worker;
-
+    private Text graphStateInfo;
 
     private void Awake() 
     {
         worker = algoManager.GetComponent<Worker>();
         algoManager.GenerateLockedYDSTasks();
+        graphStateInfo = gameObject.transform.parent.parent.Find("GraphStateInfo").GetComponent<Text>();
     }
 
     // Start is called before the first frame update
@@ -197,6 +200,48 @@ public class GraphManager : MonoBehaviour
 
     }
 
+    //Updates an Info Textbox to let the user know which step they are on.
+    private void UpdateInfo(int iter, int step){
+
+        // should ideally only be called once, small performance sink if run every time we go back OR forth.
+        if (maxStepAndIteration == null){maxStepAndIteration = MaxStepAndIteration();}
+
+        graphStateInfo.text = "Iteration: " + iter + " | Step: " + step + " / " + maxStepAndIteration;
+
+    }
+
+    //Finds the max step and iteration to give the use an indication of where the simulation ends.
+    private string MaxStepAndIteration(){
+        /*  Undrlying logic is borrowed from step forward.
+            Loops through all of the states till a null is reached, effectively counting the
+            Max Step and Iterations.
+        */
+        int iteration = algoManager.GetIterationYDS();  // 1
+        int step = algoManager.GetStepYDS();            // 1
+        bool isNotMax = true;
+
+        while(isNotMax)
+        {
+            if(step == 3)
+            {
+                step = 1;
+                iteration = iteration+1;
+            }
+            else
+            {
+                step++;
+            }
+
+            GraphState state = gsh.GetGraphState(iteration, step);
+
+            if(state == null)
+            {
+                isNotMax = false;
+            }
+        } 
+        // returns a string of the max elements.
+        return "Iteration: " + iteration + " | Step: " + step;
+    }
 
     // Steps through the states made by YDS
     public void StepForward()
@@ -218,14 +263,13 @@ public class GraphManager : MonoBehaviour
             step++;
         }
 
-        Debug.Log($"Iteration: {iteration} - Step: {step}");
-
         GraphState state = gsh.GetGraphState(iteration, step);
 
         if(state != null)
         {
 
             DrawGraph(state);
+            UpdateInfo(iteration, step);
 
             // Update the iteration and step numbers in algoManager
             algoManager.SetIterationYDS(iteration);
@@ -263,6 +307,7 @@ public class GraphManager : MonoBehaviour
         if(state != null)
         {
             DrawGraph(state);
+            UpdateInfo(iteration, step);
             // Update the iteration and step numbers in algoManager
             algoManager.SetIterationYDS(iteration);
             algoManager.SetStepYDS(step);
@@ -311,6 +356,7 @@ public class GraphManager : MonoBehaviour
 
         // Run DrawGraph() to reflect the reset on graph
         GraphState state = gsh.GetGraphState(1,1);
+        UpdateInfo(1, 1);
         DrawGraph(state);
     }
 
