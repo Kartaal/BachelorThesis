@@ -64,34 +64,15 @@ public class GraphManager : MonoBehaviour
 
         taskHeight = ((RectTransform) task.transform).rect.height;
         taskWidth = ((RectTransform) task.transform).rect.width;
-        //DEBUG(); // Should be removed upon merge to Master.
         
         yield return new WaitForSeconds(1);
-    //---------------
 
-
-        //  AUTHORS NOTE: WE EITHER DO THESE FOUR LINES TO KEEP THEM SEPERATED. OR WE DO THE LAST 2.
-        
-        // THICKBOI METHOD
-
-        //var inputParent = gameObject.transform.parent.Find("InputContainer");
-        //var outputParent = gameObject.transform.parent.Find("OutputContainer");
-
-        //var inputTaskContainerTransform = inputParent.transform.Find("InputTaskContainer");
-        //var taskContainerTransform = outputParent.transform.Find("TaskContainer");
-        
-        // lONGBOI METHOD
         var inputTaskContainerTransform = gameObject.transform.parent.Find("InputContainer").transform.Find("InputTaskContainer");
         var taskContainerTransform = gameObject.transform.parent.Find("OutputContainer").transform.Find("TaskContainer");
-
-        //__________________________________________________________________________________________
 
         Debug.Log(inputTaskContainerTransform);
         Debug.Log(taskContainerTransform);
 
-        //var inputTaskContainerTransform = gameObject.transform.parent.Find("InputTaskContainer");
-        //var taskContainerTransform = gameObject.transform.parent.Find("TaskContainer");
-        
         List<Task> inputTasks = new List<Task>();
 
         foreach( Transform taskTransform in taskContainerTransform ){
@@ -102,7 +83,6 @@ public class GraphManager : MonoBehaviour
         }
 
         GenerateGraph(inputTasks);
-    //----------------
 
         RunYDS();
 
@@ -113,19 +93,10 @@ public class GraphManager : MonoBehaviour
     {
         Schedule schedule = worker.YDS(algoManager.tasks, 1);
 
-        // Run this snippet after YDS... sets the algoManager's task list to contain the Tasks visualised in the graph
+        // Run this snippet after YDS... sets the algoManager's task list to contain the Tasks 
+        // visualised in the graph
         
-        //___________________________________________________________________________
-        // THICKBOI SOLUTION
-
-        //var outputParent = gameObject.transform.parent.Find("OutputContainer");
-        //var taskContainerTransform = outputParent.transform.Find("TaskContainer");
-
-        // LONGBOI SOLUTION
         var taskContainerTransform = gameObject.transform.parent.Find("OutputContainer").transform.Find("TaskContainer");
-
-        //___________________________________________________________________________
-
 
         foreach (Transform taskTransform in taskContainerTransform)
         {
@@ -137,30 +108,12 @@ public class GraphManager : MonoBehaviour
 
     }
 
-    private void DEBUG(){
-        //Test Method, can safely be ignored upon merge to Master.
-        
-        var l = new List<Task>();
-        l.Add(new Task(1,1,2));
-        l.Add(new Task(1,1,3));
-        l.Add(new Task(1,2,3));
-        l.Add(new Task(1,2,5));
-        l.Add(new Task(4,2,7));
-        l.Add(new Task(5,8,9));
-        l.Add(new Task(2,4,6));
-
-        GenerateGraph(l);
-
-    }
-
-
     /*
-        Main method for Generating the graph. Does not provide Cleanup if called again with already existing elements.
-        Takes a list of Task Objects Currently. Should be rewritten with propper functionality in mind.
+        Main method for Generating the graph. Does not provide Cleanup if called again with already existing 
+        elements. Takes a list of Task Objects Currently. Should be rewritten with propper functionality in mind.
         Also, it shouldn't take Monobehaviours.
     */
     private void GenerateGraph(List<Task> tl){
-        //List<Task> sortedTasks = tl.OrderByDescending(t => t.GetRelease()).ToList();
 
         foreach (Task t in tl)
         {
@@ -169,14 +122,6 @@ public class GraphManager : MonoBehaviour
             AssignColourToTask(t);
 
             t.SetPosition();
-
-            //t.GetComponent<tooltip>().UpdateToolTipInformation();
-            /* RectTransform min and max x and y values (actual coordinates)
-                float left   =  rt.offsetMin.x;
-                float right  =  rt.offsetMax.x;
-                float top    =  rt.offsetMax.y;
-                float bottom =  rt.offsetMin.y;
-            */
         }
 
     }
@@ -212,7 +157,7 @@ public class GraphManager : MonoBehaviour
 
     //Finds the max step and iteration to give the use an indication of where the simulation ends.
     private string MaxStepAndIteration(){
-        /*  Undrlying logic is borrowed from step forward.
+        /*  Underlying logic is borrowed from step forward.
             Loops through all of the states till a null is reached, effectively counting the
             Max Step and Iterations.
         */
@@ -300,7 +245,6 @@ public class GraphManager : MonoBehaviour
             step--;
         }
 
-        Debug.Log($"Iteration: {iteration} - Step: {step}");
         GraphState state = gsh.GetGraphState(iteration, step);
             
         // Do nothing if retrieved state is null...
