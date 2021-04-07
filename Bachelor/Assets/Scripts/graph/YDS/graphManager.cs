@@ -38,7 +38,19 @@ public class GraphManager : MonoBehaviour
     private void Awake() 
     {
         worker = algoManager.GetComponent<Worker>();
-        algoManager.GenerateLockedYDSTasks();
+
+        //Run task generation based on Scene index
+        switch(SceneManager.GetActiveScene().buildIndex)
+        {
+            case 3:
+                    algoManager.GenerateLockedYDSTasks();
+                    break;
+            case 5:
+                    //algoManager.GenerateDIYYDSTasks(); // This method does not yet exist!
+                    break;
+            default:
+                    break;
+        }
     }
 
     // Start is called before the first frame update
