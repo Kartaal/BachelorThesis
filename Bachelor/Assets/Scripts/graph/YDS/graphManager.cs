@@ -34,6 +34,7 @@ public class GraphManager : MonoBehaviour
 
     private Worker worker;
 
+
     private void Awake() 
     {
         worker = algoManager.GetComponent<Worker>();
@@ -198,67 +199,108 @@ public class GraphManager : MonoBehaviour
 
 
     // Steps through the states made by YDS
-    public void Step()
+    public void StepForward()
     {
         int iteration = algoManager.GetIterationYDS();
         int step = algoManager.GetStepYDS();
+
+        /*
+            Update current iteration, as each iteration is counted in sets of three
+            GraphStates.
+        */
+        if(step == 3)
+        {
+            step = 1;
+            iteration = iteration+1;
+        }
+        else
+        {
+            step++;
+        }
 
         Debug.Log($"Iteration: {iteration} - Step: {step}");
 
         GraphState state = gsh.GetGraphState(iteration, step);
 
-        // Do nothing if retrieved state is null...
         if(state != null)
         {
-            List<Task> tasks = algoManager.tasks;
 
-            List<TaskData> taskDataList = state.GetTaskDatas();
-
-            // Update information in individual tasks...
-            foreach (Task t in tasks)
-            {
-                // This can probably be done better with LINQ
-                foreach (TaskData td in taskDataList)
-                {
-                    // If IDs match, update the task's fields
-                    if(td.GetId() == t.GetId())
-                    {
-                        t.SetRelease(td.GetRel());
-                        t.SetDeadline(td.GetDed());
-                        t.SetWork(td.GetWrk());
-                        t.SetIntensity(td.GetIntensity());
-                        t.SetScheduled(td.GetScheduled());
-                    }
-                }
-
-                // Updates the Dimensions of the Task.
-                t.SetDimensionsOfTask();
-                t.SetPosition();
-            }
-
-            IntervalData stepMII = state.GetInterval();
-
-            miiTool.IntervalDataToVisual(stepMII);
-
-
-            /*
-                Update current iteration, as each iteration is counted in sets of three
-                GraphStates.
-            */
-            if(step == 3)
-            {
-                step = 1;
-                iteration = iteration+1;
-            }
-            else
-            {
-                step++;
-            }
+            DrawGraph(state);
 
             // Update the iteration and step numbers in algoManager
             algoManager.SetIterationYDS(iteration);
             algoManager.SetStepYDS(step);
         }
+
+    }
+
+        public void StepBackwards()
+    {
+        int iteration = algoManager.GetIterationYDS();
+        int step = algoManager.GetStepYDS();
+
+        /*
+            Update current iteration, as each iteration is counted in sets of three
+            GraphStates.
+        */
+        if(step == 1)
+        {
+            if (iteration != 1)
+            {
+                step = 3;
+                iteration = iteration-1;
+            }
+        }
+        else
+        {
+            step--;
+        }
+
+        Debug.Log($"Iteration: {iteration} - Step: {step}");
+        GraphState state = gsh.GetGraphState(iteration, step);
+            
+        // Do nothing if retrieved state is null...
+        if(state != null)
+        {
+            DrawGraph(state);
+            // Update the iteration and step numbers in algoManager
+            algoManager.SetIterationYDS(iteration);
+            algoManager.SetStepYDS(step);
+        } 
+
+    }
+
+
+    private void DrawGraph(GraphState state)
+    {
+        List<Task> tasks = algoManager.tasks;
+
+        List<TaskData> taskDataList = state.GetTaskDatas();
+
+        // Update information in individual tasks...
+        foreach (Task t in tasks)
+        {
+            // This can probably be done better with LINQ
+            foreach (TaskData td in taskDataList)
+            {
+                // If IDs match, update the task's fields
+                if(td.GetId() == t.GetId())
+                {
+                    t.SetRelease(td.GetRel());
+                    t.SetDeadline(td.GetDed());
+                    t.SetWork(td.GetWrk());
+                    t.SetIntensity(td.GetIntensity());
+                    t.SetScheduled(td.GetScheduled());
+                }
+            }
+
+            // Updates the Dimensions of the Task.
+            t.SetDimensionsOfTask();
+            t.SetPosition();
+        }
+
+        IntervalData stepMII = state.GetInterval();
+        miiTool.IntervalDataToVisual(stepMII);   
     }
 
     // A reset for stepping through the algorithm
@@ -267,8 +309,9 @@ public class GraphManager : MonoBehaviour
         algoManager.SetStepYDS(1);
         algoManager.SetIterationYDS(1);
 
-        // Run Step() to reflect the reset on graph
-        Step();
+        // Run DrawGraph() to reflect the reset on graph
+        GraphState state = gsh.GetGraphState(1,1);
+        DrawGraph(state);
     }
 
 }
