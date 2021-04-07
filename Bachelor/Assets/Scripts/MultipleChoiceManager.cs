@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class MultipleChoiceManager : MonoBehaviour
 {
     [SerializeField]
-    private Question[] questions = new Question[5];
+    private Question[] questions = new Question[10];
 
     [SerializeField]
     private GameObject resultOverlay; 
@@ -37,8 +37,6 @@ public class MultipleChoiceManager : MonoBehaviour
         questions[0].DisplayAllQuestionText();
 
         answersForQuestions = new (string,bool)[questions.Length];
-
-
 
     }
 
@@ -108,6 +106,7 @@ public class MultipleChoiceManager : MonoBehaviour
     public void SetCurrentQuestion(Question newQuestion)
     {
         currentQuestion = newQuestion;
+
         var answerForToggle = answersForQuestions[Array.IndexOf(questions, currentQuestion)].Item1;
 
         //Needed for keeping user input
