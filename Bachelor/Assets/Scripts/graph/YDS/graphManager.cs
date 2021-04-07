@@ -113,7 +113,8 @@ public class GraphManager : MonoBehaviour
         elements. Takes a list of Task Objects Currently. Should be rewritten with propper functionality in mind.
         Also, it shouldn't take Monobehaviours.
     */
-    private void GenerateGraph(List<Task> tl){
+    private void GenerateGraph(List<Task> tl)
+    {
 
         foreach (Task t in tl)
         {
@@ -146,23 +147,25 @@ public class GraphManager : MonoBehaviour
     }
 
     //Updates an Info Textbox to let the user know which step they are on.
-    private void UpdateInfo(int iter, int step){
+    private void UpdateInfo(int iter, int step)
+    {
 
         // should ideally only be called once, small performance sink if run every time we go back OR forth.
         if (maxStepAndIteration == null){maxStepAndIteration = MaxStepAndIteration();}
 
-        graphStateInfo.text = "Iteration: " + iter + " | Step: " + step + " / " + maxStepAndIteration;
+        graphStateInfo.text = "Iteration: " + iter + " | Step: " + step + " ----- out of: " + maxStepAndIteration;
 
     }
 
     //Finds the max step and iteration to give the use an indication of where the simulation ends.
-    private string MaxStepAndIteration(){
+    private string MaxStepAndIteration()
+    {
         /*  Underlying logic is borrowed from step forward.
             Loops through all of the states till a null is reached, effectively counting the
             Max Step and Iterations.
         */
-        int iteration = algoManager.GetIterationYDS();  // 1
-        int step = algoManager.GetStepYDS();            // 1
+        int iteration = algoManager.GetIterationYDS(); 
+        int step = algoManager.GetStepYDS();
         bool isNotMax = true;
 
         while(isNotMax)
@@ -223,7 +226,7 @@ public class GraphManager : MonoBehaviour
 
     }
 
-        public void StepBackwards()
+    public void StepBackwards()
     {
         int iteration = algoManager.GetIterationYDS();
         int step = algoManager.GetStepYDS();
@@ -298,7 +301,7 @@ public class GraphManager : MonoBehaviour
         algoManager.SetStepYDS(1);
         algoManager.SetIterationYDS(1);
 
-        // Run DrawGraph() to reflect the reset on graph
+        // Run DrawGraph() to reflect the reset on graph + update info to reflect reset.
         GraphState state = gsh.GetGraphState(1,1);
         UpdateInfo(1, 1);
         DrawGraph(state);
