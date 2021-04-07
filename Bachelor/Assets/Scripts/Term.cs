@@ -9,6 +9,7 @@ public class Term : MonoBehaviour
     [SerializeField]
     Text descriptionText;
     [SerializeField]
+    [Multiline]
     string description = "";
     // Start is called before the first frame update
     void Start()
