@@ -8,6 +8,8 @@ public class AlgoManager : MonoBehaviour
 
     [SerializeField]
     private GameObject taskPrefab;
+    [SerializeField]
+    private GameObject taskEditablePrefab;
     private int iterationYDS = 1;
     private int stepYDS = 1;
 
@@ -110,6 +112,68 @@ public class AlgoManager : MonoBehaviour
         */
     }
 
+    // Uses the Locked walkthrough tasks currently. FIX THIS!!!
+    public void GenerateDIYYDSTasks()
+    {
+        // Make lists of task releases, deadlines and works
+        List<int> taskReleases = new List<int>();
+        taskReleases.Add(1);
+        taskReleases.Add(2);
+        taskReleases.Add(4);
+        taskReleases.Add(6);
+        taskReleases.Add(8);
+        taskReleases.Add(10);
+        taskReleases.Add(7);
+        //taskReleases.Add(6);
 
+        List<int> taskDeadlines = new List<int>();
+        taskDeadlines.Add(3);
+        taskDeadlines.Add(5);
+        taskDeadlines.Add(6);
+        taskDeadlines.Add(8);
+        taskDeadlines.Add(10);
+        taskDeadlines.Add(12);
+        taskDeadlines.Add(9);
+        //taskDeadlines.Add(11);
+
+        List<double> taskWork = new List<double>();
+        taskWork.Add(5.0);
+        taskWork.Add(12.0);
+        taskWork.Add(3.0);
+        taskWork.Add(10.0);
+        taskWork.Add(5.0);
+        taskWork.Add(7.0);
+        taskWork.Add(8.0);
+        //taskWork.Add(2.0);
+
+        Transform canvasTransform = gameObject.transform.parent.gameObject.transform;
+        //Transform taskContainerTransform = canvasTransform.Find("TaskContainer").transform;
+        var tmp = canvasTransform.Find("OutputContainer").transform;
+        Transform taskContainerTransform = tmp.Find("TaskContainer").transform;
+
+        foreach (Transform trans in taskContainerTransform)
+        {
+            trans.gameObject.SetActive(false);
+        }
+
+        int taskCount = taskReleases.Count;
+
+        // Generate tasks and assign field values
+        for (int i = 0 ; i < taskCount ; i++)
+        {
+            GameObject taskGO = Instantiate(taskEditablePrefab, this.transform.position, this.transform.rotation);
+            Task task = taskGO.GetComponent<Task>();
+            task.SetId(i);
+            task.SetRelease(taskReleases[i]);
+            task.SetDeadline(taskDeadlines[i]);
+            task.SetWork(taskWork[i]);
+
+            tasks.Add(task);
+
+            taskGO.name = $"Task ({i})";
+
+            taskGO.transform.SetParent(taskContainerTransform);
+        }
+    }
     
 }

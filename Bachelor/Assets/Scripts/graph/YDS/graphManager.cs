@@ -50,7 +50,7 @@ public class GraphManager : MonoBehaviour
                     break;
             // Index 5 is YDS DIY
             case 5:
-                    //algoManager.GenerateDIYYDSTasks(); // This method does not yet exist!
+                    algoManager.GenerateDIYYDSTasks(); // This method does not yet exist!
                     break;
             default:
                     break;
@@ -95,6 +95,13 @@ public class GraphManager : MonoBehaviour
             taskGO.transform.SetParent(inputTaskContainerTransform);
             taskGO.transform.localScale = Vector3.one;
             inputTasks.Add(taskGO.GetComponent<Task>());
+
+            //For disabling buttons on DIY for the input tasks
+            var buttonForEditableTasks = taskGO.GetComponent<Button>();
+            if (buttonForEditableTasks != null)
+            {
+                buttonForEditableTasks.interactable = false;
+            }
         }
 
         GenerateGraph(inputTasks);
