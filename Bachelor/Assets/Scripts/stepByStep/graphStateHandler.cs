@@ -15,7 +15,13 @@ public class GraphStateHandler : MonoBehaviour
         //DEBUG();
     }
 
-    public static void SaveState(List<Task> tl, Schedule s, IntervalData intDat){
+    public int GetStatesCount()
+    {
+        return histogram.Count;
+    }
+
+    public static void SaveState(List<Task> tl, Schedule s, IntervalData intDat)
+    {
         // saves the result of the graphState asfter step 1 -OR- 2 -OR- 3
         /*
             SAVELIST

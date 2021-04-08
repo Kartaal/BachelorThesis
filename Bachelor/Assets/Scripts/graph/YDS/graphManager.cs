@@ -16,6 +16,8 @@ public class GraphManager : MonoBehaviour
     private float taskHeight = 50f; // default value.
     private float taskWidth = 100f; // default value.
 
+    private string maxStepAndIteration;
+
     private Color32[] colr;
 
     // Reference to Task Prefab
@@ -33,12 +35,13 @@ public class GraphManager : MonoBehaviour
     private GraphStateHandler gsh;
 
     private Worker worker;
-
+    private Text graphStateInfo;
 
     private void Awake() 
     {
         worker = algoManager.GetComponent<Worker>();
         algoManager.GenerateLockedYDSTasks();
+        graphStateInfo = gameObject.transform.parent.parent.Find("GraphStateInfo").GetComponent<Text>();
     }
 
     // Start is called before the first frame update
@@ -61,34 +64,15 @@ public class GraphManager : MonoBehaviour
 
         taskHeight = ((RectTransform) task.transform).rect.height;
         taskWidth = ((RectTransform) task.transform).rect.width;
-        //DEBUG(); // Should be removed upon merge to Master.
         
         yield return new WaitForSeconds(1);
-    //---------------
 
-
-        //  AUTHORS NOTE: WE EITHER DO THESE FOUR LINES TO KEEP THEM SEPERATED. OR WE DO THE LAST 2.
-        
-        // THICKBOI METHOD
-
-        //var inputParent = gameObject.transform.parent.Find("InputContainer");
-        //var outputParent = gameObject.transform.parent.Find("OutputContainer");
-
-        //var inputTaskContainerTransform = inputParent.transform.Find("InputTaskContainer");
-        //var taskContainerTransform = outputParent.transform.Find("TaskContainer");
-        
-        // lONGBOI METHOD
         var inputTaskContainerTransform = gameObject.transform.parent.Find("InputContainer").transform.Find("InputTaskContainer");
         var taskContainerTransform = gameObject.transform.parent.Find("OutputContainer").transform.Find("TaskContainer");
-
-        //__________________________________________________________________________________________
 
         Debug.Log(inputTaskContainerTransform);
         Debug.Log(taskContainerTransform);
 
-        //var inputTaskContainerTransform = gameObject.transform.parent.Find("InputTaskContainer");
-        //var taskContainerTransform = gameObject.transform.parent.Find("TaskContainer");
-        
         List<Task> inputTasks = new List<Task>();
 
         foreach( Transform taskTransform in taskContainerTransform ){
@@ -99,7 +83,6 @@ public class GraphManager : MonoBehaviour
         }
 
         GenerateGraph(inputTasks);
-    //----------------
 
         RunYDS();
 
@@ -110,19 +93,10 @@ public class GraphManager : MonoBehaviour
     {
         Schedule schedule = worker.YDS(algoManager.tasks, 1);
 
-        // Run this snippet after YDS... sets the algoManager's task list to contain the Tasks visualised in the graph
+        // Run this snippet after YDS... sets the algoManager's task list to contain the Tasks 
+        // visualised in the graph
         
-        //___________________________________________________________________________
-        // THICKBOI SOLUTION
-
-        //var outputParent = gameObject.transform.parent.Find("OutputContainer");
-        //var taskContainerTransform = outputParent.transform.Find("TaskContainer");
-
-        // LONGBOI SOLUTION
         var taskContainerTransform = gameObject.transform.parent.Find("OutputContainer").transform.Find("TaskContainer");
-
-        //___________________________________________________________________________
-
 
         foreach (Transform taskTransform in taskContainerTransform)
         {
@@ -134,30 +108,13 @@ public class GraphManager : MonoBehaviour
 
     }
 
-    private void DEBUG(){
-        //Test Method, can safely be ignored upon merge to Master.
-        
-        var l = new List<Task>();
-        l.Add(new Task(1,1,2));
-        l.Add(new Task(1,1,3));
-        l.Add(new Task(1,2,3));
-        l.Add(new Task(1,2,5));
-        l.Add(new Task(4,2,7));
-        l.Add(new Task(5,8,9));
-        l.Add(new Task(2,4,6));
-
-        GenerateGraph(l);
-
-    }
-
-
     /*
-        Main method for Generating the graph. Does not provide Cleanup if called again with already existing elements.
-        Takes a list of Task Objects Currently. Should be rewritten with propper functionality in mind.
+        Main method for Generating the graph. Does not provide Cleanup if called again with already existing 
+        elements. Takes a list of Task Objects Currently. Should be rewritten with propper functionality in mind.
         Also, it shouldn't take Monobehaviours.
     */
-    private void GenerateGraph(List<Task> tl){
-        //List<Task> sortedTasks = tl.OrderByDescending(t => t.GetRelease()).ToList();
+    private void GenerateGraph(List<Task> tl)
+    {
 
         foreach (Task t in tl)
         {
@@ -166,14 +123,6 @@ public class GraphManager : MonoBehaviour
             AssignColourToTask(t);
 
             t.SetPosition();
-
-            //t.GetComponent<tooltip>().UpdateToolTipInformation();
-            /* RectTransform min and max x and y values (actual coordinates)
-                float left   =  rt.offsetMin.x;
-                float right  =  rt.offsetMax.x;
-                float top    =  rt.offsetMax.y;
-                float bottom =  rt.offsetMin.y;
-            */
         }
 
     }
@@ -197,6 +146,30 @@ public class GraphManager : MonoBehaviour
 
     }
 
+    //Updates an Info Textbox to let the user know which step they are on.
+    private void UpdateInfo(int iter, int step)
+    {
+
+        // should ideally only be called once, small performance sink if run every time we go back OR forth.
+        if (maxStepAndIteration == null){maxStepAndIteration = MaxStepAndIteration();}
+
+        graphStateInfo.text = "Iteration: " + iter + " | Step: " + step + " ----- out of: " + maxStepAndIteration;
+
+    }
+
+    //Finds the max step and iteration to give the use an indication of where the simulation ends.
+    private string MaxStepAndIteration()
+    {
+        int statesCount = gsh.GetStatesCount();
+
+        // Every 3 steps is 1 iteration, so number of iterations is number of steps/states divided by 3
+        int iteration = statesCount / 3;
+        // Step is always 3, otherwise the algorithm didn't run to completion
+        int step = 3;
+
+        // returns a string of the max elements.
+        return "Iteration: " + iteration + " | Step: " + step;
+    }
 
     // Steps through the states made by YDS
     public void StepForward()
@@ -218,14 +191,13 @@ public class GraphManager : MonoBehaviour
             step++;
         }
 
-        Debug.Log($"Iteration: {iteration} - Step: {step}");
-
         GraphState state = gsh.GetGraphState(iteration, step);
 
         if(state != null)
         {
 
             DrawGraph(state);
+            UpdateInfo(iteration, step);
 
             // Update the iteration and step numbers in algoManager
             algoManager.SetIterationYDS(iteration);
@@ -234,7 +206,7 @@ public class GraphManager : MonoBehaviour
 
     }
 
-        public void StepBackwards()
+    public void StepBackwards()
     {
         int iteration = algoManager.GetIterationYDS();
         int step = algoManager.GetStepYDS();
@@ -256,13 +228,13 @@ public class GraphManager : MonoBehaviour
             step--;
         }
 
-        Debug.Log($"Iteration: {iteration} - Step: {step}");
         GraphState state = gsh.GetGraphState(iteration, step);
             
         // Do nothing if retrieved state is null...
         if(state != null)
         {
             DrawGraph(state);
+            UpdateInfo(iteration, step);
             // Update the iteration and step numbers in algoManager
             algoManager.SetIterationYDS(iteration);
             algoManager.SetStepYDS(step);
@@ -309,8 +281,9 @@ public class GraphManager : MonoBehaviour
         algoManager.SetStepYDS(1);
         algoManager.SetIterationYDS(1);
 
-        // Run DrawGraph() to reflect the reset on graph
+        // Run DrawGraph() to reflect the reset on graph + update info to reflect reset.
         GraphState state = gsh.GetGraphState(1,1);
+        UpdateInfo(1, 1);
         DrawGraph(state);
     }
 
