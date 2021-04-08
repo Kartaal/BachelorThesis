@@ -424,6 +424,32 @@ PrefabInstance:
       propertyPath: m_IsOn
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2322392962245577164, guid: a80d36eedd85e5245818c3fe0a8f18e5,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322392962245577164, guid: a80d36eedd85e5245818c3fe0a8f18e5,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7242387012704242546, guid: 0e0ba9e5c28d74e2a977ac9a160533ce,
+        type: 3}
+    - target: {fileID: 2322392962245577164, guid: a80d36eedd85e5245818c3fe0a8f18e5,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SubmitScheduled
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322392962245577164, guid: a80d36eedd85e5245818c3fe0a8f18e5,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2322392962245577164, guid: a80d36eedd85e5245818c3fe0a8f18e5,
+        type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3401161192104261956, guid: a80d36eedd85e5245818c3fe0a8f18e5,
         type: 3}
       propertyPath: m_OnEndEdit.m_PersistentCalls.m_Calls.Array.size
