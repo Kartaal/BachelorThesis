@@ -98,7 +98,7 @@ public class TaskInput : MonoBehaviour
         input[3].onEndEdit = seIntensity;
 
 
-        //scheduleToggle.onValueChanged.AddListener((value) => SubmitScheduled(value));
+        scheduleToggle.onValueChanged.AddListener((value) => SubmitScheduled(value));
     }
 
     //***********SUBMIT METHODS**********************
