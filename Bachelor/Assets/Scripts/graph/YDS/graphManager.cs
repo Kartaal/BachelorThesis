@@ -40,7 +40,22 @@ public class GraphManager : MonoBehaviour
     private void Awake() 
     {
         worker = algoManager.GetComponent<Worker>();
-        algoManager.GenerateLockedYDSTasks();
+
+        //Run task generation based on Scene index
+        switch(SceneManager.GetActiveScene().buildIndex)
+        {
+            // Index 3 is YDS locked walkthrough
+            case 3:
+                    algoManager.GenerateLockedYDSTasks();
+                    break;
+            // Index 5 is YDS DIY
+            case 5:
+                    //algoManager.GenerateDIYYDSTasks(); // This method does not yet exist!
+                    break;
+            default:
+                    break;
+        }
+        
         graphStateInfo = gameObject.transform.parent.parent.Find("GraphStateInfo").GetComponent<Text>();
     }
 
