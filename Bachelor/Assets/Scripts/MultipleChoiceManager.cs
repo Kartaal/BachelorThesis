@@ -72,6 +72,8 @@ public class MultipleChoiceManager : MonoBehaviour
         // Ensure we don't generate results when they already exist
         if(!displayingResults)
         {
+            RemoveOldResultTexts();
+
             displayingResults = true;
             correctCount = 0;
 
@@ -128,5 +130,13 @@ public class MultipleChoiceManager : MonoBehaviour
 
         //Needed for keeping user input
         currentQuestion.SetAnswerToggle(answerForToggle);
+    }
+
+    private void RemoveOldResultTexts()
+    {
+        foreach (Transform tf in resultContainer.transform)
+        {
+            Destroy(tf.gameObject);
+        }
     }
 }
