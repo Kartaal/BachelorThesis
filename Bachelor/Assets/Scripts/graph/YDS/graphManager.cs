@@ -42,9 +42,11 @@ public class GraphManager : MonoBehaviour
         //Run task generation based on Scene index
         switch(SceneManager.GetActiveScene().buildIndex)
         {
+            // Index 3 is YDS locked walkthrough
             case 3:
                     algoManager.GenerateLockedYDSTasks();
                     break;
+            // Index 5 is YDS DIY
             case 5:
                     //algoManager.GenerateDIYYDSTasks(); // This method does not yet exist!
                     break;
