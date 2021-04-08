@@ -29,7 +29,7 @@ public class DIYManager : MonoBehaviour
     void Start()
     {
         gsh = algoManager.GetComponent<GraphStateHandler>();
-        allTaskFromUserInput = transform.parent.Find("GraphContainer").Find("TaskContainer").GetComponentsInChildren<Task>().ToList<Task>();
+        allTaskFromUserInput = transform.parent.Find("GraphContainer").Find("OutputContainer").GetComponentsInChildren<Task>().ToList<Task>();
     }
 
     public void CheckUserAnswer()

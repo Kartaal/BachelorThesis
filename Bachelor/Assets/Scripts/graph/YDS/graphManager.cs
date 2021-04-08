@@ -50,7 +50,7 @@ public class GraphManager : MonoBehaviour
                     break;
             // Index 5 is YDS DIY
             case 5:
-                    //algoManager.GenerateDIYYDSTasks(); // This method does not yet exist!
+                    algoManager.GenerateDIYYDSTasks(); // This method does not yet exist!
                     break;
             default:
                     break;

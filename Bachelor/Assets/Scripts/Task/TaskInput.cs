@@ -17,7 +17,7 @@ public class TaskInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inputBox = gameObject.transform.parent.parent.Find("EditTask").gameObject;
+        inputBox = gameObject.transform.parent.parent.parent.Find("EditTask").gameObject;
         input = inputBox.GetComponentsInChildren<InputField>();
         scheduleToggle = inputBox.GetComponentInChildren<Toggle>();
 
@@ -33,7 +33,7 @@ public class TaskInput : MonoBehaviour
         }
         else
         {
-            tt = gameObject.transform.parent.parent.Find("ToolTip").gameObject;
+            tt = gameObject.transform.parent.parent.parent.Find("ToolTip").gameObject;
 
             SetListeners();
             task = this.GetComponent<Task>();
