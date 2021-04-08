@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-using System.Globalization;
+using UnityEngine.EventSystems;
 
 public class TaskInput : MonoBehaviour
 {
@@ -11,20 +11,25 @@ public class TaskInput : MonoBehaviour
     private GameObject tt;
 
     private InputField[] input;
+    private Toggle scheduleToggle;
     private Task task;
+
     // Start is called before the first frame update
     void Start()
     {
         inputBox = gameObject.transform.parent.parent.Find("EditTask").gameObject;
         input = inputBox.GetComponentsInChildren<InputField>();
-       
+        scheduleToggle = inputBox.GetComponentInChildren<Toggle>();
+
     }
 
+    //Method for displaying the input field on click
     public void DisplayInputField()
     {
         if (inputBox.active)
         {
             inputBox.SetActive(false);
+            ResetFields();
         }
         else
         {
@@ -36,11 +41,12 @@ public class TaskInput : MonoBehaviour
             RepositionInputField();
             tt.SetActive(false);
             inputBox.SetActive(true);
+            //scheduleToggle.isOn = task.GetScheduled();
         }
-        
+
     }
 
-   
+    //Same method as tooltip to set position of the inputfield
     private void RepositionInputField()
     {
         Task task = this.GetComponent<Task>();
@@ -54,7 +60,7 @@ public class TaskInput : MonoBehaviour
         inputBox.transform.position = new Vector2(x, y);
     }
 
-
+    //Method for updating the task and it's position when it has been edited
     private void UpdateTask()
     {
         task.SetDimensionsOfTask();
@@ -62,6 +68,17 @@ public class TaskInput : MonoBehaviour
         RepositionInputField();
     }
 
+    //Method for clearing all fields in the input, so old data isn't keep around when you click a new task
+    private void ResetFields()
+    {
+        foreach (InputField i in input)
+        {
+            scheduleToggle.isOn = false;
+            i.text = "";
+        }
+    }
+
+    //Setting listeners for when the user has edited fields
     private void SetListeners()
     {
         var seRelease = new InputField.SubmitEvent();
@@ -79,11 +96,16 @@ public class TaskInput : MonoBehaviour
         var seIntensity = new InputField.SubmitEvent();
         seIntensity.AddListener(SubmitIntensity);
         input[3].onEndEdit = seIntensity;
+
+
+        scheduleToggle.onValueChanged.AddListener((value) => SubmitScheduled(value));
     }
 
+    //***********SUBMIT METHODS**********************
 
     private void SubmitRelease(string arg0)
     {
+        Debug.Log(task.name + "Called SubmitRelease");
         var inputText = input[0].GetComponentInChildren<Text>().text;
 
         try
@@ -148,4 +170,14 @@ public class TaskInput : MonoBehaviour
             Console.WriteLine($"Unable to parse '{arg0}'");
         }
     }
+
+    public void SubmitScheduled(bool value)
+    {
+        Debug.Log(task.name + "Called SubmitSchedule");
+        
+        task.SetScheduled(value);
+    }
+
+
+
 }

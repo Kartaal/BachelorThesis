@@ -74,6 +74,13 @@ public class GraphManager : MonoBehaviour
             taskGO.transform.SetParent(inputTaskContainerTransform);
             taskGO.transform.localScale = Vector3.one;
             inputTasks.Add(taskGO.GetComponent<Task>());
+
+            //For disabling buttons on DIY for the input tasks
+            var buttonForEditableTasks = taskGO.GetComponent<Button>();
+            if (buttonForEditableTasks != null)
+            {
+                buttonForEditableTasks.interactable = false;
+            }
         }
 
         GenerateGraph(inputTasks);
