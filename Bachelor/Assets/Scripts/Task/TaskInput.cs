@@ -41,7 +41,8 @@ public class TaskInput : MonoBehaviour
             RepositionInputField();
             tt.SetActive(false);
             inputBox.SetActive(true);
-            //scheduleToggle.isOn = task.GetScheduled();
+            scheduleToggle.isOn = task.GetScheduled();
+            //Set inputfields placeholders to task values
         }
 
     }
@@ -71,9 +72,9 @@ public class TaskInput : MonoBehaviour
     //Method for clearing all fields in the input, so old data isn't keep around when you click a new task
     private void ResetFields()
     {
+        scheduleToggle.onValueChanged.RemoveAllListeners();
         foreach (InputField i in input)
         {
-            scheduleToggle.isOn = false;
             i.text = "";
         }
     }
@@ -99,18 +100,17 @@ public class TaskInput : MonoBehaviour
 
 
         scheduleToggle.onValueChanged.AddListener((value) => SubmitScheduled(value));
+
     }
 
     //***********SUBMIT METHODS**********************
 
     private void SubmitRelease(string arg0)
     {
-        Debug.Log(task.name + "Called SubmitRelease");
-        var inputText = input[0].GetComponentInChildren<Text>().text;
 
         try
         {
-            int result = Int32.Parse(inputText);
+            int result = Int32.Parse(arg0);
             task.SetRelease(result);
             UpdateTask();
         }
@@ -122,11 +122,10 @@ public class TaskInput : MonoBehaviour
 
     private void SubmitDeadline(string arg0)
     {
-        var inputText = input[1].GetComponentInChildren<Text>().text;
 
         try
         {
-            int result = Int32.Parse(inputText);
+            int result = Int32.Parse(arg0);
 
             task.SetDeadline(result);
             UpdateTask();
@@ -139,11 +138,10 @@ public class TaskInput : MonoBehaviour
 
     private void SubmitWork(string arg0)
     {
-        var inputText = input[2].GetComponentInChildren<Text>().text;
 
         try
         {
-            int result = Int32.Parse(inputText);
+            int result = Int32.Parse(arg0);
 
             task.SetWork(result);
             UpdateTask();
@@ -156,11 +154,10 @@ public class TaskInput : MonoBehaviour
 
     private void SubmitIntensity(string arg0)
     {
-        var inputText = input[3].GetComponentInChildren<Text>().text;
 
         try
         {
-            double result = Convert.ToDouble(inputText);
+            double result = Convert.ToDouble(arg0);
 
             task.SetIntensity(result);
             UpdateTask();
@@ -173,9 +170,8 @@ public class TaskInput : MonoBehaviour
 
     public void SubmitScheduled(bool value)
     {
-        Debug.Log(task.name + "Called SubmitSchedule");
-        
         task.SetScheduled(value);
+        UpdateTask();
     }
 
 

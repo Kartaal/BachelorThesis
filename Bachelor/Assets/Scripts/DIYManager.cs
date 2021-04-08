@@ -42,7 +42,7 @@ public class DIYManager : MonoBehaviour
         {
             if (CompareMaxIntensityInterval())
             {
-                Debug.Log("You did everythign correct! Nice job, time for next step, what do you do now?");
+                Debug.Log("You did everything correct! Nice job, time for next step, what do you do now?");
                 if (currentStep == 3)
                 {
                     currentStep = 1;
@@ -127,11 +127,9 @@ public class DIYManager : MonoBehaviour
                     var defIntensity = correctTask.GetIntensity() - user.GetIntensity();
                     var defAcceptance = 0.0000001;
 
-                    if (correctTask.GetRel() == user.GetRelease() && correctTask.GetDed() == user.GetDeadline() && correctTask.GetWrk() == user.GetWork() && defIntensity < defAcceptance)
+                    if (correctTask.GetRel() == user.GetRelease() && correctTask.GetDed() == user.GetDeadline() && correctTask.GetWrk() == user.GetWork() && defIntensity < defAcceptance && correctTask.GetScheduled() == user.GetScheduled())
                     {
-                        Debug.Log("Task: " + user.name + " is correct well done!");
                         countOfCorrectTasks++;
-                        Debug.Log("Current correct Tasks: " + countOfCorrectTasks);
                     }
                     else { Debug.Log("Task: " + user.name + " is wrong"); }
                 }
