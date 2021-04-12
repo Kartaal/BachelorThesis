@@ -72,6 +72,7 @@ public class TaskInput : MonoBehaviour
     //Method for updating the task and it's position when it has been edited
     private void UpdateTask()
     {
+        task.CalcIntensity();
         task.SetDimensionsOfTask();
         task.SetPosition();
         RepositionInputField();
