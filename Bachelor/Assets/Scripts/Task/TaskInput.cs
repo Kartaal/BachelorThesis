@@ -41,15 +41,18 @@ public class TaskInput : MonoBehaviour
             RepositionInputField();
             tt.SetActive(false);
             inputBox.SetActive(true);
-            scheduleToggle.isOn = task.GetScheduled();
-            //Set inputfields placeholders to task values
-
-            input[0].placeholder.GetComponent<Text>().text = task.GetRelease().ToString();
-            input[1].placeholder.GetComponent<Text>().text = task.GetDeadline().ToString();
-            input[2].placeholder.GetComponent<Text>().text = task.GetWork().ToString();
-            input[3].placeholder.GetComponent<Text>().text = task.GetIntensity().ToString();
+            SetUpInputFields();
         }
 
+    }
+
+    private void SetUpInputFields()
+    {
+        scheduleToggle.isOn = task.GetScheduled();
+        input[0].placeholder.GetComponent<Text>().text = task.GetRelease().ToString();
+        input[1].placeholder.GetComponent<Text>().text = task.GetDeadline().ToString();
+        input[2].placeholder.GetComponent<Text>().text = task.GetWork().ToString();
+        input[3].placeholder.GetComponent<Text>().text = task.GetIntensity().ToString();
     }
 
     //Same method as tooltip to set position of the inputfield
