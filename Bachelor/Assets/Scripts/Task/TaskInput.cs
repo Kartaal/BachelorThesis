@@ -43,6 +43,11 @@ public class TaskInput : MonoBehaviour
             inputBox.SetActive(true);
             scheduleToggle.isOn = task.GetScheduled();
             //Set inputfields placeholders to task values
+
+            input[0].placeholder.GetComponent<Text>().text = task.GetRelease().ToString();
+            input[1].placeholder.GetComponent<Text>().text = task.GetDeadline().ToString();
+            input[2].placeholder.GetComponent<Text>().text = task.GetWork().ToString();
+            input[3].placeholder.GetComponent<Text>().text = task.GetIntensity().ToString();
         }
 
     }
