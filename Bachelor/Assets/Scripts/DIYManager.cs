@@ -60,6 +60,14 @@ public class DIYManager : MonoBehaviour
                     currentStep++;
                 }
                 overviewText.text = $"Iteration {currentIteration} | Step {currentStep}";
+
+                foreach (Task t in allTaskFromUserInput)
+                {
+                    if (t.GetScheduled())
+                    {
+                        t.GetComponent<Button>().interactable = false;
+                    }
+                }
             }
             else
             {
