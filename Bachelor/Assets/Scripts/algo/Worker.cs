@@ -229,12 +229,16 @@ public class Worker : MonoBehaviour
             if (t.GetDeadline() > maxIntensityInterval.GetStartInt() && t.GetDeadline() <= maxIntensityInterval.GetEndInt())
             {
                 t.SetDeadline(maxIntensityInterval.GetStartInt());
+                // Called to ensure task area (workload visual) remains the same
+                t.CalcIntensity();
             }
 
             //If Release is within the interval set the release to the end of maxintesity interval
             if (t.GetRelease() >= maxIntensityInterval.GetStartInt() && t.GetRelease() < maxIntensityInterval.GetEndInt())
             {
                 t.SetRelease(maxIntensityInterval.GetEndInt());
+                // Called to ensure task area (workload visual) remains the same
+                t.CalcIntensity();
             }
         }
 

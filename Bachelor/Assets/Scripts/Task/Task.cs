@@ -119,7 +119,7 @@ public class Task : MonoBehaviour
         CalcIntensity();
     }
 
-    private void CalcIntensity()
+    public void CalcIntensity()
     {
         double duration = deadlineT - releaseT;
         taskIntensity = workT / duration;
