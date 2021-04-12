@@ -38,36 +38,16 @@ public class AlgoManager : MonoBehaviour
 
     public void GenerateLockedYDSTasks()
     {
-        // Make lists of task releases, deadlines and works
-        List<int> taskReleases = new List<int>();
-        taskReleases.Add(1);
-        taskReleases.Add(2);
-        taskReleases.Add(4);
-        taskReleases.Add(6);
-        taskReleases.Add(8);
-        taskReleases.Add(10);
-        taskReleases.Add(7);
-        //taskReleases.Add(6);
+        // Make lists of task (releases, deadlines, works)
+        List<(int, int, double)> taskReleasesDeadlinesWork = new List<(int, int, double)>();
+        taskReleasesDeadlinesWork.Add((1, 3, 5.0));
+        taskReleasesDeadlinesWork.Add((2, 5, 12.0));
+        taskReleasesDeadlinesWork.Add((4, 6, 3.0));
+        taskReleasesDeadlinesWork.Add((6, 8, 10.0));
+        taskReleasesDeadlinesWork.Add((8, 10, 5.0));
+        taskReleasesDeadlinesWork.Add((10, 12, 7.0));
+        taskReleasesDeadlinesWork.Add((7, 9, 8.0));
 
-        List<int> taskDeadlines = new List<int>();
-        taskDeadlines.Add(3);
-        taskDeadlines.Add(5);
-        taskDeadlines.Add(6);
-        taskDeadlines.Add(8);
-        taskDeadlines.Add(10);
-        taskDeadlines.Add(12);
-        taskDeadlines.Add(9);
-        //taskDeadlines.Add(11);
-
-        List<double> taskWork = new List<double>();
-        taskWork.Add(5.0);
-        taskWork.Add(12.0);
-        taskWork.Add(3.0);
-        taskWork.Add(10.0);
-        taskWork.Add(5.0);
-        taskWork.Add(7.0);
-        taskWork.Add(8.0);
-        //taskWork.Add(2.0);
 
         Transform canvasTransform = gameObject.transform.parent.gameObject.transform;
         //Transform taskContainerTransform = canvasTransform.Find("TaskContainer").transform;
@@ -79,7 +59,7 @@ public class AlgoManager : MonoBehaviour
             trans.gameObject.SetActive(false);
         }
 
-        int taskCount = taskReleases.Count;
+        int taskCount = taskReleasesDeadlinesWork.Count;
 
         // Generate tasks and assign field values
         for (int i = 0 ; i < taskCount ; i++)
@@ -87,9 +67,9 @@ public class AlgoManager : MonoBehaviour
             GameObject taskGO = Instantiate(taskPrefab, this.transform.position, this.transform.rotation);
             Task task = taskGO.GetComponent<Task>();
             task.SetId(i);
-            task.SetRelease(taskReleases[i]);
-            task.SetDeadline(taskDeadlines[i]);
-            task.SetWork(taskWork[i]);
+            task.SetRelease(taskReleasesDeadlinesWork[i].Item1);
+            task.SetDeadline(taskReleasesDeadlinesWork[i].Item2);
+            task.SetWork(taskReleasesDeadlinesWork[i].Item3);
 
             tasks.Add(task);
 
@@ -115,36 +95,16 @@ public class AlgoManager : MonoBehaviour
     // Uses the Locked walkthrough tasks currently. FIX THIS!!!
     public void GenerateDIYYDSTasks()
     {
-        // Make lists of task releases, deadlines and works
-        List<int> taskReleases = new List<int>();
-        taskReleases.Add(1);
-        taskReleases.Add(2);
-        taskReleases.Add(4);
-        taskReleases.Add(6);
-        taskReleases.Add(8);
-        taskReleases.Add(10);
-        taskReleases.Add(7);
-        //taskReleases.Add(6);
+        // Make lists of task (releases, deadlines, works)
+        List<(int, int, double)> taskReleasesDeadlinesWork = new List<(int, int, double)>();
+        taskReleasesDeadlinesWork.Add((1, 5, 3.0));
+        taskReleasesDeadlinesWork.Add((3, 5, 14.0));
+        taskReleasesDeadlinesWork.Add((5, 7, 10.0));
+        taskReleasesDeadlinesWork.Add((6, 8, 7.0));
+        taskReleasesDeadlinesWork.Add((11, 12, 7.0));
+        taskReleasesDeadlinesWork.Add((9, 12, 5.0));
+        taskReleasesDeadlinesWork.Add((7, 10, 2.0));
 
-        List<int> taskDeadlines = new List<int>();
-        taskDeadlines.Add(3);
-        taskDeadlines.Add(5);
-        taskDeadlines.Add(6);
-        taskDeadlines.Add(8);
-        taskDeadlines.Add(10);
-        taskDeadlines.Add(12);
-        taskDeadlines.Add(9);
-        //taskDeadlines.Add(11);
-
-        List<double> taskWork = new List<double>();
-        taskWork.Add(5.0);
-        taskWork.Add(12.0);
-        taskWork.Add(3.0);
-        taskWork.Add(10.0);
-        taskWork.Add(5.0);
-        taskWork.Add(7.0);
-        taskWork.Add(8.0);
-        //taskWork.Add(2.0);
 
         Transform canvasTransform = gameObject.transform.parent.gameObject.transform;
         //Transform taskContainerTransform = canvasTransform.Find("TaskContainer").transform;
@@ -156,17 +116,17 @@ public class AlgoManager : MonoBehaviour
             trans.gameObject.SetActive(false);
         }
 
-        int taskCount = taskReleases.Count;
+        int taskCount = taskReleasesDeadlinesWork.Count;
 
         // Generate tasks and assign field values
-        for (int i = 0 ; i < taskCount ; i++)
+        for (int i = 0; i < taskCount; i++)
         {
             GameObject taskGO = Instantiate(taskEditablePrefab, this.transform.position, this.transform.rotation);
             Task task = taskGO.GetComponent<Task>();
             task.SetId(i);
-            task.SetRelease(taskReleases[i]);
-            task.SetDeadline(taskDeadlines[i]);
-            task.SetWork(taskWork[i]);
+            task.SetRelease(taskReleasesDeadlinesWork[i].Item1);
+            task.SetDeadline(taskReleasesDeadlinesWork[i].Item2);
+            task.SetWork(taskReleasesDeadlinesWork[i].Item3);
 
             tasks.Add(task);
 
