@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b25be91e1d5b0d44b4320c25e5ea944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entryPrefab: {fileID: 4501443270413358471, guid: 4d28aa3cc6271914cb453538b6a34086,
+  entryPrefab: {fileID: 5118695713130401485, guid: 4d28aa3cc6271914cb453538b6a34086,
     type: 3}
   scrollPane: {fileID: 1655186492}
 --- !u!1 &305351697
@@ -1049,7 +1049,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1065,8 +1065,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 210647323}
-  - {fileID: 720580554}
   - {fileID: 1967278128}
+  - {fileID: 720580554}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1145,7 +1145,7 @@ RectTransform:
   - {fileID: 624023400}
   - {fileID: 1248673852}
   m_Father: {fileID: 1655812308}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
