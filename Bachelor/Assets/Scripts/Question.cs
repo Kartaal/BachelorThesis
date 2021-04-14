@@ -45,18 +45,11 @@ public class Question : MonoBehaviour, IDeselectHandler
         ResetToggles();
         DisplayDescription();
         DisplayAnswers();
+        DisplayImage();
 
-        if (imageForQuestion != null)
-        {
-            questionImageField.gameObject.SetActive(true);
-            questionImageField.sprite = imageForQuestion;
-        }
-        else
-        {
-            questionImageField.gameObject.SetActive(false);
-        }
-        
     }
+
+   
 
     //Checks whether the currently select toggle (answer) is correct
     public (string,bool) CheckAnswer()
@@ -107,6 +100,19 @@ public class Question : MonoBehaviour, IDeselectHandler
         for (int i = 0; i < answerOptions.Length; i++)
         {
             answerOptionToggles[i].GetComponentInChildren<Text>().text = answerOptions[i];
+        }
+    }
+
+    private void DisplayImage()
+    {
+        if (imageForQuestion != null)
+        {
+            questionImageField.gameObject.SetActive(true);
+            questionImageField.sprite = imageForQuestion;
+        }
+        else
+        {
+            questionImageField.gameObject.SetActive(false);
         }
     }
 
