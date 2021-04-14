@@ -35,6 +35,9 @@ public class Task : MonoBehaviour
     private double taskIntensity = 0.0f;
     private bool complete;
 
+    private double start;
+    private double runDuration;
+
     //fields needed to make the task visual
     private float width;
     private float height;
@@ -97,16 +100,6 @@ public class Task : MonoBehaviour
         rt.localPosition = new Vector2(startX, startY);
     }
 
-
-    // Generates a task with random work,release and deadlines. Using bounded randomness.
-    /*public Task()
-    {
-        var rnd = new Random();
-        workT = rnd.Next(wrkMin, wrkMax);
-        releaseT = rnd.Next(relMin, relMax);
-        deadlineT = rnd.Next((releaseT + 1), dedMax);
-    }*/
-
     /* Creates a task with predefined variables. 
        WARNING: It is possible to enter invalid tasks. USE WITH CAUTION.
        Work is double, but parameter is integer, this is fine. 
@@ -137,6 +130,8 @@ public class Task : MonoBehaviour
     public float GetWidth() { return width; }
     public float GetHeight() { return height; }
     public bool GetScheduled() { return scheduled; }
+    public double GetStart() { return start; }
+    public double GetDuration() { return runDuration; }
 
     /*Setters*/
     public void SetId(int newId) { id = newId; }
@@ -146,6 +141,8 @@ public class Task : MonoBehaviour
     public void SetRelease(int newRelease) { releaseT = newRelease; }
     public void SetIntensity(double newIntensity) { taskIntensity = newIntensity; }
     public void SetScheduled(bool newSche) { scheduled = newSche; }
+    public void SetStart(double newStart) { start = newStart; }
+    public void SetDuration(double newDuration) { runDuration = newDuration; }
 
     /* 
      * Takes the remaining amount of time that can be used to work (between 0 and 1)

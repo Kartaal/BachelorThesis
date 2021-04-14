@@ -271,6 +271,9 @@ public class GraphManager : MonoBehaviour
 
         List<TaskData> taskDataList = state.GetTaskDatas();
 
+        double prevFinish = 0;
+        bool prevScheduled;
+
         // Update information in individual tasks...
         foreach (Task t in tasks)
         {
@@ -285,6 +288,10 @@ public class GraphManager : MonoBehaviour
                     t.SetWork(td.GetWrk());
                     t.SetIntensity(td.GetIntensity());
                     t.SetScheduled(td.GetScheduled());
+                    t.SetStart(td.GetStart());
+                    t.SetDuration(td.GetDuration());
+
+                    //prevFinish = 0;
                 }
             }
 
