@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,10 @@ public class DIYManager : MonoBehaviour
 {
     [SerializeField]
     private AlgoManager algoManager;
+    [SerializeField]
+    private TextMeshProUGUI explanationText;
+    [SerializeField]
+    private TextMeshProUGUI overviewText;
 
     private GraphStateHandler gsh;
 
@@ -30,6 +35,7 @@ public class DIYManager : MonoBehaviour
     {
         gsh = algoManager.GetComponent<GraphStateHandler>();
         allTaskFromUserInput = transform.parent.Find("GraphContainer").Find("OutputContainer").GetComponentsInChildren<Task>().ToList<Task>();
+        overviewText.text = $"Iteration {currentIteration} | Step {currentStep}";
     }
 
     public void CheckUserAnswer()
@@ -42,7 +48,8 @@ public class DIYManager : MonoBehaviour
         {
             if (CompareMaxIntensityInterval())
             {
-                Debug.Log("You did everything correct! Nice job, time for next step, what do you do now?");
+                explanationText.text = "You edited both the maximum intensity interval and tasks correctly, good job. Time for next step, what should you do now?";
+
                 if (currentStep == 3)
                 {
                     currentStep = 1;
@@ -52,10 +59,19 @@ public class DIYManager : MonoBehaviour
                 {
                     currentStep++;
                 }
+                overviewText.text = $"Iteration {currentIteration} | Step {currentStep}";
+
+                foreach (Task t in allTaskFromUserInput)
+                {
+                    if (t.GetScheduled())
+                    {
+                        t.GetComponent<Button>().interactable = false;
+                    }
+                }
             }
             else
             {
-                Debug.Log("You set all the tasks correctly, are you sure about the max interval?");
+                explanationText.text = "You edited all the tasks correctly, are you sure about the maximum intensity interval?";
             }
 
         }
@@ -63,11 +79,11 @@ public class DIYManager : MonoBehaviour
         {
             if (CompareMaxIntensityInterval())
             {
-                Debug.Log("did the max interval correctly, but you should check the tasks, not all are correct");
+                explanationText.text = "You edited the maximum intensity interval correctly, but you should check the tasks, not all of them are correct";
             }
             else
             {
-                Debug.Log("You should check both the tasks and the max interval, non is correct");
+                explanationText.text = "You should check both the tasks and the maximum intensity interval. They have not been edited correctly";
             }
         }
 
