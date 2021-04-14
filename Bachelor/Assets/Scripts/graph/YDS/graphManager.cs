@@ -271,9 +271,6 @@ public class GraphManager : MonoBehaviour
 
         List<TaskData> taskDataList = state.GetTaskDatas();
 
-        double prevFinish = 0;
-        bool prevScheduled;
-
         // Update information in individual tasks...
         foreach (Task t in tasks)
         {
@@ -290,6 +287,7 @@ public class GraphManager : MonoBehaviour
                     t.SetScheduled(td.GetScheduled());
                     t.SetStart(td.GetStart());
                     t.SetDuration(td.GetDuration());
+
                     // Updates the Dimensions of the Task
                     t.SetDimensionsOfTask();
                     t.SetPosition();
@@ -307,6 +305,7 @@ public class GraphManager : MonoBehaviour
     private void PositionScheduledTasks(GraphState state)
     {
         List<IntervalData> intervals = state.GetSchedule().GetIntervals();
+        List<int> ids = new List<int>();
 
         foreach (IntervalData id in intervals)
         {
@@ -315,12 +314,18 @@ public class GraphManager : MonoBehaviour
 
             foreach (Task t in id.GetTasks())
             {
-                
-                t.SetScheduledDimensionsOfTask();
-                t.SetScheduledPosition(prevFinish);
+                if(t.GetScheduled())
+                {
+                    t.SetScheduledDimensionsOfTask();
+                    t.SetScheduledPosition(prevFinish);
 
-                prevFinish += t.GetDuration();
+                    prevFinish += t.GetDuration();
+
+                    ids.Add(t.GetId());
+                }
             }
+
+            ids.Clear();
         }
     }
 
