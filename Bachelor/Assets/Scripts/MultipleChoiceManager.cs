@@ -31,8 +31,6 @@ public class MultipleChoiceManager : MonoBehaviour
     private bool displayingResults = false;
 
     private GameObject imagesQuestion4;
-    private GameObject imageQuestion7;
-    private GameObject imageQuestion9;
 
 
     // Start is called before the first frame update
@@ -45,9 +43,6 @@ public class MultipleChoiceManager : MonoBehaviour
         answersForQuestions = new (string,bool)[questions.Length];
 
         imagesQuestion4 = transform.parent.Find("Question4Images").gameObject;
-        imageQuestion7 = transform.parent.Find("Question7Image").gameObject;
-        imageQuestion9 = transform.parent.Find("Question9Image").gameObject;
-
 
     }
 
@@ -78,6 +73,7 @@ public class MultipleChoiceManager : MonoBehaviour
     //Method use to print result overview on the overlay
     public void PrintAnswers()
     {
+        imagesQuestion4.SetActive(false);
         // Ensure we don't generate results when they already exist
         if(!displayingResults)
         {
@@ -126,6 +122,7 @@ public class MultipleChoiceManager : MonoBehaviour
     //OnClick method for green button on the result overlay
     public void GoBackToQuestions()
     {
+        DisplayImages();
         resultOverlay.SetActive(false);
         displayingResults = false;
     }
@@ -149,16 +146,8 @@ public class MultipleChoiceManager : MonoBehaviour
             case "Question (4)":
                 imagesQuestion4.SetActive(true);
                 break;
-            case "Question (7)":
-                imageQuestion7.SetActive(true);
-                break;
-            case "Question (9)":
-                imageQuestion9.SetActive(true);
-                break;
             default:
                 imagesQuestion4.SetActive(false);
-                imageQuestion7.SetActive(false);
-                imageQuestion9.SetActive(false);
                 break;
         }
     }
