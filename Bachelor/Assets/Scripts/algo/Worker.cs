@@ -203,7 +203,7 @@ public class Worker : MonoBehaviour
             t.SetScheduled(true);
 
             t.SetStart(t.GetRelease());
-            double duration = t.GetIntensity() / t.GetWork();
+            double duration = t.GetWork() / t.GetIntensity();
             t.SetDuration(duration);
         }
 

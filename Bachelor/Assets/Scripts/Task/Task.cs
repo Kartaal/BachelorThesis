@@ -79,8 +79,18 @@ public class Task : MonoBehaviour
         width = (deadlineT - releaseT) * scaleForDimensions;
         height = (float) taskIntensity * scaleHeight;
         rt.sizeDelta = new Vector2(width, height);
+    }
 
-        //Debug.Log($"Task {id} has width {width} and height {height}. Intensity: {taskIntensity}");
+    // Same as SetDimensionsOfTask() but sets width according to duration instead of deadline
+    public void SetScheduledDimensionsOfTask()
+    {
+        rt = (RectTransform) gameObject.transform;
+        width = (float) runDuration * scaleForDimensions;
+        height = (float) taskIntensity * scaleHeight;
+        rt.sizeDelta = new Vector2(width, height);
+
+        //Debug.Log("&&&&&&&& SCHEDULED DIMENSION &&&&&&&&&&&");
+        //Debug.Log($"Task {id} has duration {runDuration} with intensity {taskIntensity} and workload {workT}");
     }
 
     public void SetPosition()
@@ -98,6 +108,22 @@ public class Task : MonoBehaviour
         }
 
         rt.localPosition = new Vector2(startX, startY);
+    }
+
+    // Same as SetPosition but positions based on parameter and doesn't check for being scheduled
+    public void SetScheduledPosition(double start)
+    {
+        rt = (RectTransform) gameObject.transform;
+    
+        var startX = (float) start * scaleForDimensions;
+
+        float startY = 0f;
+
+        rt.localPosition = new Vector2(startX, startY);
+
+        //Debug.Log("&&&&&&&& SCHEDULED POSITION &&&&&&&&&&&");
+        //Debug.Log($"Task {id} has start {start} and duration {runDuration} with intensity {taskIntensity} and workload {workT}");
+
     }
 
     /* Creates a task with predefined variables. 
