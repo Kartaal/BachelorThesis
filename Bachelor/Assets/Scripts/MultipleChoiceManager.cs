@@ -30,6 +30,10 @@ public class MultipleChoiceManager : MonoBehaviour
     int correctCount = 0;
     private bool displayingResults = false;
 
+    private GameObject imagesQuestion4;
+    private GameObject imageQuestion7;
+    private GameObject imageQuestion9;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +43,11 @@ public class MultipleChoiceManager : MonoBehaviour
         questions[0].DisplayAllQuestionText();
 
         answersForQuestions = new (string,bool)[questions.Length];
+
+        imagesQuestion4 = transform.parent.Find("Question4Images").gameObject;
+        imageQuestion7 = transform.parent.Find("Question7Image").gameObject;
+        imageQuestion9 = transform.parent.Find("Question9Image").gameObject;
+
 
     }
 
@@ -125,11 +134,33 @@ public class MultipleChoiceManager : MonoBehaviour
     public void SetCurrentQuestion(Question newQuestion)
     {
         currentQuestion = newQuestion;
+        DisplayImages();
 
         var answerForToggle = answersForQuestions[Array.IndexOf(questions, currentQuestion)].Item1;
 
         //Needed for keeping user input
         currentQuestion.SetAnswerToggle(answerForToggle);
+    }
+
+    private void DisplayImages()
+    {
+        switch (currentQuestion.name)
+        {
+            case "Question (4)":
+                imagesQuestion4.SetActive(true);
+                break;
+            case "Question (7)":
+                imageQuestion7.SetActive(true);
+                break;
+            case "Question (9)":
+                imageQuestion9.SetActive(true);
+                break;
+            default:
+                imagesQuestion4.SetActive(false);
+                imageQuestion7.SetActive(false);
+                imageQuestion9.SetActive(false);
+                break;
+        }
     }
 
     private void RemoveOldResultTexts()
