@@ -30,6 +30,8 @@ public class MultipleChoiceManager : MonoBehaviour
     int correctCount = 0;
     private bool displayingResults = false;
 
+    private GameObject imagesQuestion4;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,8 @@ public class MultipleChoiceManager : MonoBehaviour
         questions[0].DisplayAllQuestionText();
 
         answersForQuestions = new (string,bool)[questions.Length];
+
+        imagesQuestion4 = transform.parent.Find("Question4Images").gameObject;
 
     }
 
@@ -69,6 +73,7 @@ public class MultipleChoiceManager : MonoBehaviour
     //Method use to print result overview on the overlay
     public void PrintAnswers()
     {
+        imagesQuestion4.SetActive(false);
         // Ensure we don't generate results when they already exist
         if(!displayingResults)
         {
@@ -117,6 +122,7 @@ public class MultipleChoiceManager : MonoBehaviour
     //OnClick method for green button on the result overlay
     public void GoBackToQuestions()
     {
+        DisplayImages();
         resultOverlay.SetActive(false);
         displayingResults = false;
     }
@@ -125,11 +131,25 @@ public class MultipleChoiceManager : MonoBehaviour
     public void SetCurrentQuestion(Question newQuestion)
     {
         currentQuestion = newQuestion;
+        DisplayImages();
 
         var answerForToggle = answersForQuestions[Array.IndexOf(questions, currentQuestion)].Item1;
 
         //Needed for keeping user input
         currentQuestion.SetAnswerToggle(answerForToggle);
+    }
+
+    private void DisplayImages()
+    {
+        switch (currentQuestion.name)
+        {
+            case "Question (4)":
+                imagesQuestion4.SetActive(true);
+                break;
+            default:
+                imagesQuestion4.SetActive(false);
+                break;
+        }
     }
 
     private void RemoveOldResultTexts()

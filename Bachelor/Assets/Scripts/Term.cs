@@ -12,22 +12,26 @@ public class Term : MonoBehaviour
     [Multiline]
     string description = "";
     // Start is called before the first frame update
+    [SerializeField]
+    GameObject imgContainer;
+
+    [SerializeField]
+    private int termImageID;
+
+    private TermImageManager TIM;
     void Start()
     {
         descriptionText.enabled = false;
+        TIM = gameObject.transform.parent.parent.Find("Images").GetComponent<TermImageManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void DisplayDescription()
     {
         descriptionText.text = description;
         Debug.Log("Display description for term");
         descriptionText.enabled = true;
+        TIM.ActivateImage(termImageID); // Call to TIM to make image (if applicable) appear or dissapear.
     }
 
     /*This is not needed since each term just updates its own description text
@@ -37,4 +41,5 @@ public class Term : MonoBehaviour
         Debug.Log("Deselected");
         //descriptionText.enabled = false;
     }*/
+
 }
