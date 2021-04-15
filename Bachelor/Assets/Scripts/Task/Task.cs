@@ -17,7 +17,6 @@ public class Task : MonoBehaviour
     private const float scaleForDimensions = 100f;
     [SerializeField]
     private const float scaleHeight = 25f;
-
     private const float positionHeight = 15f;
     private const float positionHeightFactor = 3f;
 
@@ -50,17 +49,11 @@ public class Task : MonoBehaviour
         //DEBUG();
     }
 
-    private void DEBUG(){
+    private void DEBUG()
+    {
         Debug.Log($"Task {id} has run Start()");
         Debug.Log("width = " + rt.rect.width);
         Debug.Log("height = " + rt.rect.height);
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //this.gameObject.GetComponent<tooltip>().UpdateToolTipInformation();
     }
 
     /* Method for setting the dimensions of the visual task. Right now it only sets them when it starts, 
@@ -117,18 +110,6 @@ public class Task : MonoBehaviour
         rt.localPosition = new Vector2(startX, startY);
     }
 
-    /* Creates a task with predefined variables. 
-       WARNING: It is possible to enter invalid tasks. USE WITH CAUTION.
-       Work is double, but parameter is integer, this is fine. 
-     */
-    public Task(int w, int r, int d)
-    {
-        workT = w;
-        releaseT = r;
-        deadlineT = d;
-        CalcIntensity();
-    }
-
     public void CalcIntensity()
     {
         double duration = deadlineT - releaseT;
@@ -137,7 +118,6 @@ public class Task : MonoBehaviour
 
 
     /*Getters*/
-    public int GetRelMin() { return relMin; }
     public int GetId() { return id; }
     public double GetWork() { return workT; }
     public int GetRelease() { return releaseT; }
