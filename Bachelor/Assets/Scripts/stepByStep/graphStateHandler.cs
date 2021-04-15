@@ -20,6 +20,11 @@ public class GraphStateHandler : MonoBehaviour
         return histogram.Count;
     }
 
+    public int GetIterationCount()
+    {
+        return GetStatesCount() / 3;
+    }
+
     public static void SaveState(List<Task> tl, Schedule s, IntervalData intDat)
     {
         // saves the result of the graphState asfter step 1 -OR- 2 -OR- 3
@@ -98,5 +103,12 @@ public class GraphStateHandler : MonoBehaviour
         }
 
         return result;
+    }
+
+    // Method to setup GSH on a new scene (to avoid states persisting across scenes)
+    public void InitGSH()
+    {
+        histogram.Clear();
+        lastKnownSchedule = new Schedule();
     }
 }

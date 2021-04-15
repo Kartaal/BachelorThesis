@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
+using TMPro;
 
 public class ResourceReader : MonoBehaviour
 {
@@ -30,7 +31,6 @@ public class ResourceReader : MonoBehaviour
 
     // isolated method for reading first token of line.
     private void TokenReader(string s){
-        Debug.Log(s);
         switch(s[0]){
 
             case '%':
@@ -40,7 +40,8 @@ public class ResourceReader : MonoBehaviour
                 var newResource = Instantiate(entryPrefab, new Vector2(0,0) , Quaternion.identity);
                 // Set parent of current entry 
                 newResource.transform.SetParent(scrollPane.transform);
-                newResource.GetComponent<Text>().text = resourceInfo;
+                //newResource.GetComponent<Text>().text = resourceInfo;
+                newResource.GetComponent<TextMeshProUGUI>().SetText(resourceInfo);
                 resourceInfo = "";
                 
                 break;
