@@ -20,6 +20,8 @@ public class DIYManager : MonoBehaviour
     private int currentIteration = 1;
 
     private List<Task> allTaskFromUserInput;
+    private Slider maxIntervalUserLEFT;
+    private Slider maxIntervalUserRIGHT;
     private int maxIntervalUserInputSTART;
     private int maxIntervalUserInputEND;
 
@@ -31,11 +33,18 @@ public class DIYManager : MonoBehaviour
 
 
    
-    void Start()
+    IEnumerator Start()
     {
         gsh = algoManager.GetComponent<GraphStateHandler>();
         allTaskFromUserInput = transform.parent.Find("GraphContainer").Find("OutputContainer").GetComponentsInChildren<Task>().ToList<Task>();
         overviewText.text = $"Iteration {currentIteration} | Step {currentStep}";
+
+        maxIntervalUserLEFT = transform.parent.Find("LeftBar").GetComponent<Slider>();
+        maxIntervalUserRIGHT = transform.parent.Find("RightBar").GetComponent<Slider>();
+
+        yield return new WaitForSeconds(1.01f);
+        maxIntervalUserLEFT.value = 0;
+        maxIntervalUserRIGHT.value = 0;
     }
 
     public void CheckUserAnswer()
@@ -44,50 +53,55 @@ public class DIYManager : MonoBehaviour
 
         var countOfCorrectTasks = 0;
 
-        if (CompareTasks(ref countOfCorrectTasks))
+        if (CompareTasks(ref countOfCorrectTasks) && CompareMaxIntensityInterval())
         {
-            if (CompareMaxIntensityInterval())
-            {
-                explanationText.text = "You edited both the maximum intensity interval and tasks correctly, good job. Time for next step, what should you do now?";
+            explanationText.text = "You edited both the maximum intensity interval and tasks correctly, good job. Time for next step, what should you do now?";
 
-                if (currentStep == 3)
-                {
-                    currentStep = 1;
-                    currentIteration = currentIteration + 1;
-                }
-                else
-                {
-                    currentStep++;
-                }
-                overviewText.text = $"Iteration {currentIteration} | Step {currentStep}";
+            CalcNextGraphState();
 
-                foreach (Task t in allTaskFromUserInput)
-                {
-                    if (t.GetScheduled())
-                    {
-                        t.GetComponent<Button>().interactable = false;
-                    }
-                }
-            }
-            else
-            {
-                explanationText.text = "You edited all the tasks correctly, are you sure about the maximum intensity interval?";
-            }
+            overviewText.text = $"Iteration {currentIteration} | Step {currentStep}";
 
+            DisableScheduledTasks();
+        }
+        else if (CompareTasks(ref countOfCorrectTasks) && !CompareMaxIntensityInterval())
+        {
+            explanationText.text = "You edited all the tasks correctly, are you sure about the maximum intensity interval?";
+        }
+        else if (!CompareTasks(ref countOfCorrectTasks) && CompareMaxIntensityInterval())
+        {
+            explanationText.text = "You edited the maximum intensity interval correctly, but you should check the tasks, not all of them are correct";
         }
         else
         {
-            if (CompareMaxIntensityInterval())
-            {
-                explanationText.text = "You edited the maximum intensity interval correctly, but you should check the tasks, not all of them are correct";
-            }
-            else
-            {
-                explanationText.text = "You should check both the tasks and the maximum intensity interval. They have not been edited correctly";
-            }
+            explanationText.text = "You should check both the tasks and the maximum intensity interval. They have not been edited correctly";
         }
 
 
+
+    }
+
+    private void DisableScheduledTasks()
+    {
+        foreach (Task t in allTaskFromUserInput)
+        {
+            if (t.GetScheduled())
+            {
+                t.GetComponent<Button>().interactable = false;
+            }
+        }
+    }
+
+    private void CalcNextGraphState()
+    {
+        if (currentStep == 3 && currentIteration != gsh.GetIterationCount())
+        {
+            currentStep = 1;
+            currentIteration = currentIteration + 1;
+        }
+        else if (currentStep != 3)
+        {
+            currentStep++;
+        }
     }
 
     private void SetupDataToCompare()
@@ -100,8 +114,8 @@ public class DIYManager : MonoBehaviour
         maxIntervalFromGraphState = graphStateToCompareTo.GetInterval();
 
         /*Setting up the max intensity interval presumably edited by the user*/
-        maxIntervalUserInputSTART = (int)transform.parent.Find("LeftBar").GetComponent<Slider>().value;
-        maxIntervalUserInputEND = (int)transform.parent.Find("RightBar").GetComponent<Slider>().value;
+        maxIntervalUserInputSTART = (int)maxIntervalUserLEFT.value;
+        maxIntervalUserInputEND = (int)maxIntervalUserRIGHT.value;
     }
 
     private bool CompareMaxIntensityInterval()

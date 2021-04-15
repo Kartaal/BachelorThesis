@@ -72,7 +72,7 @@ public class TaskInput : MonoBehaviour
     //Method for updating the task and it's position when it has been edited
     private void UpdateTask()
     {
-        task.CalcIntensity();
+        
         task.SetDimensionsOfTask();
         task.SetPosition();
         RepositionInputField();
@@ -121,7 +121,10 @@ public class TaskInput : MonoBehaviour
         {
             int result = Int32.Parse(arg0);
             task.SetRelease(result);
+
+            task.CalcIntensity();
             UpdateTask();
+           
         }
         catch (FormatException)
         {
@@ -135,8 +138,9 @@ public class TaskInput : MonoBehaviour
         try
         {
             int result = Int32.Parse(arg0);
-
             task.SetDeadline(result);
+
+            task.CalcIntensity();
             UpdateTask();
         }
         catch (FormatException)
@@ -153,6 +157,8 @@ public class TaskInput : MonoBehaviour
             int result = Int32.Parse(arg0);
 
             task.SetWork(result);
+
+            task.CalcIntensity();
             UpdateTask();
         }
         catch (FormatException)
@@ -163,7 +169,6 @@ public class TaskInput : MonoBehaviour
 
     private void SubmitIntensity(string arg0)
     {
-
         try
         {
             double result = Convert.ToDouble(arg0);
