@@ -20,10 +20,6 @@ public class Task : MonoBehaviour
 
     private const float positionHeight = 15f;
     private const float positionHeightFactor = 3f;
-    /*
-    //needed to make task visual
-    private const float taskHeight = 50f;
-    */
 
     [SerializeField]
     private int id;
@@ -75,7 +71,7 @@ public class Task : MonoBehaviour
      */
     public void SetDimensionsOfTask()
     {
-        Debug.Log("Running unscheduled dimensions");
+        Debug.Log($"Task {id} running unscheduled dimensions");
         rt = (RectTransform) gameObject.transform;
         width = (deadlineT - releaseT) * scaleForDimensions;
         height = (float) taskIntensity * scaleHeight;
@@ -85,16 +81,11 @@ public class Task : MonoBehaviour
     // Same as SetDimensionsOfTask() but sets width according to duration instead of deadline
     public void SetScheduledDimensionsOfTask()
     {
-        Debug.Log("Running scheduled dimensions");
+        //Debug.Log($"Task {id} running scheduled dimensions");
         rt = (RectTransform) gameObject.transform;
         width = (float) runDuration * scaleForDimensions;
         height = (float) taskIntensity * scaleHeight;
         rt.sizeDelta = new Vector2(width, height);
-        Debug.Log($"sizeDelta: {rt.sizeDelta}");
-        
-
-        //Debug.Log("&&&&&&&& SCHEDULED DIMENSION &&&&&&&&&&&");
-        //Debug.Log($"Task {id} has duration {runDuration} with intensity {taskIntensity} and workload {workT}");
     }
 
     public void SetPosition()
@@ -124,10 +115,6 @@ public class Task : MonoBehaviour
         float startY = 0f;
 
         rt.localPosition = new Vector2(startX, startY);
-
-        //Debug.Log("&&&&&&&& SCHEDULED POSITION &&&&&&&&&&&");
-        //Debug.Log($"Task {id} has start {start} and duration {runDuration} with intensity {taskIntensity} and workload {workT}");
-
     }
 
     /* Creates a task with predefined variables. 
