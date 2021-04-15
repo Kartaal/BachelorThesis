@@ -107,6 +107,8 @@ public class TaskInput : MonoBehaviour
             double duration = t.GetWork() / t.GetIntensity();
             t.SetDuration(duration);
 
+            Debug.Log($"Task {t.GetId()}");
+
             if(t.GetScheduled())
             {
                 Debug.Log($"Task id {t.GetId()} has start {t.GetStart()} and duration {t.GetDuration()}");
@@ -238,6 +240,7 @@ public class TaskInput : MonoBehaviour
 
     public void SubmitScheduled(bool value)
     {
+        Debug.Log("Running onvaluechanged");
         task.SetScheduled(value);
         if(task.GetScheduled())
         {

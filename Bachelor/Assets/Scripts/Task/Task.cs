@@ -90,6 +90,8 @@ public class Task : MonoBehaviour
         width = (float) runDuration * scaleForDimensions;
         height = (float) taskIntensity * scaleHeight;
         rt.sizeDelta = new Vector2(width, height);
+        Debug.Log($"sizeDelta: {rt.sizeDelta}");
+        
 
         //Debug.Log("&&&&&&&& SCHEDULED DIMENSION &&&&&&&&&&&");
         //Debug.Log($"Task {id} has duration {runDuration} with intensity {taskIntensity} and workload {workT}");
