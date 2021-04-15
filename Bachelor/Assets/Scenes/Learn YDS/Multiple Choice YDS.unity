@@ -5886,7 +5886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: answerOptions.Array.data[3]
-      value: The priority of the task
+      value: The workload of the task
       objectReference: {fileID: 0}
     - target: {fileID: 515532199217518680, guid: 6fc05910b63064ef8ae6cec768986a0a,
         type: 3}
