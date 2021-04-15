@@ -75,6 +75,7 @@ public class Task : MonoBehaviour
      */
     public void SetDimensionsOfTask()
     {
+        Debug.Log("Running unscheduled dimensions");
         rt = (RectTransform) gameObject.transform;
         width = (deadlineT - releaseT) * scaleForDimensions;
         height = (float) taskIntensity * scaleHeight;
@@ -84,6 +85,7 @@ public class Task : MonoBehaviour
     // Same as SetDimensionsOfTask() but sets width according to duration instead of deadline
     public void SetScheduledDimensionsOfTask()
     {
+        Debug.Log("Running scheduled dimensions");
         rt = (RectTransform) gameObject.transform;
         width = (float) runDuration * scaleForDimensions;
         height = (float) taskIntensity * scaleHeight;

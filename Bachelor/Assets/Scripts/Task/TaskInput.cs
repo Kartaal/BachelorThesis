@@ -14,6 +14,11 @@ public class TaskInput : MonoBehaviour
     private Toggle scheduleToggle;
     private Task task;
 
+    // For correct graph representation
+    private Slider maxIntervalUserLEFT;
+    private Slider maxIntervalUserRIGHT;
+    private List<Task> allTasks = new List<Task>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +26,17 @@ public class TaskInput : MonoBehaviour
         input = inputBox.GetComponentsInChildren<InputField>();
         scheduleToggle = inputBox.GetComponentInChildren<Toggle>();
 
+        maxIntervalUserLEFT = transform.parent.parent.parent.parent.Find("LeftBar").GetComponent<Slider>();
+        maxIntervalUserRIGHT = transform.parent.parent.parent.parent.Find("RightBar").GetComponent<Slider>();
+
+        // Ugly mess for making correct graph
+        Transform container = transform.parent;
+
+        foreach (Transform t in container)
+        {
+            Task task = t.GetComponent<Task>();
+            allTasks.Add(task);
+        }
     }
 
     //Method for displaying the input field on click
@@ -72,9 +88,47 @@ public class TaskInput : MonoBehaviour
     //Method for updating the task and it's position when it has been edited
     private void UpdateTask()
     {
-        
         task.SetDimensionsOfTask();
         task.SetPosition();
+        RepositionInputField();
+    }
+
+    // Same as UpdateTask() but for scheduled tasks
+    private void UpdateScheduledTask()
+    {
+        List<Task> intervalTasks = GetIntervalTasks();
+        // Start task positioning from start of interval
+        double prevFinish = maxIntervalUserLEFT.value;
+
+        foreach (Task t in intervalTasks)
+        {
+            // Set start and duration, these are not set because.... something something YDS step 2 not run on these??
+            t.SetStart(t.GetRelease());
+            double duration = t.GetWork() / t.GetIntensity();
+            t.SetDuration(duration);
+
+            if(t.GetScheduled())
+            {
+                Debug.Log($"Task id {t.GetId()} has start {t.GetStart()} and duration {t.GetDuration()}");
+                t.SetScheduledDimensionsOfTask();
+
+                // Ensure scheduled task does not start before its release
+                if(prevFinish < t.GetRelease())
+                {
+                    prevFinish = t.GetRelease();
+                }
+
+                t.SetScheduledPosition(prevFinish);
+
+                prevFinish += t.GetDuration();
+            }
+            else
+            {
+                task.SetDimensionsOfTask();
+                task.SetPosition();
+            }
+        }
+        
         RepositionInputField();
     }
 
@@ -185,7 +239,31 @@ public class TaskInput : MonoBehaviour
     public void SubmitScheduled(bool value)
     {
         task.SetScheduled(value);
-        UpdateTask();
+        if(task.GetScheduled())
+        {
+            UpdateScheduledTask();
+        }
+        else
+        {
+            UpdateTask();
+        }
+        
+    }
+
+
+    private List<Task> GetIntervalTasks()
+    {
+        List<Task> intervalTasks = new List<Task>();
+        foreach (Task t in allTasks)
+        {
+            // Add task only if it is contained in the interval
+            if(t.GetRelease() >= maxIntervalUserLEFT.value && t.GetDeadline() <= maxIntervalUserRIGHT.value)
+            {
+                intervalTasks.Add(t);
+            }
+        }
+
+        return intervalTasks;
     }
 
 

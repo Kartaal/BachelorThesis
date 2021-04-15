@@ -308,7 +308,6 @@ public class GraphManager : MonoBehaviour
     private void PositionScheduledTasks(GraphState state)
     {
         List<IntervalData> intervals = state.GetSchedule().GetIntervals();
-        List<int> ids = new List<int>();
 
         foreach (IntervalData id in intervals)
         {
@@ -323,12 +322,8 @@ public class GraphManager : MonoBehaviour
                     t.SetScheduledPosition(prevFinish);
 
                     prevFinish += t.GetDuration();
-
-                    ids.Add(t.GetId());
                 }
             }
-
-            ids.Clear();
         }
     }
 
