@@ -50,7 +50,6 @@ public class DIYManager : MonoBehaviour
     public void CheckUserAnswer()
     {
         SetupDataToCompare();
-        Debug.Log("Iteration of the graph state: " + gsh.GetIterationCount());
 
         var countOfCorrectTasks = 0;
 

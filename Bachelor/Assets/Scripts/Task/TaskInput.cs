@@ -169,7 +169,6 @@ public class TaskInput : MonoBehaviour
 
     private void SubmitIntensity(string arg0)
     {
-        Debug.Log("trying to submit intensity: " + arg0);
         try
         {
             double result = Convert.ToDouble(arg0);
