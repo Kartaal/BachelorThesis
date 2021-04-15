@@ -12,6 +12,8 @@ public class Question : MonoBehaviour, IDeselectHandler
     private string[] answerOptions = new string[4];
     [SerializeField]
     private int corretAnswerIndex = -1; //What is the index of string answer in the answerOptions
+    [SerializeField]
+    private Sprite imageForQuestion;
 
     [SerializeField]
     private string question = ""; //The actual question
@@ -19,6 +21,8 @@ public class Question : MonoBehaviour, IDeselectHandler
     Text descriptionText;
     [SerializeField]
     Text questionTitle;
+    [SerializeField]
+    Image questionImageField;
 
 
     [SerializeField]
@@ -41,7 +45,11 @@ public class Question : MonoBehaviour, IDeselectHandler
         ResetToggles();
         DisplayDescription();
         DisplayAnswers();
+        DisplayImage();
+
     }
+
+   
 
     //Checks whether the currently select toggle (answer) is correct
     public (string,bool) CheckAnswer()
@@ -92,6 +100,19 @@ public class Question : MonoBehaviour, IDeselectHandler
         for (int i = 0; i < answerOptions.Length; i++)
         {
             answerOptionToggles[i].GetComponentInChildren<Text>().text = answerOptions[i];
+        }
+    }
+
+    private void DisplayImage()
+    {
+        if (imageForQuestion != null)
+        {
+            questionImageField.gameObject.SetActive(true);
+            questionImageField.sprite = imageForQuestion;
+        }
+        else
+        {
+            questionImageField.gameObject.SetActive(false);
         }
     }
 
