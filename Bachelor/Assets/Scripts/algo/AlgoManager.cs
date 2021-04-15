@@ -92,7 +92,6 @@ public class AlgoManager : MonoBehaviour
         */
     }
 
-    // Uses the Locked walkthrough tasks currently. FIX THIS!!!
     public void GenerateDIYYDSTasks()
     {
         // Make lists of task (releases, deadlines, works)
