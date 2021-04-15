@@ -144,7 +144,7 @@ public class Task : MonoBehaviour
     public void SetDeadline(int newDeadline) { deadlineT = newDeadline; }
     public void SetWork(double newWorkload) { workT = newWorkload; }
     public void SetRelease(int newRelease) { releaseT = newRelease; }
-    public void SetIntensity(double newIntensity) { taskIntensity = newIntensity; }
+    public void SetIntensity(double newIntensity) { Debug.Log("Setting intensity of task: " + newIntensity); taskIntensity = newIntensity; }
     public void SetScheduled(bool newSche) { scheduled = newSche; }
 
     /* 
