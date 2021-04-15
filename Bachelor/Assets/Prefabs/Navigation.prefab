@@ -132,12 +132,45 @@ PrefabInstance:
     m_TransformParent: {fileID: 5954153525488751483}
     m_Modifications:
     - target: {fileID: 6412394445606106, guid: d6b12275fb353c840886442b8a4df3d5, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.5254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412394445606106, guid: d6b12275fb353c840886442b8a4df3d5, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.5254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412394445606106, guid: d6b12275fb353c840886442b8a4df3d5, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.54901963
+      objectReference: {fileID: 0}
+    - target: {fileID: 6412394445606106, guid: d6b12275fb353c840886442b8a4df3d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadNextScene
       objectReference: {fileID: 0}
     - target: {fileID: 6412394445606106, guid: d6b12275fb353c840886442b8a4df3d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068583999164349513, guid: d6b12275fb353c840886442b8a4df3d5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5d95ad146ed394acf9d1bb0153a52d94,
+        type: 3}
+    - target: {fileID: 1068583999164349513, guid: d6b12275fb353c840886442b8a4df3d5,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.11764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068583999164349513, guid: d6b12275fb353c840886442b8a4df3d5,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.54509807
+      objectReference: {fileID: 0}
+    - target: {fileID: 1068583999164349513, guid: d6b12275fb353c840886442b8a4df3d5,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.62352943
       objectReference: {fileID: 0}
     - target: {fileID: 2175081355280684998, guid: d6b12275fb353c840886442b8a4df3d5,
         type: 3}
@@ -373,6 +406,42 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930990820427698828, guid: f57d40f2af68de4418c412dad4bb4789,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c739aa3c1f55a4367961ac69f95c651a,
+        type: 3}
+    - target: {fileID: 3930990820427698828, guid: f57d40f2af68de4418c412dad4bb4789,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.11764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930990820427698828, guid: f57d40f2af68de4418c412dad4bb4789,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.54509807
+      objectReference: {fileID: 0}
+    - target: {fileID: 3930990820427698828, guid: f57d40f2af68de4418c412dad4bb4789,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.62352943
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837018896382496878, guid: f57d40f2af68de4418c412dad4bb4789,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.5254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837018896382496878, guid: f57d40f2af68de4418c412dad4bb4789,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.5254902
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837018896382496878, guid: f57d40f2af68de4418c412dad4bb4789,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.54901963
       objectReference: {fileID: 0}
     - target: {fileID: 7837018896382496878, guid: f57d40f2af68de4418c412dad4bb4789,
         type: 3}

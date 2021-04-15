@@ -17,9 +17,12 @@ MonoBehaviour:
   - Doggos
   - 42
   - Everything
+  corretAnswerIndex: -1
+  imageForQuestion: {fileID: 0}
   question: What is the meaning of life?
-  answerIndex: -1
   descriptionText: {fileID: 0}
+  questionTitle: {fileID: 0}
+  questionImageField: {fileID: 0}
   answers: {fileID: 0}
 --- !u!1001 &2911970231033851795
 PrefabInstance:
@@ -140,18 +143,68 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
         type: 3}
+      propertyPath: m_Colors.m_NormalColor.a
+      value: 0.49019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
+        type: 3}
       propertyPath: m_Colors.m_NormalColor.b
-      value: 0.5176471
+      value: 0.21960784
       objectReference: {fileID: 0}
     - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.g
-      value: 0.5176471
+      value: 0.13333334
       objectReference: {fileID: 0}
     - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.r
-      value: 0.5176471
+      value: 0.16862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0.21960784
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.13333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
+        type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.16862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0.21960784
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0.13333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 0.16862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.16078432
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.09803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
+        type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.1254902
       objectReference: {fileID: 0}
     - target: {fileID: 3408922221340145610, guid: 87ee9728facc64405a4034d8ce526e41,
         type: 3}

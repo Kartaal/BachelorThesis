@@ -90,18 +90,18 @@ public class MultipleChoiceManager : MonoBehaviour
                 // If answer is correct...
                 if (answersForQuestions[i].Item2)
                 {
-                    textGO.GetComponent<Text>().text = "The answer for question " + (i+1) +  " is : " + answersForQuestions[i].Item1 + "\n      The answer is CORRECT";
+                    textGO.GetComponent<Text>().text = "<color=#2B2238>The answer for question " + (i+1) +  " is : " + answersForQuestions[i].Item1 + "\n      The answer is CORRECT</color>";
                     correctCount++;
                 }
                 else // If answer is false...
                 {
                     if (answersForQuestions[i].Item1 != null)
                     {
-                        textGO.GetComponent<Text>().text = "The answer for question " + (i + 1) + " is : " + answersForQuestions[i].Item1 + "\n      The answer is WRONG";
+                        textGO.GetComponent<Text>().text = "<color=#2B2238>The answer for question " + (i + 1) + " is : " + answersForQuestions[i].Item1 + "\n      The answer is WRONG</color>";
                     }
                     else // If no answer was given
                     { 
-                        textGO.GetComponent<Text>().text = "No answer given for question " + (i + 1); 
+                        textGO.GetComponent<Text>().text = "<color=#2B2238>No answer given for question " + (i + 1) +"</color>"; 
                     }
                     
                 }
