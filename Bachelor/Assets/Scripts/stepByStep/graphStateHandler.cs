@@ -104,4 +104,11 @@ public class GraphStateHandler : MonoBehaviour
 
         return result;
     }
+
+    // Method to setup GSH on a new scene (to avoid states persisting across scenes)
+    public void InitGSH()
+    {
+        histogram.Clear();
+        lastKnownSchedule = new Schedule();
+    }
 }
