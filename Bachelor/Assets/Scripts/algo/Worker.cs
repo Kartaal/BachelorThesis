@@ -193,8 +193,6 @@ public class Worker : MonoBehaviour
 
         maxIntensityInterval.SetTasks(SelecSortList(maxIntensityInterval.GetTasks()));
 
-        TasksAndScheduledDebugOutput(tasks, maxIntensityInterval.GetTasks());
-
         //Adding max intensity interval and the scheduled tasks to the final Schedule
         schedule.AddInterval(maxIntensityInterval);
 
@@ -203,6 +201,10 @@ public class Worker : MonoBehaviour
         {
             t.SetIntensity(maxIntensityInterval.GetIntensity());
             t.SetScheduled(true);
+
+            t.SetStart(t.GetRelease());
+            double duration = t.GetWork() / t.GetIntensity();
+            t.SetDuration(duration);
         }
 
         //------------------------
@@ -219,8 +221,6 @@ public class Worker : MonoBehaviour
         {
             tasks.Remove(t);
         }
-
-        AllTasksDebugOutput(tasks);
 
         //Running through non-scheduled tasks to update deadline and release
         foreach (Task t in tasks)

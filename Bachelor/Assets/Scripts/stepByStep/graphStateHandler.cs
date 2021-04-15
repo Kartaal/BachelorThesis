@@ -47,7 +47,7 @@ public class GraphStateHandler : MonoBehaviour
         var res = new List<TaskData>(); // Prepares a list of TaskData, This is used for retracing to a previous stage.
         foreach(Task t in tl)
         {
-            res.Add(new TaskData(t.GetRelease(), t.GetDeadline(), t.GetWork(), t.GetId(), t.GetIntensity(), t.GetScheduled()));
+            res.Add(new TaskData(t.GetRelease(), t.GetDeadline(), t.GetWork(), t.GetId(), t.GetIntensity(), t.GetScheduled(), t.GetStart(), t.GetDuration()));
         }
 
         result.SetTaskData(res); // Saves the TaskData List.

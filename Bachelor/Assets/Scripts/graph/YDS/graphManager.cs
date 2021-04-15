@@ -288,16 +288,43 @@ public class GraphManager : MonoBehaviour
                     t.SetWork(td.GetWrk());
                     t.SetIntensity(td.GetIntensity());
                     t.SetScheduled(td.GetScheduled());
+                    t.SetStart(td.GetStart());
+                    t.SetDuration(td.GetDuration());
+
+                    // Updates the Dimensions of the Task
+                    t.SetDimensionsOfTask();
+                    t.SetPosition();
                 }
             }
 
-            // Updates the Dimensions of the Task.
-            t.SetDimensionsOfTask();
-            t.SetPosition();
         }
+
+        PositionScheduledTasks(state);
 
         IntervalData stepMII = state.GetInterval();
         miiTool.IntervalDataToVisual(stepMII);   
+    }
+
+    private void PositionScheduledTasks(GraphState state)
+    {
+        List<IntervalData> intervals = state.GetSchedule().GetIntervals();
+
+        foreach (IntervalData id in intervals)
+        {
+            // Start task positioning from start of interval
+            double prevFinish = id.GetStartInt();
+
+            foreach (Task t in id.GetTasks())
+            {
+                if(t.GetScheduled())
+                {
+                    t.SetScheduledDimensionsOfTask();
+                    t.SetScheduledPosition(prevFinish);
+
+                    prevFinish += t.GetDuration();
+                }
+            }
+        }
     }
 
     // A reset for stepping through the algorithm

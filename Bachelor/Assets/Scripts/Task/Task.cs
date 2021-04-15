@@ -17,13 +17,8 @@ public class Task : MonoBehaviour
     private const float scaleForDimensions = 100f;
     [SerializeField]
     private const float scaleHeight = 25f;
-
     private const float positionHeight = 15f;
     private const float positionHeightFactor = 3f;
-    /*
-    //needed to make task visual
-    private const float taskHeight = 50f;
-    */
 
     [SerializeField]
     private int id;
@@ -34,6 +29,9 @@ public class Task : MonoBehaviour
     [SerializeField]
     private double taskIntensity = 0.0f;
     private bool complete;
+
+    private double start;
+    private double runDuration;
 
     //fields needed to make the task visual
     private float width;
@@ -51,17 +49,11 @@ public class Task : MonoBehaviour
         //DEBUG();
     }
 
-    private void DEBUG(){
+    private void DEBUG()
+    {
         Debug.Log($"Task {id} has run Start()");
         Debug.Log("width = " + rt.rect.width);
         Debug.Log("height = " + rt.rect.height);
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //this.gameObject.GetComponent<tooltip>().UpdateToolTipInformation();
     }
 
     /* Method for setting the dimensions of the visual task. Right now it only sets them when it starts, 
@@ -72,12 +64,21 @@ public class Task : MonoBehaviour
      */
     public void SetDimensionsOfTask()
     {
+        Debug.Log($"Task {id} running unscheduled dimensions");
         rt = (RectTransform) gameObject.transform;
         width = (deadlineT - releaseT) * scaleForDimensions;
         height = (float) taskIntensity * scaleHeight;
         rt.sizeDelta = new Vector2(width, height);
+    }
 
-        //Debug.Log($"Task {id} has width {width} and height {height}. Intensity: {taskIntensity}");
+    // Same as SetDimensionsOfTask() but sets width according to duration instead of deadline
+    public void SetScheduledDimensionsOfTask()
+    {
+        //Debug.Log($"Task {id} running scheduled dimensions");
+        rt = (RectTransform) gameObject.transform;
+        width = (float) runDuration * scaleForDimensions;
+        height = (float) taskIntensity * scaleHeight;
+        rt.sizeDelta = new Vector2(width, height);
     }
 
     public void SetPosition()
@@ -97,26 +98,16 @@ public class Task : MonoBehaviour
         rt.localPosition = new Vector2(startX, startY);
     }
 
-
-    // Generates a task with random work,release and deadlines. Using bounded randomness.
-    /*public Task()
+    // Same as SetPosition but positions based on parameter and doesn't check for being scheduled
+    public void SetScheduledPosition(double start)
     {
-        var rnd = new Random();
-        workT = rnd.Next(wrkMin, wrkMax);
-        releaseT = rnd.Next(relMin, relMax);
-        deadlineT = rnd.Next((releaseT + 1), dedMax);
-    }*/
+        rt = (RectTransform) gameObject.transform;
+    
+        var startX = (float) start * scaleForDimensions;
 
-    /* Creates a task with predefined variables. 
-       WARNING: It is possible to enter invalid tasks. USE WITH CAUTION.
-       Work is double, but parameter is integer, this is fine. 
-     */
-    public Task(int w, int r, int d)
-    {
-        workT = w;
-        releaseT = r;
-        deadlineT = d;
-        CalcIntensity();
+        float startY = 0f;
+
+        rt.localPosition = new Vector2(startX, startY);
     }
 
     public void CalcIntensity()
@@ -127,7 +118,6 @@ public class Task : MonoBehaviour
 
 
     /*Getters*/
-    public int GetRelMin() { return relMin; }
     public int GetId() { return id; }
     public double GetWork() { return workT; }
     public int GetRelease() { return releaseT; }
@@ -137,6 +127,8 @@ public class Task : MonoBehaviour
     public float GetWidth() { return width; }
     public float GetHeight() { return height; }
     public bool GetScheduled() { return scheduled; }
+    public double GetStart() { return start; }
+    public double GetDuration() { return runDuration; }
 
     /*Setters*/
     public void SetId(int newId) { id = newId; }
@@ -146,6 +138,8 @@ public class Task : MonoBehaviour
     public void SetRelease(int newRelease) { releaseT = newRelease; }
     public void SetIntensity(double newIntensity) { taskIntensity = newIntensity; }
     public void SetScheduled(bool newSche) { scheduled = newSche; }
+    public void SetStart(double newStart) { start = newStart; }
+    public void SetDuration(double newDuration) { runDuration = newDuration; }
 
     /* 
      * Takes the remaining amount of time that can be used to work (between 0 and 1)
