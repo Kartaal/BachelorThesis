@@ -41,6 +41,11 @@ public class GraphManager : MonoBehaviour
     {
         worker = algoManager.GetComponent<Worker>();
 
+        gsh = algoManager.GetComponent<GraphStateHandler>();
+
+        // Needed to ensure graph output states aren't persisted between scenes somehow
+        gsh.InitGSH();
+
         //Run task generation based on Scene index
         switch(SceneManager.GetActiveScene().buildIndex)
         {
@@ -62,8 +67,6 @@ public class GraphManager : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Start()
     {
-
-        gsh = algoManager.GetComponent<GraphStateHandler>();
 
         colr = new Color32[] 
             {
