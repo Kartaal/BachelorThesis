@@ -5936,111 +5936,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 293763435}
     m_Modifications:
-    - target: {fileID: 1178724895, guid: 90cd0cf8ba2cf41e899e7d6c909983c3, type: 3}
-      propertyPath: descriptionText
-      value: 
-      objectReference: {fileID: 514142363}
-    - target: {fileID: 6243207742139494345, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: description
-      value: Speed is equal to the intensity of a given interval.
-      objectReference: {fileID: 0}
-    - target: {fileID: 6243207742139494345, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: descriptionText
-      value: 
-      objectReference: {fileID: 514142363}
-    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: description
-      value: The CPU speed at a given point in time. Additionally, it denotes the
-        intensity of a given interval.
-      objectReference: {fileID: 0}
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 514142363}
-    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_Colors.m_NormalColor.a
-      value: 0.49019608
-      objectReference: {fileID: 0}
-    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_Colors.m_NormalColor.b
-      value: 0.21960784
-      objectReference: {fileID: 0}
-    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_Colors.m_NormalColor.g
-      value: 0.13333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_Colors.m_NormalColor.r
-      value: 0.16862746
-      objectReference: {fileID: 0}
-    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_Colors.m_PressedColor.b
-      value: 0.21960784
-      objectReference: {fileID: 0}
-    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_Colors.m_PressedColor.g
-      value: 0.13333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_Colors.m_PressedColor.r
-      value: 0.16862746
-      objectReference: {fileID: 0}
-    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 0.21960784
-      objectReference: {fileID: 0}
-    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 0.13333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 0.16862746
-      objectReference: {fileID: 0}
-    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 0.16037738
-      objectReference: {fileID: 0}
-    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0.09910112
-      objectReference: {fileID: 0}
-    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 0.12416869
-      objectReference: {fileID: 0}
-    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6243207743960596060}
-    - target: {fileID: 8785037362504315420, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DisplayDescription
-      objectReference: {fileID: 0}
-    - target: {fileID: 8785037362504315421, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-        type: 3}
-      propertyPath: m_Text
-      value: Speed
-      objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315422, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Name
@@ -6153,15 +6053,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90cd0cf8ba2cf41e899e7d6c909983c3, type: 3}
---- !u!114 &6243207743960596060 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
-    type: 3}
-  m_PrefabInstance: {fileID: 6243207743960596059}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eecb3cee99d5d44f98f7b3a1c533827d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
