@@ -107,11 +107,11 @@ public class TaskInput : MonoBehaviour
             double duration = t.GetWork() / t.GetIntensity();
             t.SetDuration(duration);
 
-            Debug.Log($"Task {t.GetId()}");
+            //Debug.Log($"Task {t.GetId()}");
 
             if(t.GetScheduled())
             {
-                Debug.Log($"Task id {t.GetId()} has start {t.GetStart()} and duration {t.GetDuration()}");
+                //Debug.Log($"Task id {t.GetId()} has start {t.GetStart()} and duration {t.GetDuration()}");
                 t.SetScheduledDimensionsOfTask();
 
                 // Ensure scheduled task does not start before its release
@@ -126,8 +126,8 @@ public class TaskInput : MonoBehaviour
             }
             else
             {
-                task.SetDimensionsOfTask();
-                task.SetPosition();
+                t.SetDimensionsOfTask();
+                t.SetPosition();
             }
         }
         
@@ -179,7 +179,14 @@ public class TaskInput : MonoBehaviour
             task.SetRelease(result);
 
             task.CalcIntensity();
-            UpdateTask();
+            if(task.GetScheduled())
+            {
+                UpdateScheduledTask();
+            }
+            else
+            {
+                UpdateTask();
+            }
            
         }
         catch (FormatException)
@@ -197,7 +204,14 @@ public class TaskInput : MonoBehaviour
             task.SetDeadline(result);
 
             task.CalcIntensity();
-            UpdateTask();
+            if(task.GetScheduled())
+            {
+                UpdateScheduledTask();
+            }
+            else
+            {
+                UpdateTask();
+            }
         }
         catch (FormatException)
         {
@@ -215,7 +229,14 @@ public class TaskInput : MonoBehaviour
             task.SetWork(result);
 
             task.CalcIntensity();
-            UpdateTask();
+            if(task.GetScheduled())
+            {
+                UpdateScheduledTask();
+            }
+            else
+            {
+                UpdateTask();
+            }
         }
         catch (FormatException)
         {
@@ -230,7 +251,14 @@ public class TaskInput : MonoBehaviour
             double result = Convert.ToDouble(arg0);
 
             task.SetIntensity(result);
-            UpdateTask();
+            if(task.GetScheduled())
+            {
+                UpdateScheduledTask();
+            }
+            else
+            {
+                UpdateTask();
+            }
         }
         catch (FormatException)
         {
