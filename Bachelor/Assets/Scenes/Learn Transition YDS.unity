@@ -366,11 +366,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The following sections are structured as follows: First, you will be introduced
-    to terminology that will be used throughout the application. Then you will be
-    shown a visual representation of the steps in the YDS algorithm. This is followed
-    by a quiz and culminates in an exercise where you get a proper feel for the algorithm,
-    as you get to manually execute each step.'
+  m_text: "The following sections are structured as follows: \n\n - An introduction
+    to terminology that will be used throughout the application.\n - A visual representation
+    of the steps in the YDS algorithm.\n - A multiple choice quiz. \n - An exercise
+    where you get a proper feel for the algorithm, as you get to manually execute
+    each step. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281868843
   m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -397,14 +397,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 48
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -587,13 +587,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "To implement speed scaling, various algorithms have been developed. The
-    simplest of these is an offline algorithm called YDS.\n\nIn the model used by
-    YDS, tasks have a release, a deadline and a workload and there is only a single
-    core which can run at speed 0 and above.\n\nYDS is an energy optimal algorithm
+    simplest of these is an offline algorithm called YDS. It was developed by Frances
+    Yao, Alan Demers and Scott Shenker. % CHANGED\n\nYDS is an energy optimal algorithm
     and works by scheduling tasks in intervals such that all work in the interval
     is done exactly by the end of the interval.\nA more precise explanation is given
     on the next screen. \nYou will be learning the YDS algorithm step by step in
-    the following sections."
+    the following sections.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -602,7 +601,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281868843
   m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -620,14 +619,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -950,14 +949,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'One way to alleviate the problem of energy usage is speed scaling. Dynamically
     changing the CPU speed so that tasks are performed in time but at a lower speed.
-    Additionally, since a CPU core can only work on a single task at a time, scheduling
-    tasks for ordering and speed is a part of speed scaling.
+    Additionally, since a CPU core can only work on a single task at a time, ordering
+    tasks for scheduling is a part of speed scaling.
 
 
-    The cube-root
-    rule tells us that running at slower speeds significantly decreases the amount
-    of energy used, since the energy function is polynomial. This makes speed scaling
-    an effective way to optimise the amount of work done for the energy available.'
+    The cube-root rule tells
+    us that running at slower speeds significantly decreases the power used, since
+    the energy function is polynomial. This makes speed scaling an effective way
+    to optimise the amount of work done for the energy used.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -966,7 +965,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281868843
   m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -984,14 +983,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1090,17 +1089,23 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Energy consumed can be measured as a function of the speed of the CPU.
-    This energy function is defined as E(s) = s<sup>\u03B1</sup> where \u03B1 is
-    above 1. If it was equal to 1, energy consumed would be linear to the speed and
-    tasks would always be completed for the same amount of energy regardless of how
-    quickly this happens. If \u03B1 was below 1, more energy would be generated by
-    running at higher speeds.\n\nCurrent hardware has a generalised rule for the
-    energy function called the cube-root rule. In simple terms, this rule states
-    that \u03B1 is equal to 3, so E(s) = s<sup>3</sup>. This means that running at
-    speed s = 3, the energy consumed is 3<sup>3</sup> = 27 but running at speed s
-    = 4, energy consumed is 4<sup>3</sup> = 64. A slight increase in speed means
-    a significant increase in power consumed!"
+  m_text: "In the model used here, there is only a single core which can run at any
+    speed 0 or higher. The CPU is the only thing that consumes energy, so energy
+    loss to heating wires, cooling the system, spinning a hard disk and more are
+    not included.\n\nEnergy consumed over time can be measured as a function of the
+    speed of the CPU. Energy over time is called power and the function to calculate
+    power for a given speed is defined as P(s) = s<sup>\u03B1</sup> where \u03B1
+    is above 1. If \u03B1 was equal to 1, energy consumed would be linear to the
+    speed and tasks would always be completed for the same amount of energy regardless
+    of how quickly this happens. If \u03B1 was below 1, more energy would be generated
+    by running at higher speeds.\nIn reality \u03B1 will always be a value above
+    1, so working faster will always mean using more power for the same amount of
+    work.\n\nCurrent hardware has a generalised rule for the energy function called
+    the cube-root rule. In simple terms, this rule states that \u03B1 is equal to
+    3, so P(s) = s<sup>3</sup>. This means that running at speed s = 3, the energy
+    consumed is 3<sup>3</sup> = 27 but running at speed s = 4, energy consumed is
+    4<sup>3</sup> = 64. \n\nA slight increase in speed means a significant increase
+    in power consumed."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1109,7 +1114,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281868843
   m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1127,15 +1132,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1790,17 +1795,17 @@ PrefabInstance:
     - target: {fileID: 8788165821711481491, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
       propertyPath: m_text
-      value: 'Various systems make use of cloud services or data centres. This means
-        there are a lot of computers that do a lot of work and require power to function.
-        It would be trivial to use less power for computing but just using less power
-        means working slower. We''re dependent on the performance being good, so
-        simply reducing power usage is not a good solution.
-
-
-
-        Luckily, there
-        are various ways to optimise the energy spent for completing the work without
-        significantly losing performance.'
+      value: "Various systems make use of cloud services or data centres. This means
+        there are a lot of computers that do a lot of work and require energy to
+        function. It would be possible to use less power by working slower, but many
+        systems depend on a good performance, so this simple solution is not viable.
+        \n\nLuckily, there are various ways to optimise the energy spent for completing
+        the work without significantly losing performance."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8788165821711481491, guid: c0ad54477f1a1824183c41441d35f87c,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8788165821711481491, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
@@ -1819,6 +1824,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8788165821711481491, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8788165821711481491, guid: c0ad54477f1a1824183c41441d35f87c,
+        type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4281868843
       objectReference: {fileID: 0}
@@ -1830,7 +1840,12 @@ PrefabInstance:
     - target: {fileID: 8788165821711481491, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
       propertyPath: m_HorizontalAlignment
-      value: 2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8788165821711481493, guid: c0ad54477f1a1824183c41441d35f87c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8788165822296258745, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
