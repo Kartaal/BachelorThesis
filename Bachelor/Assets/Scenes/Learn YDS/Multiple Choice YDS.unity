@@ -1252,7 +1252,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: answerOptions.Array.data[1]
-      value: Removes the time interval from the instance
+      value: Change release times and deadlines of tasks intersecting the maximum
+        intensity interval
       objectReference: {fileID: 0}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: answerOptions.Array.data[2]
@@ -6310,7 +6311,7 @@ PrefabInstance:
       objectReference: {fileID: 1145728632}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: question
-      value: What are the four primary attributes of a Task?
+      value: What are the four primary attributes of a task?
       objectReference: {fileID: 0}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: answerIndex
