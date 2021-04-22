@@ -311,7 +311,7 @@ PrefabInstance:
     - target: {fileID: 8785037362504315421, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Text
-      value: Time in this context
+      value: Time
       objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315422, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
@@ -894,6 +894,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Term (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 8785037362504315422, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8785037362504315423, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1104,14 +1109,13 @@ PrefabInstance:
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: description
-      value: 'The intensity of an interval is the minimum average speed at which
-        the tasks within the interval need to be run to ensure their completion by
-        their deadlines. That is, the intensity of a given interval is the sum of
-        the workload of all the tasks with release and deadline within the interval,
-        divided by the length of the interval. In mathematical notation: w(t1, t2)/(t2-t1).
-
-        The
-        intensity is denoted I(t1, t2).'
+      value: "Intensity is amount of work done per unit of time.\nThe intensity of
+        an interval is calculated as the sum of work of all tasks in the interval
+        divided by the duration of the interval.\nIn mathematical notation: w(t1,
+        t2)/(t2-t1) where w(t1, t2) is the amount of work from time t1 to time t2.\n   
+        \n It is used to calculate the maximum intensity interval for YDS and this
+        value is used as the speed when scheduling a task in the interval.\n For
+        illustrative purposes, the intensity of a task is the height of that task."
       objectReference: {fileID: 0}
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
@@ -1709,8 +1713,10 @@ PrefabInstance:
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: description
-      value: An interval is the time between a time t1 and a time tn, where tn is
-        larger than t1. Intervals are denoted as [t1, tn].
+      value: "An interval is the time between a time t1 and a time tn, where tn is
+        larger than t1. Intervals are denoted as [t1, tn].\n    \nAn interval can
+        contain tasks. This happens when a task has release time between t1 and tn
+        and the task also has deadline between t1 and tn."
       objectReference: {fileID: 0}
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
@@ -2046,8 +2052,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -409, y: -424.5}
-  m_SizeDelta: {x: 700, y: 345}
+  m_AnchoredPosition: {x: -463, y: -430}
+  m_SizeDelta: {x: 587.9019, y: 289.7516}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &968856684
 MonoBehaviour:
@@ -2364,8 +2370,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -545, y: -379}
-  m_SizeDelta: {x: 800, y: 300}
+  m_AnchoredPosition: {x: -593.6, y: -472}
+  m_SizeDelta: {x: 702.7579, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1298671224
 MonoBehaviour:
@@ -2916,12 +2922,13 @@ PrefabInstance:
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: description
-      value: "Competitiveness is used to compare offline and online algorithms. \nAn
-        online algorithm (referred to as ALG) is compared to an optimal offline algorithm
-        (referred to as OPT) that knows the entire future and can compute an optimal
-        solution. The online algorithm ALG is called c-competitive if, for every
-        input, ALG is at most c times worse than OPT. For an example from our context,
-        if ALG is 3-competitive, it uses at most three times as much energy as OPT."
+      value: "Competitiveness is used to compare offline and online algorithms. \n   
+        \nAn online algorithm (here referred to as ALG) is compared to an optimal
+        offline algorithm (here referred to as OPT) that knows the entire future
+        and can compute an optimal solution. The online algorithm ALG is called c-competitive
+        if, for every input, ALG is at most c times worse than OPT.\n    \nFor an
+        example from our context, if ALG is 3-competitive, it uses at most three
+        times as much energy as OPT."
       objectReference: {fileID: 0}
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
@@ -3185,12 +3192,13 @@ PrefabInstance:
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: description
-      value: The maximum intensity interval is the time interval which has the highest
-        intensity in a given iteration of the YDS algorithm. The maximum intensity
-        interval is found by first listing all valid intervals, that is, all pairs
-        of release times and deadlines from all possible tasks, such that the release
-        time precedes the deadline. Then the intensity for each interval is calculated,
-        and any interval maximizing this value is a maximum intensity interval.
+      value: "The maximum intensity interval is the time interval which has the highest
+        intensity in a given iteration of the YDS algorithm. \n    \nThe maximum
+        intensity interval is found by first listing all valid intervals, that is,
+        all pairs of release times and deadlines from all possible tasks, such that
+        the release time precedes the deadline. Then the intensity for each interval
+        is calculated, and any interval maximizing this value is a maximum intensity
+        interval."
       objectReference: {fileID: 0}
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
@@ -3794,8 +3802,8 @@ PrefabInstance:
       propertyPath: description
       value: An offline algorithm has full access to its entire input at runtime.
         In the context of scheduling, this means that all tasks from release of the
-        first to deadline of the last are known before the algorithm is run. As such,
-        an offline algorithm in this context can make an optimal schedule.
+        first task to deadline of the last task are known before the algorithm is
+        run. As such, an offline algorithm in this context can make an optimal schedule.
       objectReference: {fileID: 0}
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
@@ -4058,11 +4066,11 @@ PrefabInstance:
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: description
-      value: For an online algorithm, the input is only revealed progressively at
-        runtime. In the context of scheduling, this means more specifically that
-        tasks become known to the algorithm when their release time is reached. In
-        this context, an online algorithm cannot predict future work, and may therefore
-        not create an optimal schedule, but it can be competitive with offline algorithms.
+      value: "For an online algorithm, the input is only revealed progressively at
+        runtime. \n    \nIn the context of scheduling, this means more specifically
+        that tasks become known to the algorithm when their release time is reached.
+        Since an online algorithm cannot predict future work, and therefore cannot
+        create an optimal schedule, but it can be competitive with offline algorithms."
       objectReference: {fileID: 0}
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
@@ -4867,8 +4875,8 @@ PrefabInstance:
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: description
-      value: A schedule in this context is a sequence of tasks where each task should
-        be run at a specified speed.
+      value: ' A schedule in this context is a sequence of tasks where each task
+        should be run at a specified speed.'
       objectReference: {fileID: 0}
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
@@ -5147,9 +5155,13 @@ PrefabInstance:
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: description
-      value: 'A task is a job which a CPU needs to execute. A task has three elements:
-        release time, deadline and workload. For illustrative purposes, we also show
-        an id and the intensity of each task.'
+      value: "A task is a job which a CPU needs to execute. A task has three elements:
+        release time, deadline and workload. \n    When a task has a certain release
+        and deadline, it does not necessarily mean that it works from release to
+        deadline. It just means it can be worked at any given time between release
+        and deadline.\n    A task can be scheduled or not scheduled. If it is scheduled,
+        it has been assigned a speed for execution.\n    \n    For illustrative purposes,
+        the unique id and the intensity of each task are also shown."
       objectReference: {fileID: 0}
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
@@ -5951,6 +5963,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 293763435}
     m_Modifications:
+    - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
+        type: 3}
+      propertyPath: description
+      value: The CPU speed at a given point in time.
+      objectReference: {fileID: 0}
     - target: {fileID: 8031614811733665619, guid: 90cd0cf8ba2cf41e899e7d6c909983c3,
         type: 3}
       propertyPath: descriptionText
