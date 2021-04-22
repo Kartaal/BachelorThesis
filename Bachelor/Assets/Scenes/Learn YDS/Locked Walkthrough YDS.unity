@@ -514,7 +514,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Prev Step
+  m_Text: Prev step
 --- !u!222 &341954733
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -792,10 +792,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "To the right you can see 2 graphs.\nThe upper graph indicates the input
-    and this will remain as is while running the algorithm. \nThe lower graph indicates
-    the current state of YDS as well as the current maximum intensity interval. \n\nWhen
-    you click the \"Next step\" or \"Reset algorithm\" buttons it changes accordingly."
+  m_text: "To the right you can see 2 graphs.\nThe upper graph indicates the input.
+    This won't change while running the algorithm. \nThe lower graph indicates the
+    current state of the YDS algorithm as well as the current maximum intensity interval.
+    \nWhen you click the \"Prev step\", \"Reset algorithm\" or \"Next step\" buttons,
+    the graph changes accordingly. \n\nIf you move your cursor onto the different
+    tasks, you will see a tooltip with detailed information about the task. The height
+    of a task is that task's intensity chosen such that the area of the task is equal
+    to the workload."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -804,7 +808,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281868843
   m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -880,8 +884,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 686.4}
-  m_SizeDelta: {x: 509.6963, y: 507.91113}
+  m_AnchoredPosition: {x: 300, y: 657.4}
+  m_SizeDelta: {x: 509.6963, y: 565.9391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &387508802
 GameObject:
@@ -909,141 +913,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387508802}
   m_CullTransparentMesh: 0
---- !u!222 &417594212
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417594215}
-  m_CullTransparentMesh: 0
---- !u!114 &417594213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417594215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: "Please click the right arrow at the top of the screen to continue to the
-    next section of the system: the multiple choice quiz. \nIt is a short quiz meant
-    to test what you have learned about speed scaling and YDS."
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 1
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!224 &417594214
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417594215}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2050860933}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 686.4}
-  m_SizeDelta: {x: 509.6963, y: 507.91113}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &417594215
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 417594214}
-  - component: {fileID: 417594212}
-  - component: {fileID: 417594213}
-  m_Layer: 5
-  m_Name: MultiChoiceText (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &423880868
 GameObject:
   m_ObjectHideFlags: 0
@@ -1636,8 +1505,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 686.4}
-  m_SizeDelta: {x: 509.6963, y: 507.91113}
+  m_AnchoredPosition: {x: 300, y: 657.4}
+  m_SizeDelta: {x: 509.6963, y: 565.9391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &658532805
 GameObject:
@@ -1684,15 +1553,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Now we have done all 3 steps of YDS but we still have unscheduled tasks.
-
-    We''re
-    done with 1 iteration but we''re not done running YDS. The steps will be repeated
-    in iterations.
+  m_text: 'Please click the right arrow at the top of the screen to continue to the
+    next section of the system: the multiple choice quiz.
 
 
-    Please click the "Next step" button to see the first step
-    of the next iteration.'
+    It is a short quiz
+    meant to test what you have learned about speed scaling and YDS.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1701,7 +1567,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281868843
   m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1915,13 +1781,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tasks can be run for the duration from their release to their deadline
-    however the graph doesn't show when they are actually running. This means we
-    can get overlaps as can be seen in the green area. This also means that the area
-    of tasks that overlap don't correctly correspond to their workload any longer.
-    \n\nThe first task is complete at some point in the overlapping area and the
-    second task will start running immediately afterwards. \n\nPlease click the \"Next
-    step\" button."
+  m_text: "Let's see what happened to the graph.\nThe red task was shortened, by
+    pushing its release to the end of the interval.\n\nNow we have completed all
+    3 steps in the first iteration of YDS, but we still have unscheduled tasks. We're
+    done with the first iteration but we're not done running YDS. \nThe steps will
+    be repeated in iterations until no more tasks need scheduling.\n\nPlease click
+    the \"Next step\" button to see the first step of the next iteration."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1930,7 +1795,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281868843
   m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2006,8 +1871,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 686.4}
-  m_SizeDelta: {x: 509.6963, y: 507.91113}
+  m_AnchoredPosition: {x: 300, y: 657.4}
+  m_SizeDelta: {x: 509.6963, y: 565.9391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &748664997
 GameObject:
@@ -2369,8 +2234,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 686.4}
-  m_SizeDelta: {x: 509.6963, y: 507.91113}
+  m_AnchoredPosition: {x: 300, y: 657.4}
+  m_SizeDelta: {x: 509.6963, y: 565.9391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1040594853
 GameObject:
@@ -2417,12 +2282,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Two of the tasks have jumped down to the x-axis. Their heights also changed.\nYDS
-    has scheduled the tasks to be run in the interval. \n\nScheduled tasks are moved
-    down to the x-axis to differentiate them from unscheduled tasks. \nThe tasks
-    have the same height because they have the same intensity, they must be run at
-    the same speed. This is because they're in the same interval and means that scheduled
-    intervals can be seen as a rectangle of tasks with equal heights."
+  m_text: "Now we're in the third step in the first iteration of YDS. \n\nIn the
+    third step, we identify tasks that overlap with the maximum intensity interval
+    but are not contained within it. These tasks are updated and the scheduled tasks
+    are removed. \n\nUpdating tasks means putting their release or deadline to the
+    end or start of the maximum intensity interval, respectively, as the CPU is busy
+    working during that period of time and can only work on one task at a time. \nRemoving
+    a task means not keeping track of it further. It is scheduled, there is nothing
+    more we have to do with it, and so it is removed from the tasks that still require
+    scheduling."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2431,7 +2299,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281868843
   m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2508,7 +2376,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &1058120805
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2536,12 +2404,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Let''s see what happened to the graph.
-
-
-    The red task was shortened,
-    by pushing its release to the end of the interval. As explained, this is because
-    this task cannot be executed while the CPU is busy as it will be during the interval.'
+  m_text: "The reason YDS is optimal is that no task can be run at a lower or higher
+    speed than the speed it has been scheduled with.\n\nIf a task is run at a lower
+    speed, it would mean tasks not completing before the last deadline. If a task
+    was run with a lower speed than the scheduled one, it would have to run for longer
+    and break the interval's bounds. On the other hand, if a task is run with a higher
+    speed than scheduled, it could leave a gap between tasks, meaning there would
+    be wasted time. This wasted time could instead be filled by running the task
+    at a lower speed which would use less energy overall. \nThis is because the power
+    function is polynomial so a lower speed would also mean less energy consumed
+    on the same amount of work. \n\nRecall the cube-root rule and how running with
+    a speed of 3 meant a power consumption of 9 but running with a speed of 4 meant
+    a power consumption of 64."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2550,7 +2424,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281868843
   m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2626,8 +2500,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 686.4}
-  m_SizeDelta: {x: 509.6963, y: 507.91113}
+  m_AnchoredPosition: {x: 300, y: 657.4}
+  m_SizeDelta: {x: 509.6963, y: 565.9391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1080098436
 CanvasRenderer:
@@ -2656,19 +2530,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Now we''re in the third step in the first iteration of YDS.
-
-
-    In the
-    third step, tasks that overlap but aren''t contained in the interval are updated
-    and the scheduled tasks are removed. Updating tasks means putting their release
-    or deadline to the end or start of the interval, respectively, as the CPU is
-    busy working during that period of time.
-
-
-    Removing a task means not keeping
-    track of it further. It is scheduled, there is nothing more we have to do with
-    it and so it is removed from the tasks we''re scheduling.'
+  m_text: "Now we're back to the first step, but in the second iteration. \n\nThe
+    tasks we scheduled before are still scheduled and the red task still has the
+    updated release time. \n\nSince the last maximum intensity interval was removed,
+    and this might have caused updates in the release and deadline times, we can't
+    simply reuse the old intervals to find the next maximum intensity interval. Therefore,
+    the entirety of the first step is done again with the remaining tasks. \n\nFrom
+    this point, you should try to go through the algorithm step by step and try to
+    anticipate what will happen during each step as you go.\n When all the tasks
+    are scheduled, the algorithm is complete."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2677,7 +2547,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281868843
   m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -2753,8 +2623,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 686.4}
-  m_SizeDelta: {x: 509.6963, y: 507.91113}
+  m_AnchoredPosition: {x: 300, y: 657.4}
+  m_SizeDelta: {x: 509.6963, y: 565.9391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1080098439
 GameObject:
@@ -3165,21 +3035,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Right now it shows the very first step in the first iteration of YDS.
-
-
-    The
-    first thing that YDS does is find a maximum intensity interval. This is done
-    by finding all valid intervals that can be made from any 2 release and deadline
-    values and calculating the intensity of each interval. An interval is valid if
-    its start is before its end.
-
-    An interval that has the highest intensity
-    is a maximum intensity interval and the chosen interval is indicated by the red
-    bars.
-
-
-    Please click the "Next step" button.'
+  m_text: "Now we're in the second step in the first iteration of YDS. \n\nIn the
+    second step, YDS schedules the tasks in the maximum intensity interval to be
+    run. \nThe scheduled tasks are ordered by earliest deadline first and work is
+    done on one task until it is complete before starting on the next task. This
+    guarantees that all tasks will be complete before their deadlines.\n\nLet us
+    look at the graph.\n\nTwo of the tasks have jumped down to the x-axis. They are
+    now positioned and sized such that they have the actual duration which they will
+    be run for with the scheduled speed and their workload. They are also ordered
+    by earliest deadline first and if you compare with the upper graph, you will
+    see that they are run within the release and deadline bounds. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3188,7 +3053,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281868843
   m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3264,158 +3129,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 686.4}
-  m_SizeDelta: {x: 509.6963, y: 507.91113}
+  m_AnchoredPosition: {x: 300, y: 657.4}
+  m_SizeDelta: {x: 509.6963, y: 565.9391}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1493995722
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1493995765}
-  m_CullTransparentMesh: 0
---- !u!114 &1493995723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1493995765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 'Now we''re back to the first step but in the second iteration. The tasks
-    we scheduled before are still scheduled and the red task still has the updated
-    release time.
-
-
-    Since the last maximum intensity interval was removed and
-    tasks could have had releases and deadlines update, we have can''t simply reuse
-    the old intervals to find the next maximum intensity interval. Therefore, the
-    entirety of the first step is done again with the remaining tasks.
-
-
-    From
-    this point, you should try to go through the algorithm step by step and try to
-    anticipate what will happen during each step as you go.
-
-    When all the tasks
-    are scheduled the algorithm is complete.'
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4281868843
-  m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 1
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!224 &1493995764
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1493995765}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2050860933}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 686.4}
-  m_SizeDelta: {x: 509.6963, y: 507.91113}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1493995765
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1493995764}
-  - component: {fileID: 1493995722}
-  - component: {fileID: 1493995723}
-  m_Layer: 5
-  m_Name: Iter2Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!4 &1559598711 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 673992881739328182, guid: c0ad54477f1a1824183c41441d35f87c,
@@ -3441,14 +3157,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "If you move your cursor onto the different tasks, you will see a tooltip
-    with detailed information about the task. \n\nTo visualise the tasks, they have
-    been given an intensity. In reality tasks get scheduled with a speed. This speed
-    is equal to the intensity of the interval it belongs to.\nFor visualisation purposes
-    the tasks have been given a start intensity, even though they have not been scheduled
-    yet. The reason for this being the tasks having intensity as its height, so if
-    intensity is set to zero, it would not be visible. \nThe start intensity is calculated
-    as the work of the task divided by its duration."
+  m_text: "This shows the very first step in the first iteration of YDS.\n\nThe algorithm
+    first finds a maximum intensity interval. This is done by finding all valid intervals
+    that can be made from the combination of a release and deadline time and calculating
+    the intensity of each interval. An interval is valid if its start is before its
+    end. \nAn interval that has the highest intensity is a maximum intensity interval
+    and the chosen interval is indicated by the coloured bars. The brown bar is the
+    start of the interval and the green bar is the end of the interval.\n\nPlease
+    click the \"Next step\" button."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3457,7 +3173,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281868843
   m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3533,8 +3249,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 686.4}
-  m_SizeDelta: {x: 509.6963, y: 507.91113}
+  m_AnchoredPosition: {x: 300, y: 657.4}
+  m_SizeDelta: {x: 509.6963, y: 565.9391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1567398194
 GameObject:
@@ -3755,17 +3471,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Now we''re in the second step in the first iteration of YDS.
-
-
-    In
-    the second step, YDS schedules the tasks in the maximum intensity interval to
-    be run. The scheduled tasks are ordered by earliest deadline first otherwise
-    there is a risk of a task reaching its deadline before it can be executed.
-
-
-    Let
-    us look at the graph.'
+  m_text: "YDS has scheduled the tasks to be run in the maximum intensity interval.
+    Scheduled tasks are moved down to the x-axis to differentiate them from unscheduled
+    tasks. \nThe tasks have the same height because they have the same intensity,
+    so they must be run at the same speed. \n\nPlease click the \"Next step\" button."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3774,7 +3483,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281868843
   m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3850,8 +3559,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 686.4}
-  m_SizeDelta: {x: 509.6963, y: 507.91113}
+  m_AnchoredPosition: {x: 300, y: 657.4}
+  m_SizeDelta: {x: 509.6963, y: 565.9391}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1745445677
 GameObject:
@@ -3908,146 +3617,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1915733001
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915733044}
-  m_CullTransparentMesh: 0
---- !u!114 &1915733002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915733044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 'When you have run the algorithm to completion, you should see groups of
-    tasks with the same heights. The start and end of these groups indicate the start
-    and end of the intervals YDS found when it was running.
-
-    This also means
-    that the number of these groups is equal to the number of intervals that YDS
-    found, and the number of iterations. One interval is found for every iteration
-    after all.'
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 1
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!224 &1915733003
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915733044}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2050860933}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 686.4}
-  m_SizeDelta: {x: 509.6963, y: 507.91113}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1915733044
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1915733003}
-  - component: {fileID: 1915733001}
-  - component: {fileID: 1915733002}
-  m_Layer: 5
-  m_Name: CompletionText (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &1970814420
 GameObject:
   m_ObjectHideFlags: 0
@@ -4268,7 +3837,7 @@ PrefabInstance:
     - target: {fileID: 8788165820704200749, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 590
+      value: 540
       objectReference: {fileID: 0}
     - target: {fileID: 8788165821353253586, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
@@ -4299,7 +3868,7 @@ PrefabInstance:
     - target: {fileID: 8788165821398969477, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 590
+      value: 540
       objectReference: {fileID: 0}
     - target: {fileID: 8788165821572788370, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
@@ -4329,7 +3898,7 @@ PrefabInstance:
     - target: {fileID: 8788165821572788373, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 590
+      value: 540
       objectReference: {fileID: 0}
     - target: {fileID: 8788165821711481490, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
@@ -4339,7 +3908,7 @@ PrefabInstance:
     - target: {fileID: 8788165821711481490, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 507.91113
+      value: 565.9391
       objectReference: {fileID: 0}
     - target: {fileID: 8788165821711481490, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
@@ -4349,23 +3918,28 @@ PrefabInstance:
     - target: {fileID: 8788165821711481490, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 686.4
+      value: 657.4
       objectReference: {fileID: 0}
     - target: {fileID: 8788165821711481491, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
       propertyPath: m_text
-      value: 'YDS can be thought of as iterating over 3 distinct steps in its execution.
+      value: 'YDS repeats three distinct steps in its execution.
 
 
-        The
-        first step finds a maximum intensity interval and its intensity, the second
-        step schedules the tasks within the interval to be run with a speed equal
-        to the interval''s intensity and the third step updates overlapping tasks
-        and removes the scheduled tasks. This will be covered in more detail a bit
-        later.
+        - The
+        first step finds a maximum intensity interval and its intensity.
+
+        -
+        The second step schedules the tasks within the interval to be run with a
+        speed equal to the interval''s intensity.
+
+        - The third step updates
+        overlapping tasks and removes the scheduled tasks. This will be covered in
+        more detail a bit later.
 
 
-        YDS stops when there are no more tasks that need to be scheduled.'
+        YDS stops when there are no more tasks
+        that need to be scheduled.'
       objectReference: {fileID: 0}
     - target: {fileID: 8788165821711481491, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
@@ -4400,134 +3974,10 @@ PrefabInstance:
     - target: {fileID: 8788165821711481493, guid: c0ad54477f1a1824183c41441d35f87c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0ad54477f1a1824183c41441d35f87c, type: 3}
---- !u!1 &2543288132854396771
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9015881866470230672}
-  - component: {fileID: 4747036669107302938}
-  - component: {fileID: 4297442963635496620}
-  m_Layer: 5
-  m_Name: OptimalityText (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &4297442963635496620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2543288132854396771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: 'The reason YDS is optimal is that no task can be run at a lower or higher
-    speed than the speed it has been scheduled with.
-
-
-    If a task is run at a
-    lower speed, it would mean tasks not completing before the last deadline. If
-    a task was run with a lower speed than the scheduled one, it would have to run
-    for longer and break the interval''s bounds.
-
-    On the other hand if a task
-    is run with a higher speed than scheduled, it could leave a gap between tasks,
-    meaning there would be wasted time.
-
-    This wasted time could instead be filled
-    by running the task at a lower speed which would use less energy overall.
-
-    This
-    is because the energy function is polynomial so a lower speed would also mean
-    less energy consumed on the same amount of work.'
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 0.16862746, g: 0.13333334, b: 0.21960784, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 22
-  m_fontSizeBase: 22
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 1
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &4332135497926931059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5382,30 +4832,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a80d36eedd85e5245818c3fe0a8f18e5, type: 3}
---- !u!222 &4747036669107302938
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2543288132854396771}
-  m_CullTransparentMesh: 0
---- !u!224 &9015881866470230672
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2543288132854396771}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2050860933}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 686.4}
-  m_SizeDelta: {x: 509.6963, y: 507.91113}
-  m_Pivot: {x: 0.5, y: 0.5}
