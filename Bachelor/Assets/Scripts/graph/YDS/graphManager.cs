@@ -88,9 +88,6 @@ public class GraphManager : MonoBehaviour
         var inputTaskContainerTransform = gameObject.transform.parent.Find("InputContainer").transform.Find("InputTaskContainer");
         var taskContainerTransform = gameObject.transform.parent.Find("OutputContainer").transform.Find("TaskContainer");
 
-        Debug.Log(inputTaskContainerTransform);
-        Debug.Log(taskContainerTransform);
-
         List<Task> inputTasks = new List<Task>();
 
         foreach( Transform taskTransform in taskContainerTransform ){
@@ -174,12 +171,10 @@ public class GraphManager : MonoBehaviour
     //Updates an Info Textbox to let the user know which step they are on.
     private void UpdateInfo(int iter, int step)
     {
-
         // should ideally only be called once, small performance sink if run every time we go back OR forth.
         if (maxStepAndIteration == null){maxStepAndIteration = MaxStepAndIteration();}
-
-        graphStateInfo.text = "Iteration: " + iter + " | Step: " + step + " ----- out of: " + maxStepAndIteration;
-
+     
+        graphStateInfo.text = "Iteration: " + iter + " | Step: " + step + " - out of: " + maxStepAndIteration;
     }
 
     //Finds the max step and iteration to give the use an indication of where the simulation ends.

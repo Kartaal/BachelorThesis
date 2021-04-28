@@ -1252,7 +1252,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: answerOptions.Array.data[1]
-      value: Removes the time interval from the instance
+      value: Change release times and deadlines of tasks intersecting the maximum
+        intensity interval
       objectReference: {fileID: 0}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: answerOptions.Array.data[2]
@@ -3652,6 +3653,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1019314904}
     m_Modifications:
+    - target: {fileID: 7145162376933526905, guid: 2229892c9718647f5beb562dfa3c4c3f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 442764391}
+    - target: {fileID: 7145162376933526905, guid: 2229892c9718647f5beb562dfa3c4c3f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadHome
+      objectReference: {fileID: 0}
     - target: {fileID: 7145162376933526906, guid: 2229892c9718647f5beb562dfa3c4c3f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -6310,7 +6321,7 @@ PrefabInstance:
       objectReference: {fileID: 1145728632}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: question
-      value: What are the four primary attributes of a Task?
+      value: What are the four primary attributes of a task?
       objectReference: {fileID: 0}
     - target: {fileID: 310366696, guid: 6fc05910b63064ef8ae6cec768986a0a, type: 3}
       propertyPath: answerIndex

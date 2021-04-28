@@ -206,8 +206,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -656, y: 76.6}
-  m_SizeDelta: {x: 563.63873, y: 624.07684}
+  m_AnchoredPosition: {x: -672.6, y: 14.4}
+  m_SizeDelta: {x: 530.487, y: 748.42267}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &215843611
 MonoBehaviour:
@@ -229,15 +229,20 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Until now you have seen the algorithm work and been quizzed about speed
-    scaling and YDS, this next part is about you getting more hands on experience
+    scaling and YDS. This next part is about you getting more hands on experience
     with the algorithm. \nOn the right are graphs matching the earlier setup. What
     you should do now is edit the tasks and the maximum intensity interval of the
     output graph, so it matches the steps in each iteration.\n\nTo edit a task you
-    click on it and a box with input fields will appear, when you are done editing
-    click on the task once more to make the input fields disappear. Any changes will
-    be reflected on the graph itself.\nTo edit the maximum intensity interval you
-    use the slides at the bottom of the output graph. \nWhen you believe you have
-    finished editing the step, press \"Check step\", and you will be given feedback
+    click on it and a tooltip with input fields will appear, when you are done editing
+    click on the task once more to make the input fields disappear. Release and deadline
+    can only be whole numbers and workload and intensity can be decimal numbers of
+    the form [13.666666]. When changing these it will be reflect on the graph. The
+    button for whether a task is scheduled is used to declare if the task is scheduled
+    or not. When a task gets scheduled, it will be moved to the bottom of the graph
+    and drawn with a duration according to its intensity and workload. Please schedule
+    tasks after changing their values first.\nTo edit the maximum intensity interval
+    you use the sliders at the bottom of the output graph. \n\nWhen you believe you
+    have finished editing the step, press \"Check step\", and you will be given feedback
     about your solution. \n\nWe start at the first step in the first iteration. What
     is the first thing you should do?"
   m_isRightToLeft: 0
@@ -266,8 +271,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 21
+  m_fontSizeBase: 21
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -352,7 +357,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -646, y: -415.73}
+  m_AnchoredPosition: {x: -646, y: -465}
   m_SizeDelta: {x: 160, y: 60.53006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &329716754
@@ -1581,7 +1586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -646, y: -335}
+  m_AnchoredPosition: {x: -646, y: -420}
   m_SizeDelta: {x: 563.63934, y: 63.097595}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1234506109
