@@ -29,7 +29,6 @@ public class Term : MonoBehaviour
         // Auto "clicks" the first term
         if(gameObject.name == "Term(1)")
         {
-            Debug.Log("Start running DisplayDescription for first term");
             DisplayDescription();
             GetComponent<Button>().Select();
         }
