@@ -19,17 +19,26 @@ public class Term : MonoBehaviour
     private int termImageID;
 
     private TermImageManager TIM;
-    void Start()
+    IEnumerator Start()
     {
         descriptionText.enabled = false;
         TIM = gameObject.transform.parent.parent.Find("Images").GetComponent<TermImageManager>();
+
+        // Without this yield return, the DisplayDescription call doesn't work properly
+        yield return null;
+        // Auto "clicks" the first term
+        if(gameObject.name == "Term(1)")
+        {
+            Debug.Log("Start running DisplayDescription for first term");
+            DisplayDescription();
+            GetComponent<Button>().Select();
+        }
     }
 
 
     public void DisplayDescription()
     {
         descriptionText.text = description;
-        Debug.Log("Display description for term");
         descriptionText.enabled = true;
         TIM.ActivateImage(termImageID); // Call to TIM to make image (if applicable) appear or dissapear.
     }
