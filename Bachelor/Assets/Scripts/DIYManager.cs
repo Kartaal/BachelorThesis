@@ -19,6 +19,9 @@ public class DIYManager : MonoBehaviour
     private int currentStep = 1;
     private int currentIteration = 1;
 
+    private int prevStep = 0;
+    private int prevIteration = 0;
+
     private List<Task> allTaskFromUserInput;
     private Slider maxIntervalUserLEFT;
     private Slider maxIntervalUserRIGHT;
@@ -28,7 +31,6 @@ public class DIYManager : MonoBehaviour
 
     private GraphState graphStateToCompareTo;
     private List<TaskData> allTaskDataFromGraphState;
-    //private List<Task> allTasksFromScheduleInGraphState;
     private IntervalData maxIntervalFromGraphState;
 
 
@@ -69,11 +71,11 @@ public class DIYManager : MonoBehaviour
         }
         else if (!CompareTasks(ref countOfCorrectTasks) && CompareMaxIntensityInterval())
         {
-            explanationText.text = "You edited the maximum intensity interval correctly, but you should check the tasks, not all of them are correct";
+            explanationText.text = "You edited the maximum intensity interval correctly, but you should check the tasks, not all of them are correct.";
         }
         else
         {
-            explanationText.text = "You should check both the tasks and the maximum intensity interval. They have not been edited correctly";
+            explanationText.text = "You should check both the tasks and the maximum intensity interval. They have not been edited correctly.";
         }
 
 
@@ -95,12 +97,18 @@ public class DIYManager : MonoBehaviour
     {
         if (currentStep == 3 && currentIteration != gsh.GetIterationCount())
         {
+            prevStep = currentStep;
+            prevIteration = currentIteration;
+
             currentStep = 1;
             currentIteration = currentIteration + 1;
         }
         else if (currentStep != 3)
         {
+            prevStep = currentStep;
+
             currentStep++;
+            if(prevIteration == 0) { prevIteration = 1; }
         }
     }
 
@@ -182,5 +190,60 @@ public class DIYManager : MonoBehaviour
         Debug.Log("USER TASK DEAD: " + user.GetDeadline() + " CORRECT TASK DEAD: " + correctTask.GetDed());
         Debug.Log("USER TASK WORK: " + user.GetWork() + " CORRECT TASK WORK: " + correctTask.GetWrk());
         Debug.Log("USER TASK INTENSITY: " + user.GetIntensity() + " CORRECT TASK INTENSITY: " + correctTask.GetIntensity());
+    }
+
+    /*
+     * Resets the tasks to the previous step (the last step that was correctly done by the user)
+     * If no step was completed, reset interval sliders to 0, otherwise reset as correct.
+     */
+    public void ResetGraph()
+    {
+        GraphState state = null;
+
+        if(prevIteration == 0 && prevStep == 0)
+        {
+            state = gsh.GetGraphState(1, 1);
+            IntervalData mii = state.GetInterval();
+
+            maxIntervalUserLEFT.value = 0;
+            maxIntervalUserRIGHT.value = 0;
+
+        }
+        else
+        {
+            Debug.Log($"prevIt: {prevIteration} - prevStep: {prevStep}");
+            state = gsh.GetGraphState(prevIteration, prevStep);
+            IntervalData mii = state.GetInterval();
+
+            maxIntervalUserLEFT.value = mii.GetStartInt();
+            maxIntervalUserRIGHT.value = mii.GetEndInt();
+        }
+
+        // DrawGraph code from GraphManager
+        // Update information in individual tasks...
+        foreach (Task t in allTaskFromUserInput)
+        {
+            // This can probably be done better with LINQ
+            foreach (TaskData td in state.GetTaskDatas())
+            {
+                // If IDs match, update the task's fields
+                if(td.GetId() == t.GetId())
+                {
+                    t.SetRelease(td.GetRel());
+                    t.SetDeadline(td.GetDed());
+                    t.SetWork(td.GetWrk());
+                    t.SetIntensity(td.GetIntensity());
+                    t.SetScheduled(td.GetScheduled());
+                    t.SetStart(td.GetStart());
+                    t.SetDuration(td.GetDuration());
+
+                    // Updates the Dimensions of the Task
+                    t.SetDimensionsOfTask();
+                    t.SetPosition();
+                }
+            }
+
+        }
+
     }
 }
