@@ -64,7 +64,6 @@ public class Task : MonoBehaviour
      */
     public void SetDimensionsOfTask()
     {
-        Debug.Log($"Task {id} running unscheduled dimensions");
         rt = (RectTransform) gameObject.transform;
         width = (deadlineT - releaseT) * scaleForDimensions;
         height = (float) taskIntensity * scaleHeight;
