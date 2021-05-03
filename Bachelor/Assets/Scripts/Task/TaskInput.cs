@@ -42,7 +42,7 @@ public class TaskInput : MonoBehaviour
     //Method for displaying the input field on click
     public void DisplayInputField()
     {
-        if (inputBox.active)
+        if (inputBox.activeSelf)
         {
             inputBox.SetActive(false);
             ResetFields();
@@ -64,6 +64,9 @@ public class TaskInput : MonoBehaviour
 
     private void SetUpInputFields()
     {
+        Text idText = inputBox.transform.Find("idText").GetComponent<Text>();
+        idText.text = "ID-" + task.GetId().ToString();
+
         scheduleToggle.isOn = task.GetScheduled();
         input[0].placeholder.GetComponent<Text>().text = task.GetRelease().ToString();
         input[1].placeholder.GetComponent<Text>().text = task.GetDeadline().ToString();
