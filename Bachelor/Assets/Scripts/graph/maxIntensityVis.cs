@@ -8,17 +8,6 @@ public class maxIntensityVis : MonoBehaviour
     [SerializeField]
     private Slider leftInterval, rightInterval;
 
-    
-    void Start()
-    {
-        DEBUG();
-    }
-
-    private void DEBUG(){
-        IntegersToVisual(5,8);
-        //IntervalDataToVisual(new IntervalData(6,10));
-    }
-
     // Call this method to visually define the maximum intensity interval from an IntervalData object.
     // This object may be found within the Worker.cs.
     public void IntervalDataToVisual(IntervalData intd)
