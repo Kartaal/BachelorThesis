@@ -24,9 +24,6 @@ public class GraphManager : MonoBehaviour
     [SerializeField]
     private GameObject task;        // In-unity reference to Task prefab.
     [SerializeField]
-    private Canvas mc;              // main Canvas
-    
-    [SerializeField]
     private AlgoManager algoManager;
 
     [SerializeField]
