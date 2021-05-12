@@ -33,7 +33,6 @@ public class AlgoManager : MonoBehaviour
     {
         iterationYDS = 1;
         stepYDS = 1;
-        //GenerateLockedYDSTasks();
     }
 
     public void GenerateLockedYDSTasks()
