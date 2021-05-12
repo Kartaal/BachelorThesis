@@ -1,0 +1,28 @@
+<color=#35331E>A Scheduling Model for Reduced CPU Energy
+By: Frances Yao, Alan Demers, Scott Shenker (1995)</color>
+%
+<color=#35331E>Green Algorithms: Quantifying the carbon emissions of computation
+By: Loïc Lanneloungue, Jason Grealey, Michael Inouye (2020)</color>
+%
+<color=#35331E>Green Data Centers: A Surevey, Perspectives and Future Directions
+By: Xibo Jin, Fa Zhang, Athanasios V. Vasilakos, Zhiyong Liu (2016)</color>
+%
+<color=#35331E>Energy Effecient Algorithms based on VM consolidation for Cloud Computing: Comparisons and Evaluations
+By: Qiheng Zhou, Minxian Xu, Sukhpal Singh Gill, Chengxi Gao, Wenhong Tian, Chengzhong Xu, Rajkumar Buyya (2020)</color>
+%
+<color=#35331E>Evaluating power effecient algorithms for effeciency and carbon emissions in cloud data centers: A review
+By: Mueen Uddin, Yasaman Daradibarabkhani, Asadullah Shah, Jamshed Memon (2015)<\color>
+%
+<color=#35331E>Energy-Effecient Scheduling Algorithms for Data Center Resources in Cloud Computing
+By: Tamal Adhikary, Amit Kumar Das, Md. Abdur Razzaque, A.M. Jehad Sarkar (2013)</color>
+%
+<color=#35331E>Energy-Effecient Algorithms for data retrieval from indexed parallel broadcast channels
+By: Ali R. Hurson, Sahra Sedigh Sarvestani, Mike Wisely (2016)</color>
+%
+<color=#35331E>Algorithms for Energy Saving
+By: Susanne Albers (2009)</color>
+%
+<color=#35331E>Speed scaling to manage energy and temperature
+By: Nikhil Bansal, Tracy Kimbrel, Kirk Pruhs (2007)</color>
+%
+!
