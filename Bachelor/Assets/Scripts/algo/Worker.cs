@@ -15,6 +15,12 @@ public class Worker : MonoBehaviour
         gsh = gameObject.transform.GetComponent<GraphStateHandler>();
     }
 
+    /* 
+        Creates a worker unit. The worker is the engine for the algorithms, 
+        and all algorithms should be present here 
+        The Worker plans out the schedule and runs it. 
+        Returning statistics for analysis.
+    */
 
     public Schedule RunYDS(List<Task> taskList)
     {
@@ -131,7 +137,7 @@ public class Worker : MonoBehaviour
 
         //------------------------
         // the new Schedule should be empty, as it is handled by the SaveState implicitly. 
-        // see graphStateHandler.cs (ln. 44 [as of 20-3-21])
+        // see GraphStatehandler.
         GraphStateHandler.SaveState(tasks, new Schedule() , maxIntensityInterval);
         //------------------------
 
@@ -170,10 +176,8 @@ public class Worker : MonoBehaviour
             t.SetDuration(duration);
         }
 
-        //------------------------
         GraphStateHandler.SaveState(tasks, schedule, maxIntensityInterval);
-        //PERSONAL NOTE: Might need to implement the schedule as it is made here.
-        //------------------------
+
         
     }
 
@@ -208,7 +212,7 @@ public class Worker : MonoBehaviour
         
         //------------------------
         // the new Schedule should be empty, as it is handled by the SaveState implicitly. 
-        // see graphStateHandler.cs (ln. 44 [as of 20-3-21])
+        // see graphStateHandler.cs
         GraphStateHandler.SaveState(tasks, new Schedule() , maxIntensityInterval);
         // MaxIntensityInterval is saved, but has no real reason to be used for this step!
         //------------------------

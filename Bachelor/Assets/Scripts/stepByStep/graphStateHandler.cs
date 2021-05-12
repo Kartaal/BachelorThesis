@@ -50,11 +50,9 @@ public class GraphStateHandler : MonoBehaviour
         // If the provided schedule is empty, then don't update. Otherwise, do UPDATE!
         if ( !(s == new Schedule()) )
         {
-            // might be faulty !?
     	        lastKnownSchedule = s;
         }
 
-        //lastKnownSchedule.MergeSchedules(s); // adds the new schedule on top of the last known schedule
         result.SetSchedule(lastKnownSchedule); // adds the last known schedule to the graphState.
 
         histogram.Add(result); // Add the data to the Histogram. Appended at the end of the list.

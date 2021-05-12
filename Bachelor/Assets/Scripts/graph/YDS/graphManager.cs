@@ -13,7 +13,6 @@ public class GraphManager : MonoBehaviour
     // Reference to Task Prefab
     [SerializeField]
     private GameObject task;        // In-unity reference to Task prefab.
-    
     [SerializeField]
     private AlgoManager algoManager;
 
@@ -43,7 +42,7 @@ public class GraphManager : MonoBehaviour
                     break;
             // Index 5 is YDS DIY
             case 5:
-                    algoManager.GenerateDIYYDSTasks(); // This method does not yet exist!
+                    algoManager.GenerateDIYYDSTasks();
                     break;
             default:
                     break;
