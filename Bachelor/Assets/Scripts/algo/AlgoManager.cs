@@ -76,19 +76,6 @@ public class AlgoManager : MonoBehaviour
 
             taskGO.transform.SetParent(taskContainerTransform);
         }
-
-        /*                      work - release - deadline
-            sampleSchedule.Add(new Task(5, 1, 3));
-            sampleSchedule.Add(new Task(6, 4, 7));
-            sampleSchedule.Add(new Task(3, 4, 6));
-            sampleSchedule.Add(new Task(10, 6, 9));
-            sampleSchedule.Add(new Task(5, 3, 5));
-            sampleSchedule.Add(new Task(7, 4, 7));
-            sampleSchedule.Add(new Task(9, 7, 10));
-            sampleSchedule.Add(new Task(2, 6, 11));
-
-
-        */
     }
 
     public void GenerateDIYYDSTasks()
@@ -105,7 +92,6 @@ public class AlgoManager : MonoBehaviour
 
 
         Transform canvasTransform = gameObject.transform.parent.gameObject.transform;
-        //Transform taskContainerTransform = canvasTransform.Find("TaskContainer").transform;
         var tmp = canvasTransform.Find("OutputContainer").transform;
         Transform taskContainerTransform = tmp.Find("TaskContainer").transform;
 
