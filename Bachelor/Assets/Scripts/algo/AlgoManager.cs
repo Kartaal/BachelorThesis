@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class AlgoManager : MonoBehaviour
@@ -49,7 +48,6 @@ public class AlgoManager : MonoBehaviour
 
 
         Transform canvasTransform = gameObject.transform.parent.gameObject.transform;
-        //Transform taskContainerTransform = canvasTransform.Find("TaskContainer").transform;
         var tmp = canvasTransform.Find("OutputContainer").transform;
         Transform taskContainerTransform = tmp.Find("TaskContainer").transform;
 
