@@ -14,9 +14,9 @@ public class maxIntensityVis : MonoBehaviour
     // This object may be found within the Worker.cs.
     public void IntervalDataToVisual(IntervalData intd)
     {
-        ConsistincyCheck();
         leftInterval.value = intd.GetStartInt();
         rightInterval.value = intd.GetEndInt();
+        ConsistincyCheck();
     }
 
     // Internal method to ensure consistincy of the visual elements. If the left is larger than right

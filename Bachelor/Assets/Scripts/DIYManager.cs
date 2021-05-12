@@ -110,7 +110,7 @@ public class DIYManager : MonoBehaviour
             currentStep = 1;
             currentIteration = currentIteration + 1;
         }
-        else if (currentStep != 3)
+        else
         {
             prevStep = currentStep;
 
