@@ -4,35 +4,39 @@ using UnityEngine;
 using System.IO;
 using UnityEngine.UI;
 using TMPro;
+using System.Text.RegularExpressions;
 
 public class ResourceReader : MonoBehaviour
 {
-    private StreamReader sr;
     [SerializeField]
-    private GameObject entryPrefab,scrollPane;
-
-    private bool isRunning; // bool to see if we have reached the end of the resources. Dictated by the char '!'
+    private GameObject entryPrefab, scrollPane;
+    [SerializeField]
+    private TextAsset file;
 
     private string resourceInfo;
 
     // Start is called before the first frame update
     void Start()
     {
-        isRunning = true;
-        sr = new StreamReader("Assets/textSource/res.txt");
-        while(isRunning){
-            string paragraph;
-            paragraph = sr.ReadLine();
-            if(paragraph == null){Debug.Log("Uhm... what?");}
-            TokenReader(paragraph);
+        string fs = file.text;
+        string[] fLines = Regex.Split ( fs, "\n|\r|\r\n" );
+        
+        for ( int i=0; i < fLines.Length; i++ )
+        {
+            if(fLines[i].Length > 0)
+            {
+                TokenReader(fLines[i]);
+            }
         }
+
     }
 
 
     // isolated method for reading first token of line.
-    private void TokenReader(string s){
-        switch(s[0]){
-
+    private void TokenReader(string s)
+    {
+        switch(s[0])
+        {
             case '%':
                 // new entry - Should be the only symbol on line. Nothing beyond the first char will be ignored.
                 // create new text  prefab and place accordingly.
@@ -40,27 +44,17 @@ public class ResourceReader : MonoBehaviour
                 var newResource = Instantiate(entryPrefab, new Vector2(0,0) , Quaternion.identity);
                 // Set parent of current entry 
                 newResource.transform.SetParent(scrollPane.transform);
-                //newResource.GetComponent<Text>().text = resourceInfo;
                 newResource.GetComponent<TextMeshProUGUI>().SetText(resourceInfo);
                 resourceInfo = "";
-                
                 break;
             case '!':
                 // STOP sign
-                isRunning = false;
                 break;
             default:
                 // Assume text is a valid entry. - Add paragraph to text object.
-                resourceInfo = resourceInfo + s + "\n"; // There is a chance this doesnt work...
+                resourceInfo = resourceInfo + s + "\n";
                 break;
-
         }
-
-    }
-
-    // isolated method to write the text element and finalize it on spot.
-    private void WriteResource(string res){
-
 
     }
 }

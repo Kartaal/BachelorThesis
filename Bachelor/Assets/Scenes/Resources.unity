@@ -241,6 +241,7 @@ MonoBehaviour:
   entryPrefab: {fileID: 5118695713130401485, guid: 4d28aa3cc6271914cb453538b6a34086,
     type: 3}
   scrollPane: {fileID: 1655186492}
+  file: {fileID: 4900000, guid: 209919e83cf3af247b5e2be29cd4476f, type: 3}
 --- !u!1 &305351697
 GameObject:
   m_ObjectHideFlags: 0
