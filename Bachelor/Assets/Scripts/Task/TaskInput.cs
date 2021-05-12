@@ -271,7 +271,6 @@ public class TaskInput : MonoBehaviour
 
     public void SubmitScheduled(bool value)
     {
-        Debug.Log("Running onvaluechanged");
         task.SetScheduled(value);
         if(task.GetScheduled())
         {

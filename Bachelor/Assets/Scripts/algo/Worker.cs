@@ -15,72 +15,40 @@ public class Worker : MonoBehaviour
         gsh = gameObject.transform.GetComponent<GraphStateHandler>();
     }
 
-    /* 
-        Creates a worker unit. The worker is the engine for the algorithms, 
-        and all algorithms should be present here 
-        The Worker plans out the schedule and runs it. 
-        Returning statistics for analysis.
-    */
-    public Worker()
-    {
-        // Readies and initializes the worker unit alongside 
-        // it's nessecary variables. (So far none. lol)
-    }
 
-    public void RunYDS(UnityEngine.Object taskList)
+    public Schedule RunYDS(List<Task> taskList)
     {
-        //do YDS things
-        
         Schedule schedule = new Schedule();
         
-        //schedule = YDS();
+        schedule = YDS(taskList);
+
+        return schedule;
     }
 
-    public Schedule YDS(List<Task> tasks, int debugFlag)
+    private Schedule YDS(List<Task> tasks)
     {
         // Mounts the non-sorted Schedule and ready for action.
         // Plans out the Schedule to YDS algorithm.
 
-        Console.WriteLine("YDS reporting for duty!");
-
         // Step 1. Calculate max intensity interval
-        Console.WriteLine("PHASE 1: Preparing intensity...");
-
         Schedule schedule = new Schedule();
 
 
         IntervalData maxIntensityInterval = null;
 
         while ( tasks.Count > 0 )
-        { 
+        {
             // Calculate maximum intensity interval for this iteration
             maxIntensityInterval = Step1(tasks);
 
-            // Debug print out!!
-            Console.WriteLine("\n===============================");
-            Console.WriteLine("Interval of max intensity is:");
-            Console.WriteLine(maxIntensityInterval);
-            Console.WriteLine("===============================");
-
             // Step 2. Sort, rearrange and schedule
-            Console.WriteLine("PHASE 2: Sorting Schedule...");
             // Scheduling tasks from maximum intensity interval
             Step2(tasks, schedule, maxIntensityInterval);
 
             // Step 3. Remove max intensity interval from instance - Is done? or repeat from step 1?
             // Update instance after scheduling tasks
             Step3(tasks, maxIntensityInterval);
-
-            Console.WriteLine("===============================");
-            Console.WriteLine("End of iteration.....");
-            AllTasksDebugOutput(tasks);
-            Console.WriteLine("===============================");
         }
-
-        Console.WriteLine();
-
-        Console.WriteLine("Schedule in YDS iteration interval order...");
-        Console.WriteLine(schedule.ScheduleToString());
 
         // Only works when ScheduleToString() has been called, otherwise it is not sorted.
         return schedule;
@@ -92,14 +60,9 @@ public class Worker : MonoBehaviour
         // Updated in the second loop of phase 1 with accumulated workloads. 
         List<IntervalData> intervals = new List<IntervalData>();
 
-        // DEBUG: Helper variable to keep track of the total amiunt of intervals.
-        int count = 0;
-
         // Helper variable to keep track of total work load in a given interval.
         double accumulatedWork = 0;
 
-
-        Console.WriteLine("Initializing Intervals, stand by . . .");
         List<int> intervalLimits = new List<int>();
 
         // Initializes the intervals as Interval Data.
@@ -127,26 +90,25 @@ public class Worker : MonoBehaviour
             for (int j = i + 1; j < intervalLimits.Count; j++)
             {
                 int end = intervalLimits[j];
-                count++;
                 intervals.Add(new IntervalData(start, end));
             }
         }
 
-        Console.WriteLine("Total Intervals recorded: " + intervals.Count + "\nCalculaitng intensities, please stand by . . .");
-
-        /* Calculates the intensity for any given interval.
-            Any task with a release date equal to or after 
-            the start of the interval is considered part of the interval.
-            The same goes for any task with a deadline that has a deadline
-            before the end of the interval. Regardless of start position.
-        */
+        /* 
+         * Calculates the intensity for any given interval.
+         * Any task with a release date equal to or after 
+         * the start of the interval is considered part of the interval.
+         * The same goes for any task with a deadline that has a deadline
+         * before the end of the interval. Regardless of start position.
+         */
         foreach (IntervalData id in intervals)
         {
             foreach (Task t in tasks)
             {
-                /* Make sure task is run within interval
-                    Task has release at least t1 (interval start) and deadline at most t2 (interval end)
-                */
+                /* 
+                 * Make sure task is run within interval
+                 *Task has release at least t1 (interval start) and deadline at most t2 (interval end)
+                 */
 
                 if (t.GetRelease() >= id.GetStartInt() && t.GetDeadline() <= id.GetEndInt())
                 {
@@ -180,10 +142,11 @@ public class Worker : MonoBehaviour
     {
         foreach (Task t in tasks)
         {
-            /* Start off by ensuring that the data is within the interval.
-                Task has release at least t1 (interval start) and deadline at most t2 (interval end) 
-                taskRelease >= intervalStart && taskDeadline <= intervalEnd  
-            */
+            /* 
+             * Start off by ensuring that the data is within the interval.
+             * Task has release at least t1 (interval start) and deadline at most t2 (interval end) 
+             * taskRelease >= intervalStart && taskDeadline <= intervalEnd  
+             */
 
             if (t.GetRelease() >= maxIntensityInterval.GetStartInt() && t.GetDeadline() <= maxIntensityInterval.GetEndInt())
             {
@@ -273,11 +236,6 @@ public class Worker : MonoBehaviour
 
             List<Task> prevScheduledTasks = schedule.GetTaskList();
 
-            // Debuggy stuff
-            Console.WriteLine($"Current time: {currentTime}");
-            Console.WriteLine("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-            Console.WriteLine("Writing out tasks before work committed by OA");
-            Console.WriteLine("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
             AllTasksDebugOutput(prevScheduledTasks);
 
 
@@ -331,7 +289,7 @@ public class Worker : MonoBehaviour
             // If tasks were added to be scheduled, actually schedule them
             if (newTaskAdded)
             {
-                schedule = YDS(YDSTasks, 2);
+                schedule = YDS(YDSTasks);
                 newTaskAdded = false;
             }
 
@@ -350,26 +308,6 @@ public class Worker : MonoBehaviour
         return allSchedulesWithCurrentTime;
     }
 
-    /*
-        OA run 1 (does not know about run 2)
-        Task 1-1: 2-5
-        Task 1-2: 2-6
-
-        OA run 2 (does not know about run 1)
-        Task 2-1: 7-8
-        Task 2-2: 8-10
-*/
-
-    private static void TasksAndScheduledDebugOutput(List<Task> tasks, List<Task> toBeScheduledTasks)
-    {
-        AllTasksDebugOutput(tasks);
-
-        Console.WriteLine("Writing out max intensity interval tasks....");
-        for (int x = 0; x < toBeScheduledTasks.Count; x++)
-        {
-            Console.WriteLine(toBeScheduledTasks[x]);
-        }
-    }
 
     private static void AllTasksDebugOutput(List<Task> tasks)
     {
