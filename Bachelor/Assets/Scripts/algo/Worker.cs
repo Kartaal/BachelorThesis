@@ -21,11 +21,6 @@ public class Worker : MonoBehaviour
         The Worker plans out the schedule and runs it. 
         Returning statistics for analysis.
     */
-    public Worker()
-    {
-        // Readies and initializes the worker unit alongside 
-        // it's nessecary variables. (So far none. lol)
-    }
 
     public void RunYDS(UnityEngine.Object taskList)
     {
@@ -92,9 +87,6 @@ public class Worker : MonoBehaviour
         // Updated in the second loop of phase 1 with accumulated workloads. 
         List<IntervalData> intervals = new List<IntervalData>();
 
-        // DEBUG: Helper variable to keep track of the total amiunt of intervals.
-        int count = 0;
-
         // Helper variable to keep track of total work load in a given interval.
         double accumulatedWork = 0;
 
@@ -127,7 +119,6 @@ public class Worker : MonoBehaviour
             for (int j = i + 1; j < intervalLimits.Count; j++)
             {
                 int end = intervalLimits[j];
-                count++;
                 intervals.Add(new IntervalData(start, end));
             }
         }
@@ -169,7 +160,7 @@ public class Worker : MonoBehaviour
 
         //------------------------
         // the new Schedule should be empty, as it is handled by the SaveState implicitly. 
-        // see graphStateHandler.cs (ln. 44 [as of 20-3-21])
+        // see GraphStatehandler.
         GraphStateHandler.SaveState(tasks, new Schedule() , maxIntensityInterval);
         //------------------------
 
@@ -207,10 +198,8 @@ public class Worker : MonoBehaviour
             t.SetDuration(duration);
         }
 
-        //------------------------
         GraphStateHandler.SaveState(tasks, schedule, maxIntensityInterval);
-        //PERSONAL NOTE: Might need to implement the schedule as it is made here.
-        //------------------------
+
         
     }
 
@@ -245,7 +234,7 @@ public class Worker : MonoBehaviour
         
         //------------------------
         // the new Schedule should be empty, as it is handled by the SaveState implicitly. 
-        // see graphStateHandler.cs (ln. 44 [as of 20-3-21])
+        // see graphStateHandler.cs
         GraphStateHandler.SaveState(tasks, new Schedule() , maxIntensityInterval);
         // MaxIntensityInterval is saved, but has no real reason to be used for this step!
         //------------------------
