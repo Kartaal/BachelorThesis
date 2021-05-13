@@ -61,7 +61,14 @@ public class DIYManager : MonoBehaviour
 
             CalcNextGraphState();
 
-            overviewText.text = $"Iteration {currentIteration} | Step {currentStep}";
+            if (currentIteration == gsh.GetIterationCount())
+            {
+                overviewText.text = "You have finished the algorithm, good job!";
+            }
+            else
+            {
+                overviewText.text = $"Iteration {currentIteration} | Step {currentStep}";
+            }
 
             DisableScheduledTasks();
         }
@@ -95,7 +102,7 @@ public class DIYManager : MonoBehaviour
 
     private void CalcNextGraphState()
     {
-        if (currentStep == 3 && currentIteration != gsh.GetIterationCount())
+        if (currentStep == 3)
         {
             prevStep = currentStep;
             prevIteration = currentIteration;
@@ -103,7 +110,7 @@ public class DIYManager : MonoBehaviour
             currentStep = 1;
             currentIteration = currentIteration + 1;
         }
-        else if (currentStep != 3)
+        else
         {
             prevStep = currentStep;
 
@@ -139,11 +146,11 @@ public class DIYManager : MonoBehaviour
     }
 
     /*
-     *This method compares the tasks from userinput (the edited tasks) with the task from graph state
-     *Since that tasks are removed from the graphstate tasks when scheduled, 
-     *we check whether the user has edited tasks correctly equal to the number of tasks from the graph state.
-     *What we could do in the future, is make it so tasks which has been edited correctly cannot be edited again
-     *Their button function is set to inactive.
+     * This method compares the tasks from userinput (the edited tasks) with the task from graph state
+     * Since that tasks are removed from the graphstate tasks when scheduled, 
+     * we check whether the user has edited tasks correctly equal to the number of tasks from the graph state.
+     * What we could do in the future, is make it so tasks which has been edited correctly cannot be edited again
+     * Their button function is set to inactive.
      */
     private bool CompareTasks(ref int countOfCorrectTasks)
     {
@@ -182,16 +189,6 @@ public class DIYManager : MonoBehaviour
         countOfCorrectTasks = 0;
         return false;
     }
-
-    private static void DEBUG(TaskData correctTask, Task user)
-    {
-        Debug.Log("USER TASK: " + user.GetId() + " CORRECT TASK: " + correctTask.GetId());
-        Debug.Log("USER TASK REL: " + user.GetRelease() + " CORRECT TASK REL: " + correctTask.GetRel());
-        Debug.Log("USER TASK DEAD: " + user.GetDeadline() + " CORRECT TASK DEAD: " + correctTask.GetDed());
-        Debug.Log("USER TASK WORK: " + user.GetWork() + " CORRECT TASK WORK: " + correctTask.GetWrk());
-        Debug.Log("USER TASK INTENSITY: " + user.GetIntensity() + " CORRECT TASK INTENSITY: " + correctTask.GetIntensity());
-    }
-
     /*
      * Resets the tasks to the previous step (the last step that was correctly done by the user)
      * If no step was completed, reset interval sliders to 0, otherwise reset as correct.

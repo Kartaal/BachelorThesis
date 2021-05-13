@@ -10,11 +10,6 @@ public class GraphStateHandler : MonoBehaviour
     
     private static Schedule lastKnownSchedule = new Schedule();
 
-    void Start()
-    {
-        //DEBUG();
-    }
-
     public int GetStatesCount()
     {
         return histogram.Count;
@@ -55,34 +50,12 @@ public class GraphStateHandler : MonoBehaviour
         // If the provided schedule is empty, then don't update. Otherwise, do UPDATE!
         if ( !(s == new Schedule()) )
         {
-            // might be faulty !?
     	        lastKnownSchedule = s;
         }
 
-        //lastKnownSchedule.MergeSchedules(s); // adds the new schedule on top of the last known schedule
         result.SetSchedule(lastKnownSchedule); // adds the last known schedule to the graphState.
 
         histogram.Add(result); // Add the data to the Histogram. Appended at the end of the list.
-    }
-
-    // Logs the first 2 iterations
-    public void DEBUG()
-    {
-
-        for(int i = 0; i < 7; i++)
-        {
-                
-            var td = new List<TaskData>();
-            td = histogram[i].GetTaskDatas();
-            Debug.Log("histogram Index: " + (i) + " Step(" + ((i % 3) + 1) + ")");
-            Debug.Log("Length of histogram - GetTaskDatas() " + td.Count);
-
-            foreach (TaskData t in td){
-                Debug.Log( "ID: " + t.GetId() + " |REL: " + t.GetRel() + " |DED: " + t.GetDed() + " |WRK: " + t.GetWrk() + " |INT: " + t.GetIntensity() );
-            }
-
-        }
-
     }
 
     // Gets a graph state from the histogram list based on iteration and step

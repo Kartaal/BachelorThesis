@@ -1,21 +1,11 @@
-﻿using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 using UnityEngine.SceneManagement;
 
 public class GraphManager : MonoBehaviour
 {
-    // Constants for the (0,0) of the graph
-    private const float xStart = 0f;//-550f;
-    private const float yStart = 0f;//-350f;
-
-    private float taskHeight = 50f; // default value.
-    private float taskWidth = 100f; // default value.
-
     private string maxStepAndIteration;
 
     private Color32[] colr;
@@ -23,9 +13,6 @@ public class GraphManager : MonoBehaviour
     // Reference to Task Prefab
     [SerializeField]
     private GameObject task;        // In-unity reference to Task prefab.
-    [SerializeField]
-    private Canvas mc;              // main Canvas
-    
     [SerializeField]
     private AlgoManager algoManager;
 
@@ -55,7 +42,7 @@ public class GraphManager : MonoBehaviour
                     break;
             // Index 5 is YDS DIY
             case 5:
-                    algoManager.GenerateDIYYDSTasks(); // This method does not yet exist!
+                    algoManager.GenerateDIYYDSTasks();
                     break;
             default:
                     break;
@@ -79,9 +66,6 @@ public class GraphManager : MonoBehaviour
                 new Color32(0,153,153,100), 
                 new Color32(255,255,255,100)
             };
-
-        taskHeight = ((RectTransform) task.transform).rect.height;
-        taskWidth = ((RectTransform) task.transform).rect.width;
         
         yield return new WaitForSeconds(1);
 
@@ -104,6 +88,7 @@ public class GraphManager : MonoBehaviour
             }
         }
 
+        //Handles generating the input graph
         GenerateGraph(inputTasks);
 
         RunYDS();
@@ -113,11 +98,10 @@ public class GraphManager : MonoBehaviour
 
     void RunYDS()
     {
-        Schedule schedule = worker.YDS(algoManager.tasks, 1);
+        Schedule schedule = worker.RunYDS(algoManager.tasks);
 
         // Run this snippet after YDS... sets the algoManager's task list to contain the Tasks 
         // visualised in the graph
-        
         var taskContainerTransform = gameObject.transform.parent.Find("OutputContainer").transform.Find("TaskContainer");
 
         foreach (Transform taskTransform in taskContainerTransform)
@@ -126,6 +110,7 @@ public class GraphManager : MonoBehaviour
             algoManager.tasks.Add(task);
         }
 
+        //Handles generating the output graph
         GenerateGraph(schedule.GetTaskList());
 
     }
@@ -198,9 +183,9 @@ public class GraphManager : MonoBehaviour
         int step = algoManager.GetStepYDS();
 
         /*
-            Update current iteration, as each iteration is counted in sets of three
-            GraphStates.
-        */
+         * Update current iteration, as each iteration is counted in sets of three
+         * GraphStates.
+         */
         if(step == 3)
         {
             step = 1;

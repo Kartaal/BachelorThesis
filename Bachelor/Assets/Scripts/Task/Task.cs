@@ -46,15 +46,8 @@ public class Task : MonoBehaviour
         rt = (RectTransform) gameObject.transform;
         SetDimensionsOfTask();
         CalcIntensity();
-        //DEBUG();
     }
 
-    private void DEBUG()
-    {
-        Debug.Log($"Task {id} has run Start()");
-        Debug.Log("width = " + rt.rect.width);
-        Debug.Log("height = " + rt.rect.height);
-    }
 
     /* Method for setting the dimensions of the visual task. Right now it only sets them when it starts, 
      * but could be useful to use it in update, to change size dynamically.
@@ -179,14 +172,3 @@ public class Task : MonoBehaviour
     }
 
 }
-
-
-/*
- a job denoted by I
-has a release time R:I when it arrives
-a work requirement W:I
-and a Deadline D:I 
-if I runs in S constant time
-it will be completed by
-W:I / S
-     */
